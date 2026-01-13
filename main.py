@@ -1,10 +1,13 @@
 """FastAPI application for AI Product Generator."""
 
 import logging
+import os
+import random
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from agent.image import generate_poster
 from api_models import ErrorResponse, ProductGenerateRequest, ProductGenerateResponse
 from core.config import settings
 from core.constants import CORS_ALLOW_ORIGINS
@@ -96,7 +99,35 @@ async def generate_product(request: ProductGenerateRequest) -> ProductGenerateRe
             logger.warning(f"Yandex'da rasm topilmadi, default rasm ishlatilmoqda")
             additional_images_paths = [get_default_image_path()]
 
-        main_image_path = get_default_image_path()
+        image_for_poster = additional_images_paths[0]
+
+        # Select random template from templates directory
+        templates_dir = "templates"
+        if os.path.exists(templates_dir):
+            template_files = [
+                f
+                for f in os.listdir(templates_dir)
+                if f.lower().endswith((".png", ".jpg", ".jpeg", ".webp"))
+            ]
+            if template_files:
+                selected_template = random.choice(template_files)
+                template_image_path = os.path.join(templates_dir, selected_template)
+                logger.info(f"Selected template: {template_image_path}")
+            else:
+                logger.warning("Templates papkasida rasm topilmadi")
+                template_image_path = None
+        else:
+            logger.warning(f"Templates papkasi topilmadi: {templates_dir}")
+            template_image_path = None
+
+        # Format product params as string for poster generation
+        product_params_str = f"{product.name}\n{product.description}"
+
+        main_image_path = generate_poster(
+            template_image_path=template_image_path,
+            product_image_path=image_for_poster,
+            product_params=product_params_str,
+        )
 
         # Select category and brand
         success, error_response, category_selection = (
