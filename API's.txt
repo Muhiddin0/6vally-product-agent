@@ -1,0 +1,6156 @@
+1. login qilish token olish uchun
+Method: POST
+URL
+https://api.venu.uz/api/v3/seller/auth/login
+Headers
+accept-encoding:
+gzip
+authorization:
+Bearer mPzVh43jap7LOAy9bX8TwGdzj2eTxNOBq4DS3xhV7U4P8McxjC
+content-length:
+66
+content-type:
+application/json; charset=UTF-8
+host:
+api.venu.uz
+user-agent:
+Dart/3.10 (dart:io)
+
+Request body:{
+  "email": "themodestn@venu.uz",
+  "password": "Themodestn@venu3001.uz"
+}
+
+Response Success:{
+  "token": "mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa"
+}
+
+================ Tovar qo'shish uchun kerak bo'ladigan ma'lumotlar ===========================
+Method: GET
+URL
+https://api.venu.uz/api/v1/attributes
+Headers
+accept-encoding:
+gzip
+authorization:
+Bearer mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa
+content-type:
+application/json; charset=UTF-8
+host:
+api.venu.uz
+lang:
+en
+user-agent:
+Dart/3.10 (dart:io)
+
+Response Success:[
+  {
+    "id": 10,
+    "name": "Операционная система",
+    "created_at": "2025-09-15T10:52:19.000000Z",
+    "updated_at": "2025-09-15T10:52:19.000000Z",
+    "translations": []
+  },
+  {
+    "id": 11,
+    "name": "Оперативная память",
+    "created_at": "2025-09-15T10:53:46.000000Z",
+    "updated_at": "2025-09-15T10:53:46.000000Z",
+    "translations": []
+  },
+  {
+    "id": 12,
+    "name": "Встроенная память",
+    "created_at": "2025-09-15T10:54:01.000000Z",
+    "updated_at": "2025-09-15T10:54:01.000000Z",
+    "translations": []
+  },
+  {
+    "id": 14,
+    "name": "Тип дисплея",
+    "created_at": "2025-09-15T10:54:20.000000Z",
+    "updated_at": "2025-09-15T10:54:20.000000Z",
+    "translations": []
+  },
+  {
+    "id": 15,
+    "name": "Размер дисплея",
+    "created_at": "2025-09-15T10:54:29.000000Z",
+    "updated_at": "2025-09-15T10:54:29.000000Z",
+    "translations": []
+  },
+  {
+    "id": 17,
+    "name": "Основная камера",
+    "created_at": "2025-09-15T10:54:52.000000Z",
+    "updated_at": "2025-09-15T10:54:52.000000Z",
+    "translations": []
+  },
+  {
+    "id": 18,
+    "name": "Фронтальная камера",
+    "created_at": "2025-09-15T10:54:59.000000Z",
+    "updated_at": "2025-09-15T10:54:59.000000Z",
+    "translations": []
+  },
+  {
+    "id": 19,
+    "name": "Емкость аккумулятора",
+    "created_at": "2025-09-15T10:55:05.000000Z",
+    "updated_at": "2025-09-15T10:55:05.000000Z",
+    "translations": []
+  },
+  {
+    "id": 20,
+    "name": "Быстрая зарядка",
+    "created_at": "2025-09-15T10:55:13.000000Z",
+    "updated_at": "2025-09-15T10:55:13.000000Z",
+    "translations": []
+  },
+  {
+    "id": 21,
+    "name": "Беспроводная зарядка",
+    "created_at": "2025-09-15T10:55:21.000000Z",
+    "updated_at": "2025-09-15T10:55:21.000000Z",
+    "translations": []
+  },
+  {
+    "id": 22,
+    "name": "Сети",
+    "created_at": "2025-09-15T10:55:27.000000Z",
+    "updated_at": "2025-09-15T10:55:27.000000Z",
+    "translations": []
+  },
+  {
+    "id": 23,
+    "name": "Количество SIM-карт",
+    "created_at": "2025-09-15T10:55:37.000000Z",
+    "updated_at": "2025-09-15T10:55:37.000000Z",
+    "translations": []
+  },
+  {
+    "id": 24,
+    "name": "Версия Bluetooth",
+    "created_at": "2025-09-15T10:55:44.000000Z",
+    "updated_at": "2025-09-15T10:55:44.000000Z",
+    "translations": []
+  },
+  {
+    "id": 25,
+    "name": "Стандарты Wi-Fi",
+    "created_at": "2025-09-15T10:55:52.000000Z",
+    "updated_at": "2025-09-15T10:55:52.000000Z",
+    "translations": []
+  },
+  {
+    "id": 26,
+    "name": "NFC",
+    "created_at": "2025-09-15T10:55:57.000000Z",
+    "updated_at": "2025-09-15T10:55:57.000000Z",
+    "translations": []
+  },
+  {
+    "id": 27,
+    "name": "Защита от воды и пыли",
+    "created_at": "2025-09-15T10:56:06.000000Z",
+    "updated_at": "2025-09-15T10:56:06.000000Z",
+    "translations": []
+  },
+  {
+    "id": 28,
+    "name": "Размеры",
+    "created_at": "2025-09-15T10:56:12.000000Z",
+    "updated_at": "2025-09-15T10:56:12.000000Z",
+    "translations": []
+  },
+  {
+    "id": 32,
+    "name": "Сканер отпечатка пальца",
+    "created_at": "2025-09-15T10:56:45.000000Z",
+    "updated_at": "2025-09-15T10:56:45.000000Z",
+    "translations": []
+  },
+  {
+    "id": 34,
+    "name": "Процессор",
+    "created_at": "2025-09-15T10:57:19.000000Z",
+    "updated_at": "2025-09-15T10:57:19.000000Z",
+    "translations": []
+  },
+  {
+    "id": 36,
+    "name": "Тип накопителя",
+    "created_at": "2025-09-15T10:57:39.000000Z",
+    "updated_at": "2025-09-15T10:57:39.000000Z",
+    "translations": []
+  },
+  {
+    "id": 37,
+    "name": "Разрешение дисплея",
+    "created_at": "2025-09-15T10:58:31.000000Z",
+    "updated_at": "2025-09-15T10:58:31.000000Z",
+    "translations": []
+  },
+  {
+    "id": 38,
+    "name": "Частота обновления дисплея",
+    "created_at": "2025-09-15T10:58:39.000000Z",
+    "updated_at": "2025-09-15T10:58:39.000000Z",
+    "translations": []
+  },
+  {
+    "id": 39,
+    "name": "Сенсорный экран",
+    "created_at": "2025-09-15T10:58:46.000000Z",
+    "updated_at": "2025-09-15T10:58:46.000000Z",
+    "translations": []
+  },
+  {
+    "id": 41,
+    "name": "Веб-камера",
+    "created_at": "2025-09-15T10:59:02.000000Z",
+    "updated_at": "2025-09-15T10:59:02.000000Z",
+    "translations": []
+  },
+  {
+    "id": 42,
+    "name": "Подсветка клавиатуры",
+    "created_at": "2025-09-15T10:59:16.000000Z",
+    "updated_at": "2025-09-15T10:59:16.000000Z",
+    "translations": []
+  },
+  {
+    "id": 43,
+    "name": "Время автономной работы",
+    "created_at": "2025-09-15T10:59:23.000000Z",
+    "updated_at": "2025-09-15T10:59:23.000000Z",
+    "translations": []
+  },
+  {
+    "id": 45,
+    "name": "Цвет",
+    "created_at": "2025-09-15T10:59:38.000000Z",
+    "updated_at": "2025-09-15T10:59:38.000000Z",
+    "translations": []
+  },
+  {
+    "id": 46,
+    "name": "Материал корпуса",
+    "created_at": "2025-09-15T10:59:51.000000Z",
+    "updated_at": "2025-09-15T10:59:51.000000Z",
+    "translations": []
+  },
+  {
+    "id": 47,
+    "name": "Диагональ экрана",
+    "created_at": "2025-09-15T11:28:27.000000Z",
+    "updated_at": "2025-09-15T11:28:27.000000Z",
+    "translations": []
+  },
+  {
+    "id": 48,
+    "name": "Разрешение экрана",
+    "created_at": "2025-09-15T11:28:35.000000Z",
+    "updated_at": "2025-09-15T11:28:35.000000Z",
+    "translations": []
+  },
+  {
+    "id": 49,
+    "name": "Smart TV",
+    "created_at": "2025-09-15T11:28:44.000000Z",
+    "updated_at": "2025-09-15T11:28:44.000000Z",
+    "translations": []
+  },
+  {
+    "id": 50,
+    "name": "Поддержка HDR",
+    "created_at": "2025-09-15T11:28:52.000000Z",
+    "updated_at": "2025-09-15T11:28:52.000000Z",
+    "translations": []
+  },
+  {
+    "id": 51,
+    "name": "Порты",
+    "created_at": "2025-09-15T11:29:11.000000Z",
+    "updated_at": "2025-09-15T11:29:11.000000Z",
+    "translations": []
+  },
+  {
+    "id": 52,
+    "name": "Bluetooth",
+    "created_at": "2025-09-15T11:29:21.000000Z",
+    "updated_at": "2025-09-15T11:29:21.000000Z",
+    "translations": []
+  },
+  {
+    "id": 53,
+    "name": "Мощность звука",
+    "created_at": "2025-09-15T11:29:34.000000Z",
+    "updated_at": "2025-09-15T11:29:34.000000Z",
+    "translations": []
+  },
+  {
+    "id": 54,
+    "name": "Габариты",
+    "created_at": "2025-09-15T11:29:42.000000Z",
+    "updated_at": "2025-09-15T11:29:42.000000Z",
+    "translations": []
+  },
+  {
+    "id": 55,
+    "name": "Вес",
+    "created_at": "2025-09-15T11:29:48.000000Z",
+    "updated_at": "2025-09-15T11:29:48.000000Z",
+    "translations": []
+  },
+  {
+    "id": 56,
+    "name": "Класс энергоэффективности",
+    "created_at": "2025-09-15T12:19:26.000000Z",
+    "updated_at": "2025-09-15T12:19:26.000000Z",
+    "translations": []
+  },
+  {
+    "id": 57,
+    "name": "Объем/Загрузка",
+    "created_at": "2025-09-15T12:19:37.000000Z",
+    "updated_at": "2025-09-15T12:19:37.000000Z",
+    "translations": []
+  },
+  {
+    "id": 60,
+    "name": "Потребление энергии",
+    "created_at": "2025-09-15T12:20:57.000000Z",
+    "updated_at": "2025-09-15T12:20:57.000000Z",
+    "translations": []
+  },
+  {
+    "id": 61,
+    "name": "Уровень шума",
+    "created_at": "2025-09-15T12:21:12.000000Z",
+    "updated_at": "2025-09-15T12:21:12.000000Z",
+    "translations": []
+  },
+  {
+    "id": 62,
+    "name": "Для холодильников",
+    "created_at": "2025-09-15T12:21:22.000000Z",
+    "updated_at": "2025-09-15T12:21:22.000000Z",
+    "translations": []
+  },
+  {
+    "id": 63,
+    "name": "Для стиральных машин",
+    "created_at": "2025-09-15T12:21:30.000000Z",
+    "updated_at": "2025-09-15T12:21:30.000000Z",
+    "translations": []
+  },
+  {
+    "id": 64,
+    "name": "Для плит",
+    "created_at": "2025-09-15T12:21:38.000000Z",
+    "updated_at": "2025-09-15T12:21:38.000000Z",
+    "translations": []
+  },
+  {
+    "id": 68,
+    "name": "Стиль",
+    "created_at": "2025-09-15T12:22:21.000000Z",
+    "updated_at": "2025-09-15T12:22:21.000000Z",
+    "translations": []
+  },
+  {
+    "id": 69,
+    "name": "Сборка",
+    "created_at": "2025-09-15T12:22:28.000000Z",
+    "updated_at": "2025-09-15T12:22:28.000000Z",
+    "translations": []
+  },
+  {
+    "id": 70,
+    "name": "Дополнительные функции",
+    "created_at": "2025-09-15T12:22:35.000000Z",
+    "updated_at": "2025-09-15T12:22:35.000000Z",
+    "translations": []
+  },
+  {
+    "id": 71,
+    "name": "Тип продукта",
+    "created_at": "2025-09-15T12:22:52.000000Z",
+    "updated_at": "2025-09-15T12:22:52.000000Z",
+    "translations": []
+  },
+  {
+    "id": 72,
+    "name": "Материал",
+    "created_at": "2025-09-15T12:22:57.000000Z",
+    "updated_at": "2025-09-15T12:22:57.000000Z",
+    "translations": []
+  },
+  {
+    "id": 73,
+    "name": "Объем/Диаметр",
+    "created_at": "2025-09-15T12:23:04.000000Z",
+    "updated_at": "2025-09-15T12:23:04.000000Z",
+    "translations": []
+  },
+  {
+    "id": 74,
+    "name": "Комплект",
+    "created_at": "2025-09-15T12:23:19.000000Z",
+    "updated_at": "2025-09-15T12:23:19.000000Z",
+    "translations": []
+  },
+  {
+    "id": 75,
+    "name": "Покрытие",
+    "created_at": "2025-09-15T12:23:25.000000Z",
+    "updated_at": "2025-09-15T12:23:25.000000Z",
+    "translations": []
+  },
+  {
+    "id": 76,
+    "name": "Для индукционных плит",
+    "created_at": "2025-09-15T12:23:35.000000Z",
+    "updated_at": "2025-09-15T12:23:35.000000Z",
+    "translations": []
+  }
+]
+
+
+Categoriyalar
+Method: GET
+URL
+https://api.venu.uz/api/v3/seller/categories
+Headers
+accept-encoding:
+gzip
+authorization:
+Bearer mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa
+content-type:
+application/json; charset=UTF-8
+host:
+api.venu.uz
+lang:
+en
+user-agent:
+Dart/3.10 (dart:io)
+
+Response Success:
+[
+  {
+    "id": 592,
+    "name": "Мебель",
+    "slug": "mebel",
+    "icon": "2025-11-07-690db05c1169c.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-11-07T08:39:56.000000Z",
+    "updated_at": "2025-11-07T08:39:56.000000Z",
+    "home_status": 1,
+    "priority": null,
+    "icon_full_url": {
+      "key": "2025-11-07-690db05c1169c.webp",
+      "path": "https://api.venu.uz/storage/category/2025-11-07-690db05c1169c.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 593,
+        "name": "Офисное кресло",
+        "slug": "ofisnoe-kreslo",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 592,
+        "position": 1,
+        "created_at": "2025-11-11T06:12:28.000000Z",
+        "updated_at": "2025-11-11T06:12:28.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 24,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 594,
+            "name": "Кресло",
+            "slug": "kreslo",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 593,
+            "position": 2,
+            "created_at": "2025-11-11T06:13:21.000000Z",
+            "updated_at": "2025-11-11T06:13:21.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 19,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 596,
+        "name": "Игравое кресло",
+        "slug": "igravoe-kreslo",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 592,
+        "position": 1,
+        "created_at": "2025-11-13T07:27:28.000000Z",
+        "updated_at": "2025-11-13T07:27:28.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 7,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 597,
+            "name": "Кпесло",
+            "slug": "kpeslo",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 596,
+            "position": 2,
+            "created_at": "2025-11-13T07:28:04.000000Z",
+            "updated_at": "2025-11-13T07:28:04.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 7,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 422,
+    "name": "Smartfonlar va gadjetlar",
+    "slug": "smartfonlar-va-gadjetlar",
+    "icon": "2025-08-19-68a4265f70026.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:29:18.000000Z",
+    "updated_at": "2025-09-29T05:57:30.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-08-19-68a4265f70026.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a4265f70026.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 574,
+        "name": "Часы",
+        "slug": "casy",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 422,
+        "position": 1,
+        "created_at": "2025-10-05T14:42:49.000000Z",
+        "updated_at": "2025-10-05T14:42:49.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 0,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 575,
+            "name": "Смарт-часы",
+            "slug": "smart-casy",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 574,
+            "position": 2,
+            "created_at": "2025-10-05T14:43:10.000000Z",
+            "updated_at": "2025-10-05T14:43:10.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 466,
+        "name": "Смартфоны, мобильные телефоны",
+        "slug": "smartfony-mobilnye-telefony",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 422,
+        "position": 1,
+        "created_at": "2025-08-28T10:49:16.000000Z",
+        "updated_at": "2025-08-28T10:49:16.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 216,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 467,
+            "name": "Смартфоны",
+            "slug": "smartfony",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 466,
+            "position": 2,
+            "created_at": "2025-08-28T10:49:52.000000Z",
+            "updated_at": "2025-08-28T10:49:52.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 215,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 509,
+        "name": "Планшеты",
+        "slug": "plansety",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 422,
+        "position": 1,
+        "created_at": "2025-09-16T06:54:04.000000Z",
+        "updated_at": "2025-09-16T06:54:04.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 10,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 510,
+            "name": "Планшеты Samsung",
+            "slug": "plansety-samsung",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 509,
+            "position": 2,
+            "created_at": "2025-09-16T06:55:17.000000Z",
+            "updated_at": "2025-09-16T06:55:17.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 3,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 423,
+    "name": "Noutbuklar va kompyuterlar",
+    "slug": "noutbuklar-va-kompyuterlar",
+    "icon": "2025-08-19-68a42694a3ec6.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:31:29.000000Z",
+    "updated_at": "2025-09-12T05:41:26.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-08-19-68a42694a3ec6.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a42694a3ec6.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 528,
+        "name": "Компьютерные комплектующие",
+        "slug": "kompiuternye-komplektuiushhie",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 423,
+        "position": 1,
+        "created_at": "2025-09-19T06:21:15.000000Z",
+        "updated_at": "2025-09-19T06:21:15.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 1360,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 529,
+            "name": "Блоки питания",
+            "slug": "bloki-pitaniia",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-09-19T06:21:38.000000Z",
+            "updated_at": "2025-09-19T06:21:38.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 194,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 557,
+            "name": "Жесткие диски",
+            "slug": "zestkie-diski",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-03T10:26:41.000000Z",
+            "updated_at": "2025-10-03T10:26:41.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 133,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 559,
+            "name": "Компьютерные корпусы",
+            "slug": "kompiuternye-korpusy",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-03T10:41:06.000000Z",
+            "updated_at": "2025-10-03T10:41:06.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 340,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 560,
+            "name": "Оперативная память",
+            "slug": "operativnaia-pamiat",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-03T11:34:03.000000Z",
+            "updated_at": "2025-10-03T11:34:03.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 148,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 566,
+            "name": "Видеокарты",
+            "slug": "videokarty",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-03T12:32:22.000000Z",
+            "updated_at": "2025-10-03T12:32:22.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 160,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 567,
+            "name": "SSD / HDD диск",
+            "slug": "ssd-hdd-disk",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-03T13:23:35.000000Z",
+            "updated_at": "2025-10-03T13:23:35.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 13,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 576,
+            "name": "Процессоры",
+            "slug": "processory",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-06T02:06:27.000000Z",
+            "updated_at": "2025-10-06T02:06:27.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 116,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 578,
+            "name": "Кулер для процессора",
+            "slug": "kuler-dlia-processora",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-06T05:57:18.000000Z",
+            "updated_at": "2025-10-06T05:57:18.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 115,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 587,
+            "name": "Сетевая карта",
+            "slug": "setevaia-karta",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-26T02:40:48.000000Z",
+            "updated_at": "2025-10-26T02:40:48.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 11,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 588,
+            "name": "Контроллер",
+            "slug": "kontroller",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-26T02:42:16.000000Z",
+            "updated_at": "2025-10-26T02:42:16.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 5,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 589,
+            "name": "Оптические приводы",
+            "slug": "opticeskie-privody",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-10-28T09:01:39.000000Z",
+            "updated_at": "2025-10-28T09:01:39.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 604,
+            "name": "Сенсорная панел для MAC",
+            "slug": "sensornaia-panel-dlia-mac",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-11-18T08:05:04.000000Z",
+            "updated_at": "2025-11-18T08:05:04.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 1,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 605,
+            "name": "Подставки для ноутбука",
+            "slug": "podstavki-dlia-noutbuka",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-11-19T01:03:09.000000Z",
+            "updated_at": "2025-11-19T01:03:09.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 15,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 608,
+            "name": "серверы",
+            "slug": "servery",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 528,
+            "position": 2,
+            "created_at": "2025-12-18T12:53:32.000000Z",
+            "updated_at": "2025-12-18T12:53:32.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 430,
+        "name": "Ноутбуки",
+        "slug": "noutbuki",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 423,
+        "position": 1,
+        "created_at": "2025-08-11T05:15:43.000000Z",
+        "updated_at": "2025-08-11T05:15:43.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 251,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 435,
+            "name": "Ноутбуки MSI",
+            "slug": "noutbuki-msi",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-11T07:07:52.000000Z",
+            "updated_at": "2025-08-11T07:07:52.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 12,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 436,
+            "name": "Ноутбуки HP",
+            "slug": "noutbuki-hp",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-11T07:08:33.000000Z",
+            "updated_at": "2025-08-11T07:08:33.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 94,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 439,
+            "name": "Ноутбуки ASUS",
+            "slug": "noutbuki-asus",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-11T07:09:35.000000Z",
+            "updated_at": "2025-08-11T07:09:35.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 63,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 441,
+            "name": "Ноутбуки DELL",
+            "slug": "noutbuki-dell",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-11T09:20:14.000000Z",
+            "updated_at": "2025-08-11T09:20:14.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 5,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 442,
+            "name": "Ноутбуки GIGABYTE",
+            "slug": "noutbuki-gigabyte",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-13T05:17:47.000000Z",
+            "updated_at": "2025-08-13T05:17:47.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 4,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 437,
+            "name": "Ноутбуки acer",
+            "slug": "noutbuki-acer",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-11T07:08:53.000000Z",
+            "updated_at": "2025-08-11T08:19:27.000000Z",
+            "home_status": 1,
+            "priority": 0,
+            "sub_sub_category_product_count": 30,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 438,
+            "name": "Ноутбуки lenovo",
+            "slug": "noutbuki-lenovo",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 430,
+            "position": 2,
+            "created_at": "2025-08-11T07:09:16.000000Z",
+            "updated_at": "2025-08-11T08:20:44.000000Z",
+            "home_status": 1,
+            "priority": 0,
+            "sub_sub_category_product_count": 43,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 431,
+        "name": "Компьютеры и мониторы",
+        "slug": "kompiutery-i-monitory",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 423,
+        "position": 1,
+        "created_at": "2025-08-11T05:16:18.000000Z",
+        "updated_at": "2025-08-11T05:16:18.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 565,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 537,
+            "name": "Моноблок",
+            "slug": "monoblok",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-09-24T13:15:19.000000Z",
+            "updated_at": "2025-09-24T13:15:19.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 118,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 440,
+            "name": "Мониторы",
+            "slug": "monitory",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-08-11T07:11:17.000000Z",
+            "updated_at": "2025-08-11T07:11:17.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 345,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 443,
+            "name": "Моноблок HP",
+            "slug": "monoblok-hp",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-08-13T08:09:04.000000Z",
+            "updated_at": "2025-08-13T08:09:04.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 72,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 444,
+            "name": "Моноблок Lenovo",
+            "slug": "monoblok-lenovo",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-08-13T08:09:53.000000Z",
+            "updated_at": "2025-08-13T08:09:53.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 24,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 445,
+            "name": "Моноблок acer",
+            "slug": "monoblok-acer",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-08-13T12:30:23.000000Z",
+            "updated_at": "2025-08-13T12:30:23.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 446,
+            "name": "Моноблок ASUS",
+            "slug": "monoblok-asus",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-08-13T12:30:51.000000Z",
+            "updated_at": "2025-08-13T12:30:51.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 1,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 448,
+            "name": "Моноблок Hanson",
+            "slug": "monoblok-hanson",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 431,
+            "position": 2,
+            "created_at": "2025-08-21T05:02:32.000000Z",
+            "updated_at": "2025-08-21T05:02:32.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 434,
+        "name": "Игровые аксессуары",
+        "slug": "igrovye-aksessuary",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 423,
+        "position": 1,
+        "created_at": "2025-08-11T05:19:17.000000Z",
+        "updated_at": "2025-08-11T05:19:17.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 16,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 577,
+            "name": "Игравой корпус",
+            "slug": "igravoi-korpus",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 434,
+            "position": 2,
+            "created_at": "2025-10-06T02:21:12.000000Z",
+            "updated_at": "2025-10-06T02:21:12.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 6,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 507,
+        "name": "Периферийные устройства",
+        "slug": "periferiinye-ustroistva",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 423,
+        "position": 1,
+        "created_at": "2025-09-16T06:49:39.000000Z",
+        "updated_at": "2025-09-16T06:49:39.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 128,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 586,
+            "name": "Термопринтер",
+            "slug": "termoprinter",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 507,
+            "position": 2,
+            "created_at": "2025-10-23T06:27:20.000000Z",
+            "updated_at": "2025-10-23T06:27:20.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 11,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 508,
+            "name": "Принтеры",
+            "slug": "printery",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 507,
+            "position": 2,
+            "created_at": "2025-09-16T06:51:01.000000Z",
+            "updated_at": "2025-09-16T06:51:01.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 118,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 424,
+    "name": "Televizorlar va raqamli TV",
+    "slug": "televizorlar-va-raqamli-tv",
+    "icon": "2025-08-19-68a426aded35f.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:32:42.000000Z",
+    "updated_at": "2025-09-12T05:41:02.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-08-19-68a426aded35f.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a426aded35f.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 516,
+        "name": "Проекторы и экраны",
+        "slug": "proektory-i-ekrany",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 424,
+        "position": 1,
+        "created_at": "2025-09-17T10:36:37.000000Z",
+        "updated_at": "2025-09-17T10:36:37.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 70,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 517,
+            "name": "Экраны для видеопроекторов",
+            "slug": "ekrany-dlia-videoproektorov",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 516,
+            "position": 2,
+            "created_at": "2025-09-17T10:37:13.000000Z",
+            "updated_at": "2025-09-17T10:37:13.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 58,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 600,
+        "name": "USB HUB",
+        "slug": "usb-hub",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 424,
+        "position": 1,
+        "created_at": "2025-11-14T06:24:39.000000Z",
+        "updated_at": "2025-11-14T06:24:39.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 50,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 601,
+            "name": "USB-концетратор",
+            "slug": "usb-koncetrator",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 600,
+            "position": 2,
+            "created_at": "2025-11-14T06:25:36.000000Z",
+            "updated_at": "2025-11-14T06:25:36.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 50,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 468,
+        "name": "Телевизоры и цифровое ТВ",
+        "slug": "televizory-i-cifrovoe-tv",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 424,
+        "position": 1,
+        "created_at": "2025-08-28T11:29:17.000000Z",
+        "updated_at": "2025-08-28T11:29:17.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 196,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 583,
+            "name": "Интерактивная сенсорная панель",
+            "slug": "interaktivnaia-sensornaia-panel",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 468,
+            "position": 2,
+            "created_at": "2025-10-20T10:04:21.000000Z",
+            "updated_at": "2025-10-20T10:04:21.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 52,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 469,
+            "name": "Смарт-телевизоры",
+            "slug": "smart-televizory",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 468,
+            "position": 2,
+            "created_at": "2025-08-28T11:29:55.000000Z",
+            "updated_at": "2025-08-28T11:29:55.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 132,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 425,
+    "name": "Audiotexnika",
+    "slug": "audiotexnika",
+    "icon": "2025-08-19-68a426cbeafec.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:32:57.000000Z",
+    "updated_at": "2025-09-12T05:40:45.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-08-19-68a426cbeafec.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a426cbeafec.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 602,
+        "name": "Флешки",
+        "slug": "fleski",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 425,
+        "position": 1,
+        "created_at": "2025-11-18T07:47:59.000000Z",
+        "updated_at": "2025-11-18T07:47:59.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 121,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 603,
+            "name": "Флешка",
+            "slug": "fleska",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 602,
+            "position": 2,
+            "created_at": "2025-11-18T07:48:40.000000Z",
+            "updated_at": "2025-11-18T07:48:40.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 121,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 486,
+        "name": "Все наушники",
+        "slug": "vse-nausniki",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 425,
+        "position": 1,
+        "created_at": "2025-09-08T05:23:07.000000Z",
+        "updated_at": "2025-09-08T05:23:07.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 202,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 502,
+            "name": "наушники",
+            "slug": "nausniki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 486,
+            "position": 2,
+            "created_at": "2025-09-08T05:37:06.000000Z",
+            "updated_at": "2025-10-05T03:18:16.000000Z",
+            "home_status": 1,
+            "priority": 0,
+            "sub_sub_category_product_count": 203,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 470,
+        "name": "Портативное аудио",
+        "slug": "portativnoe-audio",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 425,
+        "position": 1,
+        "created_at": "2025-08-28T11:32:20.000000Z",
+        "updated_at": "2025-08-28T11:32:48.000000Z",
+        "home_status": 1,
+        "priority": 0,
+        "sub_category_product_count": 34,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 581,
+            "name": "Гарнитура",
+            "slug": "garnitura",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 470,
+            "position": 2,
+            "created_at": "2025-10-10T11:36:32.000000Z",
+            "updated_at": "2025-10-10T11:36:32.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 1,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 582,
+            "name": "Колонка",
+            "slug": "kolonka",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 470,
+            "position": 2,
+            "created_at": "2025-10-10T11:37:06.000000Z",
+            "updated_at": "2025-10-10T11:37:06.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 5,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 471,
+            "name": "Портативные колонки",
+            "slug": "portativnye-kolonki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 470,
+            "position": 2,
+            "created_at": "2025-08-28T11:33:11.000000Z",
+            "updated_at": "2025-08-28T11:33:11.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 5,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 501,
+            "name": "Портативные колонки",
+            "slug": "portativnye-kolonki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 470,
+            "position": 2,
+            "created_at": "2025-09-08T05:35:20.000000Z",
+            "updated_at": "2025-09-08T05:35:20.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 23,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 427,
+    "name": "Uy uchun texnika",
+    "slug": "uy-uchun-texnika",
+    "icon": "2025-08-19-68a426fda8453.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:33:26.000000Z",
+    "updated_at": "2025-09-12T05:39:53.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-08-19-68a426fda8453.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a426fda8453.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 512,
+        "name": "Холодельник",
+        "slug": "xolodelnik",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-17T10:26:57.000000Z",
+        "updated_at": "2025-09-17T10:26:57.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 111,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 533,
+            "name": "Морозильник",
+            "slug": "morozilnik",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 512,
+            "position": 2,
+            "created_at": "2025-09-19T10:08:26.000000Z",
+            "updated_at": "2025-09-19T10:08:26.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 10,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 513,
+        "name": "Куллеры",
+        "slug": "kullery",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-17T10:27:45.000000Z",
+        "updated_at": "2025-09-17T10:27:45.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 16,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [],
+        "translations": []
+      },
+      {
+        "id": 584,
+        "name": "Пожарный извещатель",
+        "slug": "pozarnyi-izveshhatel",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-10-21T06:03:25.000000Z",
+        "updated_at": "2025-10-21T06:03:25.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 36,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [],
+        "translations": []
+      },
+      {
+        "id": 474,
+        "name": "Стиральные и сушильные машины",
+        "slug": "stiralnye-i-susilnye-masiny",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-08-28T11:36:09.000000Z",
+        "updated_at": "2025-08-28T11:36:09.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 205,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 475,
+            "name": "Стиральные машины",
+            "slug": "stiralnye-masiny",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 474,
+            "position": 2,
+            "created_at": "2025-08-28T11:36:36.000000Z",
+            "updated_at": "2025-08-28T11:36:36.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 135,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 491,
+            "name": "Стиральные машины",
+            "slug": "stiralnye-masiny",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 474,
+            "position": 2,
+            "created_at": "2025-09-08T05:30:05.000000Z",
+            "updated_at": "2025-09-08T05:30:05.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 481,
+        "name": "Крупная кухонная техника",
+        "slug": "krupnaia-kuxonnaia-texnika",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-08T05:03:42.000000Z",
+        "updated_at": "2025-09-08T05:03:42.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 467,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 542,
+            "name": "Вытяжки",
+            "slug": "vytiazki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 481,
+            "position": 2,
+            "created_at": "2025-09-29T06:00:08.000000Z",
+            "updated_at": "2025-09-29T06:00:08.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 28,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 544,
+            "name": "Посудомоечные машины",
+            "slug": "posudomoecnye-masiny",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 481,
+            "position": 2,
+            "created_at": "2025-10-02T13:33:00.000000Z",
+            "updated_at": "2025-10-02T13:33:00.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 489,
+            "name": "Холодильники",
+            "slug": "xolodilniki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 481,
+            "position": 2,
+            "created_at": "2025-09-08T05:28:33.000000Z",
+            "updated_at": "2025-09-08T05:28:33.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 164,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 490,
+            "name": "Плиты",
+            "slug": "plity",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 481,
+            "position": 2,
+            "created_at": "2025-09-08T05:29:21.000000Z",
+            "updated_at": "2025-09-08T05:29:21.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 43,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 497,
+            "name": "Кулеры для воды",
+            "slug": "kulery-dlia-vody",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 481,
+            "position": 2,
+            "created_at": "2025-09-08T05:33:05.000000Z",
+            "updated_at": "2025-09-08T05:33:05.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 498,
+            "name": "Плиты газовые и комбинированные",
+            "slug": "plity-gazovye-i-kombinirovannye",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 481,
+            "position": 2,
+            "created_at": "2025-09-08T05:33:35.000000Z",
+            "updated_at": "2025-09-08T05:33:35.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 177,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 482,
+        "name": "Приготовление пищи",
+        "slug": "prigotovlenie-pishhi",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-08T05:05:27.000000Z",
+        "updated_at": "2025-09-08T05:05:27.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 80,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 499,
+            "name": "Микроволновые печи",
+            "slug": "mikrovolnovye-peci",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 482,
+            "position": 2,
+            "created_at": "2025-09-08T05:34:02.000000Z",
+            "updated_at": "2025-09-08T05:34:02.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 78,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 484,
+        "name": "Мелкая кухонная техника",
+        "slug": "melkaia-kuxonnaia-texnika",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-08T05:06:49.000000Z",
+        "updated_at": "2025-09-08T05:06:49.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 27,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 500,
+            "name": "Мини-печи",
+            "slug": "mini-peci",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 484,
+            "position": 2,
+            "created_at": "2025-09-08T05:34:24.000000Z",
+            "updated_at": "2025-09-08T05:34:24.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 25,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 485,
+        "name": "Встраиваемая техника",
+        "slug": "vstraivaemaia-texnika",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-08T05:07:16.000000Z",
+        "updated_at": "2025-09-08T05:07:16.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 0,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [],
+        "translations": []
+      },
+      {
+        "id": 487,
+        "name": "Пылесосы",
+        "slug": "pylesosy",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-08T05:26:54.000000Z",
+        "updated_at": "2025-09-08T05:26:54.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 96,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 492,
+            "name": "Все пылесосы",
+            "slug": "vse-pylesosy",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 487,
+            "position": 2,
+            "created_at": "2025-09-08T05:30:53.000000Z",
+            "updated_at": "2025-09-08T05:30:53.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 59,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 488,
+        "name": "Климатическая техника",
+        "slug": "klimaticeskaia-texnika",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-09-08T05:27:18.000000Z",
+        "updated_at": "2025-09-08T05:27:18.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 248,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 543,
+            "name": "Аристон",
+            "slug": "ariston",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 488,
+            "position": 2,
+            "created_at": "2025-09-29T07:05:09.000000Z",
+            "updated_at": "2025-09-29T07:05:09.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 15,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 493,
+            "name": "Кондиционеры",
+            "slug": "kondicionery",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 488,
+            "position": 2,
+            "created_at": "2025-09-08T05:31:19.000000Z",
+            "updated_at": "2025-09-08T05:31:19.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 158,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 494,
+            "name": "Водонагреватели",
+            "slug": "vodonagrevateli",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 488,
+            "position": 2,
+            "created_at": "2025-09-08T05:31:45.000000Z",
+            "updated_at": "2025-09-08T05:31:45.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 16,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 495,
+            "name": "Увлажнители воздуха",
+            "slug": "uvlazniteli-vozduxa",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 488,
+            "position": 2,
+            "created_at": "2025-09-08T05:32:09.000000Z",
+            "updated_at": "2025-09-08T05:32:09.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 496,
+            "name": "Очистители воздуха",
+            "slug": "ocistiteli-vozduxa",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 488,
+            "position": 2,
+            "created_at": "2025-09-08T05:32:32.000000Z",
+            "updated_at": "2025-09-08T05:32:32.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 38,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 546,
+        "name": "Электрические машинки для стрижки волос",
+        "slug": "elektriceskie-masinki-dlia-strizki-volos",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 427,
+        "position": 1,
+        "created_at": "2025-10-03T05:59:09.000000Z",
+        "updated_at": "2025-10-03T05:59:40.000000Z",
+        "home_status": 1,
+        "priority": 6,
+        "sub_category_product_count": 11,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 428,
+    "name": "O'yinlar va dasturiy ta'minot",
+    "slug": "oyinlar-va-dasturiy-taminot",
+    "icon": "2025-08-19-68a4272b76903.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:33:43.000000Z",
+    "updated_at": "2025-09-12T05:39:24.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-08-19-68a4272b76903.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a4272b76903.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 555,
+        "name": "Видеокарта",
+        "slug": "videokarta",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 428,
+        "position": 1,
+        "created_at": "2025-10-03T10:06:54.000000Z",
+        "updated_at": "2025-10-03T10:06:54.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 5,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [],
+        "translations": []
+      },
+      {
+        "id": 561,
+        "name": "PC",
+        "slug": "pc",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 428,
+        "position": 1,
+        "created_at": "2025-10-03T11:58:43.000000Z",
+        "updated_at": "2025-10-03T11:58:43.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 249,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 562,
+            "name": "Игровые ноутбуки",
+            "slug": "igrovye-noutbuki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 561,
+            "position": 2,
+            "created_at": "2025-10-03T12:07:48.000000Z",
+            "updated_at": "2025-10-03T12:07:48.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 563,
+            "name": "Клавиатуры, мыши и гарнитуры",
+            "slug": "klaviatury-mysi-i-garnitury",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 561,
+            "position": 2,
+            "created_at": "2025-10-03T12:08:33.000000Z",
+            "updated_at": "2025-10-03T12:08:33.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 189,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 564,
+            "name": "Игровые Кресло",
+            "slug": "igrovye-kreslo",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 561,
+            "position": 2,
+            "created_at": "2025-10-03T12:09:53.000000Z",
+            "updated_at": "2025-10-03T12:09:53.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 41,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 565,
+            "name": "Игровые системные блоки",
+            "slug": "igrovye-sistemnye-bloki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 561,
+            "position": 2,
+            "created_at": "2025-10-03T12:15:33.000000Z",
+            "updated_at": "2025-10-03T12:15:33.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 579,
+            "name": "игравой наушники",
+            "slug": "igravoi-nausniki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 561,
+            "position": 2,
+            "created_at": "2025-10-06T06:24:56.000000Z",
+            "updated_at": "2025-10-06T06:24:56.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 11,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 580,
+            "name": "Монитор PROGAMING",
+            "slug": "monitor-progaming",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 561,
+            "position": 2,
+            "created_at": "2025-10-09T06:30:26.000000Z",
+            "updated_at": "2025-10-09T06:30:26.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 6,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 476,
+        "name": "PlayStation",
+        "slug": "playstation",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 428,
+        "position": 1,
+        "created_at": "2025-08-28T11:38:21.000000Z",
+        "updated_at": "2025-08-28T13:30:28.000000Z",
+        "home_status": 1,
+        "priority": 0,
+        "sub_category_product_count": 5,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 477,
+            "name": "Консоли PlayStation 5",
+            "slug": "konsoli-playstation-5",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 476,
+            "position": 2,
+            "created_at": "2025-08-28T11:38:51.000000Z",
+            "updated_at": "2025-08-28T13:32:08.000000Z",
+            "home_status": 1,
+            "priority": 0,
+            "sub_sub_category_product_count": 4,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 503,
+    "name": "Aqilli uy",
+    "slug": "aqilli-uy",
+    "icon": "2025-09-17-68caae1a6cae9.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-09-10T11:28:13.000000Z",
+    "updated_at": "2025-09-17T12:48:26.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-09-17-68caae1a6cae9.webp",
+      "path": "https://api.venu.uz/storage/category/2025-09-17-68caae1a6cae9.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 538,
+        "name": "Экосистемы",
+        "slug": "ekosistemy",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 503,
+        "position": 1,
+        "created_at": "2025-09-26T10:04:08.000000Z",
+        "updated_at": "2025-09-26T10:04:08.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 0,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 539,
+            "name": "Яндекс",
+            "slug": "iandeks",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 538,
+            "position": 2,
+            "created_at": "2025-09-26T10:04:53.000000Z",
+            "updated_at": "2025-09-26T10:04:53.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 540,
+        "name": "Устройства для умного дома",
+        "slug": "ustroistva-dlia-umnogo-doma",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 503,
+        "position": 1,
+        "created_at": "2025-09-26T10:05:51.000000Z",
+        "updated_at": "2025-09-26T10:05:51.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 109,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 541,
+            "name": "IP-камеры",
+            "slug": "ip-kamery",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 540,
+            "position": 2,
+            "created_at": "2025-09-26T10:06:15.000000Z",
+            "updated_at": "2025-09-26T10:06:15.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 109,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 550,
+        "name": "Сетевое оборудование",
+        "slug": "setevoe-oborudovanie",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 503,
+        "position": 1,
+        "created_at": "2025-10-03T07:08:53.000000Z",
+        "updated_at": "2025-10-03T07:08:53.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 848,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 551,
+            "name": "Переключатели, переходники, модули",
+            "slug": "perekliucateli-perexodniki-moduli",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 550,
+            "position": 2,
+            "created_at": "2025-10-03T07:09:57.000000Z",
+            "updated_at": "2025-10-03T07:09:57.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 124,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 552,
+            "name": "Коммутаторы",
+            "slug": "kommutatory",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 550,
+            "position": 2,
+            "created_at": "2025-10-03T08:22:17.000000Z",
+            "updated_at": "2025-10-03T08:22:17.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 49,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 553,
+            "name": "Маршрутизаторы",
+            "slug": "marsrutizatory",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 550,
+            "position": 2,
+            "created_at": "2025-10-03T09:31:49.000000Z",
+            "updated_at": "2025-10-03T09:31:49.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 582,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 554,
+            "name": "Wi-Fi Точки доступа",
+            "slug": "wi-fi-tocki-dostupa",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 550,
+            "position": 2,
+            "created_at": "2025-10-03T09:33:29.000000Z",
+            "updated_at": "2025-10-03T09:33:29.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 81,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 568,
+        "name": "Видеонаблюдение",
+        "slug": "videonabliudenie",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 503,
+        "position": 1,
+        "created_at": "2025-10-04T05:09:16.000000Z",
+        "updated_at": "2025-10-04T05:09:16.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 3,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 569,
+            "name": "Камеры",
+            "slug": "kamery",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 568,
+            "position": 2,
+            "created_at": "2025-10-04T05:09:35.000000Z",
+            "updated_at": "2025-10-04T05:09:35.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 570,
+            "name": "Видеорегистратор",
+            "slug": "videoregistrator",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 568,
+            "position": 2,
+            "created_at": "2025-10-04T05:28:44.000000Z",
+            "updated_at": "2025-10-04T05:28:44.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 1,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 504,
+    "name": "Foto va video",
+    "slug": "foto-va-video",
+    "icon": "2025-09-10-68c16133d4136.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-09-10T11:29:55.000000Z",
+    "updated_at": "2025-09-12T05:38:34.000000Z",
+    "home_status": 1,
+    "priority": 0,
+    "icon_full_url": {
+      "key": "2025-09-10-68c16133d4136.webp",
+      "path": "https://api.venu.uz/storage/category/2025-09-10-68c16133d4136.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 514,
+        "name": "Проэкторы",
+        "slug": "proektory",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 504,
+        "position": 1,
+        "created_at": "2025-09-17T10:28:52.000000Z",
+        "updated_at": "2025-09-17T10:28:52.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 10,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 515,
+            "name": "Проэкторы телефона",
+            "slug": "proektory-telefona",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 514,
+            "position": 2,
+            "created_at": "2025-09-17T10:29:30.000000Z",
+            "updated_at": "2025-09-17T10:29:30.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 1,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 606,
+        "name": "Камера",
+        "slug": "kamera",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 504,
+        "position": 1,
+        "created_at": "2025-12-11T11:13:59.000000Z",
+        "updated_at": "2025-12-11T11:13:59.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 15,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 607,
+            "name": "Автомобильная камера",
+            "slug": "avtomobilnaia-kamera",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 606,
+            "position": 2,
+            "created_at": "2025-12-11T11:16:30.000000Z",
+            "updated_at": "2025-12-11T11:16:30.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 15,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      }
+    ],
+    "translations": []
+  },
+  {
+    "id": 429,
+    "name": "Aksessuarlar",
+    "slug": "aksessuarlar",
+    "icon": "2025-08-19-68a4273f72726.webp",
+    "icon_storage_type": "public",
+    "parent_id": 0,
+    "position": 0,
+    "created_at": "2025-08-08T12:33:53.000000Z",
+    "updated_at": "2025-09-12T05:38:59.000000Z",
+    "home_status": 1,
+    "priority": 1,
+    "icon_full_url": {
+      "key": "2025-08-19-68a4273f72726.webp",
+      "path": "https://api.venu.uz/storage/category/2025-08-19-68a4273f72726.webp",
+      "status": 200
+    },
+    "childes": [
+      {
+        "id": 518,
+        "name": "Компьютерные аксессуары",
+        "slug": "kompiuternye-aksessuary",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-19T06:10:02.000000Z",
+        "updated_at": "2025-09-19T06:10:02.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 1115,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 523,
+            "name": "Клавиатуры и мыши",
+            "slug": "klaviatury-i-mysi",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 518,
+            "position": 2,
+            "created_at": "2025-09-19T06:12:15.000000Z",
+            "updated_at": "2025-09-19T06:12:15.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 366,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 524,
+            "name": "Внешние жёсткие диски",
+            "slug": "vnesnie-zestkie-diski",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 518,
+            "position": 2,
+            "created_at": "2025-09-19T06:12:50.000000Z",
+            "updated_at": "2025-09-19T06:12:50.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 526,
+            "name": "Флеш-накопители",
+            "slug": "fles-nakopiteli",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 518,
+            "position": 2,
+            "created_at": "2025-09-19T06:14:02.000000Z",
+            "updated_at": "2025-09-19T06:14:02.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 527,
+            "name": "Роутеры и сетевое оборудование",
+            "slug": "routery-i-setevoe-oborudovanie",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 518,
+            "position": 2,
+            "created_at": "2025-09-19T06:14:47.000000Z",
+            "updated_at": "2025-09-19T06:14:47.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 3,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 519,
+        "name": "Аксессуары для домашней техники",
+        "slug": "aksessuary-dlia-domasnei-texniki",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-19T06:10:33.000000Z",
+        "updated_at": "2025-09-19T06:10:33.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 49,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 521,
+            "name": "Аксессуары для стиральных машин",
+            "slug": "aksessuary-dlia-stiralnyx-masin",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 519,
+            "position": 2,
+            "created_at": "2025-09-19T06:11:24.000000Z",
+            "updated_at": "2025-09-19T06:11:24.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 522,
+            "name": "Аксессуары для пылесосов",
+            "slug": "aksessuary-dlia-pylesosov",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 519,
+            "position": 2,
+            "created_at": "2025-09-19T06:11:45.000000Z",
+            "updated_at": "2025-09-19T06:11:45.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 525,
+            "name": "Компьютерные колонки",
+            "slug": "kompiuternye-kolonki",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 519,
+            "position": 2,
+            "created_at": "2025-09-19T06:13:08.000000Z",
+            "updated_at": "2025-09-19T06:13:08.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 590,
+            "name": "Машинка для стрижки волос",
+            "slug": "masinka-dlia-strizki-volos",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 519,
+            "position": 2,
+            "created_at": "2025-10-29T11:07:12.000000Z",
+            "updated_at": "2025-10-29T11:07:12.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 44,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 520,
+        "name": "Аксессуары для кухонной техники",
+        "slug": "aksessuary-dlia-kuxonnoi-texniki",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-19T06:10:52.000000Z",
+        "updated_at": "2025-09-19T06:10:52.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 153,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 591,
+            "name": "Кулер для корпуса",
+            "slug": "kuler-dlia-korpusa",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 520,
+            "position": 2,
+            "created_at": "2025-11-07T05:34:20.000000Z",
+            "updated_at": "2025-11-07T05:34:20.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 153,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 530,
+        "name": "Источники бесперебойного питания",
+        "slug": "istocniki-bespereboinogo-pitaniia",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-19T09:15:41.000000Z",
+        "updated_at": "2025-09-19T09:15:41.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 68,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 532,
+            "name": "Линейно-интерактивные ИБП",
+            "slug": "lineino-interaktivnye-ibp",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 530,
+            "position": 2,
+            "created_at": "2025-09-19T09:23:33.000000Z",
+            "updated_at": "2025-09-19T09:23:33.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 68,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 534,
+        "name": "Аксессуары для телевизоров",
+        "slug": "aksessuary-dlia-televizorov",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-19T13:28:55.000000Z",
+        "updated_at": "2025-09-19T13:28:55.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 33,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 535,
+            "name": "Кронштейны для телевизоров",
+            "slug": "kronsteiny-dlia-televizorov",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 534,
+            "position": 2,
+            "created_at": "2025-09-19T13:30:04.000000Z",
+            "updated_at": "2025-09-19T13:30:04.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 24,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 548,
+            "name": "Кабель",
+            "slug": "kabel",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 534,
+            "position": 2,
+            "created_at": "2025-10-03T06:04:07.000000Z",
+            "updated_at": "2025-10-03T06:04:07.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 549,
+            "name": "Приставки Smart TV и приемники DVB-T2",
+            "slug": "pristavki-smart-tv-i-priemniki-dvb-t2",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 534,
+            "position": 2,
+            "created_at": "2025-10-03T06:12:37.000000Z",
+            "updated_at": "2025-10-03T06:12:37.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 4,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 609,
+        "name": "Аксессуары для умного дома",
+        "slug": "aksessuary-dlia-umnogo-doma",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-12-22T06:57:24.000000Z",
+        "updated_at": "2025-12-22T06:57:24.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 3,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 610,
+            "name": "Розетка",
+            "slug": "rozetka",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 609,
+            "position": 2,
+            "created_at": "2025-12-22T06:59:27.000000Z",
+            "updated_at": "2025-12-22T06:59:27.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 3,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 478,
+        "name": "Аксессуары для смартфон",
+        "slug": "aksessuary-dlia-smartfon",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-08-29T06:31:11.000000Z",
+        "updated_at": "2025-08-29T06:31:11.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 11,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 571,
+            "name": "Стекло",
+            "slug": "steklo",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 478,
+            "position": 2,
+            "created_at": "2025-10-05T03:28:35.000000Z",
+            "updated_at": "2025-10-05T03:28:35.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 572,
+            "name": "батарейка",
+            "slug": "batareika",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 478,
+            "position": 2,
+            "created_at": "2025-10-05T03:34:07.000000Z",
+            "updated_at": "2025-10-05T03:34:07.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 4,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 479,
+            "name": "Зарядные устройства",
+            "slug": "zariadnye-ustroistva",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 478,
+            "position": 2,
+            "created_at": "2025-08-29T06:33:11.000000Z",
+            "updated_at": "2025-08-29T06:33:11.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 4,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 480,
+            "name": "Карты памяти",
+            "slug": "karty-pamiati",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 478,
+            "position": 2,
+            "created_at": "2025-08-29T06:33:50.000000Z",
+            "updated_at": "2025-08-29T06:33:50.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 505,
+        "name": "Компьютерные аксессуары",
+        "slug": "kompiuternye-aksessuary",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-15T15:35:20.000000Z",
+        "updated_at": "2025-09-15T15:35:20.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 350,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [
+          {
+            "id": 545,
+            "name": "Роутеры и сетевое оборудование",
+            "slug": "routery-i-setevoe-oborudovanie",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 505,
+            "position": 2,
+            "created_at": "2025-10-03T05:55:42.000000Z",
+            "updated_at": "2025-10-03T05:55:42.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 2,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 556,
+            "name": "Флеш-накопители",
+            "slug": "fles-nakopiteli",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 505,
+            "position": 2,
+            "created_at": "2025-10-03T10:18:45.000000Z",
+            "updated_at": "2025-10-03T10:18:45.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 0,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 598,
+            "name": "сумка",
+            "slug": "sumka",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 505,
+            "position": 2,
+            "created_at": "2025-11-13T09:08:08.000000Z",
+            "updated_at": "2025-11-13T09:08:08.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 108,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 599,
+            "name": "Аккумулятор для ноутбука",
+            "slug": "akkumuliator-dlia-noutbuka",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 505,
+            "position": 2,
+            "created_at": "2025-11-14T04:50:15.000000Z",
+            "updated_at": "2025-11-14T04:50:15.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 305,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          },
+          {
+            "id": 506,
+            "name": "Роутеры и сетевое оборудование",
+            "slug": "routery-i-setevoe-oborudovanie",
+            "icon": "def.png",
+            "icon_storage_type": null,
+            "parent_id": 505,
+            "position": 2,
+            "created_at": "2025-09-15T15:36:25.000000Z",
+            "updated_at": "2025-09-15T15:36:25.000000Z",
+            "home_status": 1,
+            "priority": null,
+            "sub_sub_category_product_count": 18,
+            "icon_full_url": {
+              "key": "def.png",
+              "path": null,
+              "status": 404
+            },
+            "translations": []
+          }
+        ],
+        "translations": []
+      },
+      {
+        "id": 511,
+        "name": "Аксессуары для фото и видеотехники",
+        "slug": "aksessuary-dlia-foto-i-videotexniki",
+        "icon": "def.png",
+        "icon_storage_type": null,
+        "parent_id": 429,
+        "position": 1,
+        "created_at": "2025-09-17T10:19:53.000000Z",
+        "updated_at": "2025-09-17T10:19:53.000000Z",
+        "home_status": 1,
+        "priority": null,
+        "sub_category_product_count": 1,
+        "icon_full_url": {
+          "key": "def.png",
+          "path": null,
+          "status": 404
+        },
+        "childes": [],
+        "translations": []
+      }
+    ],
+    "translations": []
+  }
+]
+
+
+
+Brendlar
+Method: GET
+URL
+https://api.venu.uz/api/v3/seller/brands
+Headers
+accept-encoding:
+gzip
+authorization:
+Bearer mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa
+content-type:
+application/json; charset=UTF-8
+host:
+api.venu.uz
+lang:
+en
+user-agent:
+Dart/3.10 (dart:io)
+
+[
+  {
+    "id": 1,
+    "name": "Nokia",
+    "image": "2025-09-12-68c4096b7f77a.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "nokia",
+    "status": 1,
+    "created_at": "2025-07-03T20:27:22.000000Z",
+    "updated_at": "2025-09-12T11:57:20.000000Z",
+    "image_full_url": {
+      "key": "2025-09-12-68c4096b7f77a.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-12-68c4096b7f77a.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 2,
+    "name": "Iphone",
+    "image": "2025-09-11-68c2c3b746b66.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Iphone",
+    "status": 1,
+    "created_at": "2025-07-03T21:32:08.000000Z",
+    "updated_at": "2025-09-11T12:42:31.000000Z",
+    "image_full_url": {
+      "key": "2025-09-11-68c2c3b746b66.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-11-68c2c3b746b66.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 3,
+    "name": "artel",
+    "image": "2025-08-07-68943c68d5a40.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "artel",
+    "status": 1,
+    "created_at": "2025-07-16T18:12:20.000000Z",
+    "updated_at": "2025-08-11T07:47:00.000000Z",
+    "image_full_url": {
+      "key": "2025-08-07-68943c68d5a40.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-07-68943c68d5a40.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 4,
+    "name": "DELL",
+    "image": "2025-07-29-6888af33a848c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Dell Vostro",
+    "status": 1,
+    "created_at": "2025-07-29T11:23:31.000000Z",
+    "updated_at": "2025-08-11T06:30:14.000000Z",
+    "image_full_url": {
+      "key": "2025-07-29-6888af33a848c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-07-29-6888af33a848c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 6,
+    "name": "lenovo",
+    "image": "2025-07-29-6888bfd544613.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "lenovo",
+    "status": 1,
+    "created_at": "2025-07-29T12:34:29.000000Z",
+    "updated_at": "2025-08-11T07:46:29.000000Z",
+    "image_full_url": {
+      "key": "2025-07-29-6888bfd544613.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-07-29-6888bfd544613.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 7,
+    "name": "acer",
+    "image": "2025-07-29-6888c00c87473.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "acer",
+    "status": 1,
+    "created_at": "2025-07-29T12:35:24.000000Z",
+    "updated_at": "2025-08-11T07:46:04.000000Z",
+    "image_full_url": {
+      "key": "2025-07-29-6888c00c87473.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-07-29-6888c00c87473.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 8,
+    "name": "ASUS",
+    "image": "2025-07-29-6888c06859f5c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "ASUS VIVABOOK",
+    "status": 1,
+    "created_at": "2025-07-29T12:36:56.000000Z",
+    "updated_at": "2025-08-26T02:06:14.000000Z",
+    "image_full_url": {
+      "key": "2025-07-29-6888c06859f5c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-07-29-6888c06859f5c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 9,
+    "name": "GIGABYTE",
+    "image": "2025-07-30-68891c5352961.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "GIGABYTE",
+    "status": 1,
+    "created_at": "2025-07-29T19:09:07.000000Z",
+    "updated_at": "2025-07-29T19:09:07.000000Z",
+    "image_full_url": {
+      "key": "2025-07-30-68891c5352961.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-07-30-68891c5352961.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 10,
+    "name": "Msi",
+    "image": "2025-07-30-68891ca73fe0f.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "msi",
+    "status": 1,
+    "created_at": "2025-07-29T19:10:31.000000Z",
+    "updated_at": "2025-10-28T07:29:50.000000Z",
+    "image_full_url": {
+      "key": "2025-07-30-68891ca73fe0f.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-07-30-68891ca73fe0f.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 11,
+    "name": "HP",
+    "image": "2025-08-09-6897383b28d2c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "HP",
+    "status": 1,
+    "created_at": "2025-07-29T19:13:16.000000Z",
+    "updated_at": "2025-08-09T11:59:55.000000Z",
+    "image_full_url": {
+      "key": "2025-08-09-6897383b28d2c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-09-6897383b28d2c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 12,
+    "name": "Hanson",
+    "image": "2025-08-01-688c81913c415.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Hanson",
+    "status": 1,
+    "created_at": "2025-08-01T08:57:53.000000Z",
+    "updated_at": "2025-08-11T07:43:20.000000Z",
+    "image_full_url": {
+      "key": "2025-08-01-688c81913c415.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-01-688c81913c415.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 14,
+    "name": "SAMSUNG",
+    "image": "2025-08-08-6895ec822b96c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "SAMSUNG",
+    "status": 1,
+    "created_at": "2025-08-07T05:38:23.000000Z",
+    "updated_at": "2025-08-11T07:42:39.000000Z",
+    "image_full_url": {
+      "key": "2025-08-08-6895ec822b96c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-08-6895ec822b96c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 15,
+    "name": "SHIVAKI",
+    "image": "2025-09-25-68d4ea69230ba.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "SHIVAKI",
+    "status": 1,
+    "created_at": "2025-08-07T05:38:46.000000Z",
+    "updated_at": "2025-09-25T07:08:25.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea69230ba.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea69230ba.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 16,
+    "name": "avalon",
+    "image": "2025-08-07-68943da9ea93b.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "avalon",
+    "status": 1,
+    "created_at": "2025-08-07T05:46:17.000000Z",
+    "updated_at": "2025-08-11T07:41:45.000000Z",
+    "image_full_url": {
+      "key": "2025-08-07-68943da9ea93b.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-07-68943da9ea93b.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 17,
+    "name": "crucial",
+    "image": "2025-08-08-68959972d1580.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "crucial",
+    "status": 1,
+    "created_at": "2025-08-08T06:30:10.000000Z",
+    "updated_at": "2025-08-11T07:40:15.000000Z",
+    "image_full_url": {
+      "key": "2025-08-08-68959972d1580.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-08-68959972d1580.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 18,
+    "name": "Kingston",
+    "image": "2025-08-08-689599bb204ba.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Kingston",
+    "status": 1,
+    "created_at": "2025-08-08T06:31:23.000000Z",
+    "updated_at": "2025-08-11T07:36:58.000000Z",
+    "image_full_url": {
+      "key": "2025-08-08-689599bb204ba.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-08-689599bb204ba.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 19,
+    "name": "Lexar",
+    "image": "2025-08-08-68959a08b499b.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Lexar",
+    "status": 1,
+    "created_at": "2025-08-08T06:32:40.000000Z",
+    "updated_at": "2025-08-11T07:35:09.000000Z",
+    "image_full_url": {
+      "key": "2025-08-08-68959a08b499b.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-08-68959a08b499b.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 20,
+    "name": "TEAMGROUP",
+    "image": "2025-09-25-68d4ebc43d15d.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "TeamGroup",
+    "status": 1,
+    "created_at": "2025-08-08T06:34:23.000000Z",
+    "updated_at": "2025-09-25T07:14:12.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ebc43d15d.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ebc43d15d.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 21,
+    "name": "MONTECH",
+    "image": "2025-08-13-689c234219d8f.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "MONTECH",
+    "status": 1,
+    "created_at": "2025-08-13T05:31:46.000000Z",
+    "updated_at": "2025-08-13T05:31:46.000000Z",
+    "image_full_url": {
+      "key": "2025-08-13-689c234219d8f.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-13-689c234219d8f.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 22,
+    "name": "defender",
+    "image": "2025-08-13-689c2b4d9fdfa.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "defender",
+    "status": 1,
+    "created_at": "2025-08-13T06:06:05.000000Z",
+    "updated_at": "2025-08-13T06:06:05.000000Z",
+    "image_full_url": {
+      "key": "2025-08-13-689c2b4d9fdfa.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-13-689c2b4d9fdfa.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 23,
+    "name": "FSP",
+    "image": "2025-08-14-689d7ffaa288e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "FSP",
+    "status": 1,
+    "created_at": "2025-08-14T05:39:54.000000Z",
+    "updated_at": "2025-08-14T06:19:38.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689d7ffaa288e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689d7ffaa288e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 24,
+    "name": "GALAX",
+    "image": "2025-08-14-689d7f990a8ac.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "GALAX",
+    "status": 1,
+    "created_at": "2025-08-14T06:18:01.000000Z",
+    "updated_at": "2025-08-14T06:18:01.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689d7f990a8ac.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689d7f990a8ac.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 25,
+    "name": "POWERCASE",
+    "image": "2025-08-14-689d94de08362.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "POWERCASE",
+    "status": 1,
+    "created_at": "2025-08-14T07:48:46.000000Z",
+    "updated_at": "2025-08-14T07:48:46.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689d94de08362.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689d94de08362.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 26,
+    "name": "intel",
+    "image": "2025-08-14-689dd9b078e51.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "intel",
+    "status": 1,
+    "created_at": "2025-08-14T12:42:24.000000Z",
+    "updated_at": "2025-08-14T12:42:34.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689dd9b078e51.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689dd9b078e51.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 27,
+    "name": "AULA",
+    "image": "2025-08-14-689dda37d49a1.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "AULA",
+    "status": 1,
+    "created_at": "2025-08-14T12:44:39.000000Z",
+    "updated_at": "2025-08-14T12:44:39.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689dda37d49a1.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689dda37d49a1.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 28,
+    "name": "thermoltake",
+    "image": "2025-09-25-68d4ea5381c72.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "thermoltake",
+    "status": 1,
+    "created_at": "2025-08-14T12:47:49.000000Z",
+    "updated_at": "2025-09-25T07:08:03.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea5381c72.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea5381c72.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 29,
+    "name": "jonsbo",
+    "image": "2025-08-14-689ddcaf0f8df.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "jonsbo",
+    "status": 1,
+    "created_at": "2025-08-14T12:55:11.000000Z",
+    "updated_at": "2025-08-14T12:55:11.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689ddcaf0f8df.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689ddcaf0f8df.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 30,
+    "name": "MeeTion",
+    "image": "2025-08-14-689dde0a64cbe.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "MeeTion",
+    "status": 1,
+    "created_at": "2025-08-14T13:00:58.000000Z",
+    "updated_at": "2025-08-14T13:00:58.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689dde0a64cbe.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689dde0a64cbe.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 31,
+    "name": "DXRacer",
+    "image": "2025-08-14-689ddf206f8e0.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "DXRacer",
+    "status": 1,
+    "created_at": "2025-08-14T13:05:36.000000Z",
+    "updated_at": "2025-08-14T13:05:36.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689ddf206f8e0.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689ddf206f8e0.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 32,
+    "name": "CoolerMaster",
+    "image": "2025-08-14-689ddfcb51711.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "CoolerMaster",
+    "status": 1,
+    "created_at": "2025-08-14T13:08:27.000000Z",
+    "updated_at": "2025-08-14T13:08:27.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689ddfcb51711.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689ddfcb51711.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 33,
+    "name": "REDRAGON",
+    "image": "2025-08-14-689de04db3a8d.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "REDRAGON",
+    "status": 1,
+    "created_at": "2025-08-14T13:10:37.000000Z",
+    "updated_at": "2025-08-14T13:10:37.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689de04db3a8d.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689de04db3a8d.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 34,
+    "name": "Sharkoon",
+    "image": "2025-09-25-68d4eadcb2b0a.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Sharkoon",
+    "status": 1,
+    "created_at": "2025-08-14T13:15:05.000000Z",
+    "updated_at": "2025-09-25T07:10:20.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eadcb2b0a.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eadcb2b0a.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 35,
+    "name": "FENDA",
+    "image": "2025-08-14-689de298d9c23.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "FENDA",
+    "status": 1,
+    "created_at": "2025-08-14T13:20:24.000000Z",
+    "updated_at": "2025-08-14T13:20:24.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689de298d9c23.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689de298d9c23.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 36,
+    "name": "EDIFIER",
+    "image": "2025-08-14-689de375082ac.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "EDIFIER",
+    "status": 1,
+    "created_at": "2025-08-14T13:24:05.000000Z",
+    "updated_at": "2025-08-14T13:24:05.000000Z",
+    "image_full_url": {
+      "key": "2025-08-14-689de375082ac.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-14-689de375082ac.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 37,
+    "name": "KOSS",
+    "image": "2025-08-19-68a4212728b60.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "KOSS",
+    "status": 1,
+    "created_at": "2025-08-19T07:00:55.000000Z",
+    "updated_at": "2025-08-19T07:00:55.000000Z",
+    "image_full_url": {
+      "key": "2025-08-19-68a4212728b60.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-19-68a4212728b60.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 38,
+    "name": "audio-technica",
+    "image": "2025-08-19-68a42793121b3.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "audio-technica",
+    "status": 1,
+    "created_at": "2025-08-19T07:28:19.000000Z",
+    "updated_at": "2025-08-19T07:28:19.000000Z",
+    "image_full_url": {
+      "key": "2025-08-19-68a42793121b3.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-19-68a42793121b3.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 39,
+    "name": "Gembird",
+    "image": "2025-08-19-68a451c8a1bd3.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Gembird",
+    "status": 1,
+    "created_at": "2025-08-19T10:28:24.000000Z",
+    "updated_at": "2025-08-19T10:28:24.000000Z",
+    "image_full_url": {
+      "key": "2025-08-19-68a451c8a1bd3.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-19-68a451c8a1bd3.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 40,
+    "name": "Gamdias",
+    "image": "2025-08-19-68a454022e56c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Gamdias",
+    "status": 1,
+    "created_at": "2025-08-19T10:37:54.000000Z",
+    "updated_at": "2025-08-19T10:37:54.000000Z",
+    "image_full_url": {
+      "key": "2025-08-19-68a454022e56c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-19-68a454022e56c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 41,
+    "name": "DeepCool",
+    "image": "2025-08-19-68a454b2a4586.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "DeepCool",
+    "status": 1,
+    "created_at": "2025-08-19T10:40:50.000000Z",
+    "updated_at": "2025-08-19T10:40:50.000000Z",
+    "image_full_url": {
+      "key": "2025-08-19-68a454b2a4586.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-19-68a454b2a4586.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 42,
+    "name": "e-SURF",
+    "image": "2025-08-19-68a4623deb6db.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "e-SURF",
+    "status": 1,
+    "created_at": "2025-08-19T11:38:37.000000Z",
+    "updated_at": "2025-08-19T11:38:37.000000Z",
+    "image_full_url": {
+      "key": "2025-08-19-68a4623deb6db.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-19-68a4623deb6db.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 43,
+    "name": "Vissonic",
+    "image": "2025-09-25-68d4eba2eb5bd.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Vissonic",
+    "status": 1,
+    "created_at": "2025-08-19T23:28:39.000000Z",
+    "updated_at": "2025-09-25T07:13:38.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eba2eb5bd.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eba2eb5bd.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 44,
+    "name": "ID Cooling",
+    "image": "2025-08-20-68a50d325a1eb.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "ID Cooling",
+    "status": 1,
+    "created_at": "2025-08-19T23:48:02.000000Z",
+    "updated_at": "2025-08-19T23:48:02.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a50d325a1eb.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a50d325a1eb.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 45,
+    "name": "Genius",
+    "image": "2025-08-20-68a50dc82a217.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Genius",
+    "status": 1,
+    "created_at": "2025-08-19T23:50:32.000000Z",
+    "updated_at": "2025-08-19T23:50:32.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a50dc82a217.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a50dc82a217.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 46,
+    "name": "Lian li",
+    "image": "2025-08-20-68a514951f562.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Lian li",
+    "status": 1,
+    "created_at": "2025-08-20T00:19:33.000000Z",
+    "updated_at": "2025-08-20T00:19:33.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a514951f562.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a514951f562.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 47,
+    "name": "ion",
+    "image": "2025-08-20-68a51540a7652.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "ion",
+    "status": 1,
+    "created_at": "2025-08-20T00:22:24.000000Z",
+    "updated_at": "2025-08-20T00:22:45.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a51540a7652.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a51540a7652.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 49,
+    "name": "Transcend",
+    "image": "2025-09-25-68d4eb2a67270.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Transcend",
+    "status": 1,
+    "created_at": "2025-08-20T00:25:58.000000Z",
+    "updated_at": "2025-09-25T07:11:38.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eb2a67270.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eb2a67270.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 50,
+    "name": "TOSHIBA",
+    "image": "2025-09-25-68d4ea7bb2948.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "TOSHIBA",
+    "status": 1,
+    "created_at": "2025-08-20T00:28:01.000000Z",
+    "updated_at": "2025-09-25T07:08:43.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea7bb2948.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea7bb2948.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 51,
+    "name": "Seagate",
+    "image": "2025-08-20-68a516dc34965.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Seagate",
+    "status": 1,
+    "created_at": "2025-08-20T00:29:16.000000Z",
+    "updated_at": "2025-08-20T00:29:16.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a516dc34965.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a516dc34965.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 52,
+    "name": "OSCOO",
+    "image": "2025-08-20-68a5172aed560.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "OSCOO",
+    "status": 1,
+    "created_at": "2025-08-20T00:30:34.000000Z",
+    "updated_at": "2025-08-20T00:30:34.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a5172aed560.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a5172aed560.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 53,
+    "name": "Walram",
+    "image": "2025-09-25-68d4e9f07b5e2.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Walram",
+    "status": 1,
+    "created_at": "2025-08-20T00:39:50.000000Z",
+    "updated_at": "2025-09-25T07:06:24.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4e9f07b5e2.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4e9f07b5e2.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 54,
+    "name": "KingFast",
+    "image": "2025-08-20-68a519b3e6755.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "KingFast",
+    "status": 1,
+    "created_at": "2025-08-20T00:41:23.000000Z",
+    "updated_at": "2025-08-20T00:41:23.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a519b3e6755.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a519b3e6755.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 55,
+    "name": "GoldenMemory",
+    "image": "2025-08-20-68a51e58cf728.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "GoldenMemory",
+    "status": 1,
+    "created_at": "2025-08-20T01:01:12.000000Z",
+    "updated_at": "2025-08-20T01:01:12.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a51e58cf728.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a51e58cf728.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 56,
+    "name": "Zotac",
+    "image": "2025-09-25-68d4ea231b651.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Zotac",
+    "status": 1,
+    "created_at": "2025-08-20T01:04:41.000000Z",
+    "updated_at": "2025-09-25T07:07:15.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea231b651.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea231b651.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 57,
+    "name": "Ryzen",
+    "image": "2025-08-20-68a52278a0bc3.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Ryzen",
+    "status": 1,
+    "created_at": "2025-08-20T01:18:48.000000Z",
+    "updated_at": "2025-08-20T01:18:48.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a52278a0bc3.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a52278a0bc3.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 58,
+    "name": "EPSON",
+    "image": "2025-08-20-68a525faa97c9.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "EPSON",
+    "status": 1,
+    "created_at": "2025-08-20T01:33:46.000000Z",
+    "updated_at": "2025-08-20T01:33:46.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a525faa97c9.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a525faa97c9.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 59,
+    "name": "Pantum",
+    "image": "2025-08-20-68a531cbf0bf2.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Pantum",
+    "status": 1,
+    "created_at": "2025-08-20T02:24:11.000000Z",
+    "updated_at": "2025-08-20T02:24:11.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a531cbf0bf2.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a531cbf0bf2.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 60,
+    "name": "Canon",
+    "image": "2025-08-20-68a5326b415f0.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Canon",
+    "status": 1,
+    "created_at": "2025-08-20T02:26:51.000000Z",
+    "updated_at": "2025-08-20T02:26:51.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a5326b415f0.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a5326b415f0.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 61,
+    "name": "Sapphire",
+    "image": "2025-08-20-68a532e4ae822.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Sapphire",
+    "status": 1,
+    "created_at": "2025-08-20T02:28:52.000000Z",
+    "updated_at": "2025-08-20T02:28:52.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a532e4ae822.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a532e4ae822.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 62,
+    "name": "Inno",
+    "image": "2025-08-20-68a533203248a.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Inno",
+    "status": 1,
+    "created_at": "2025-08-20T02:29:52.000000Z",
+    "updated_at": "2025-08-20T02:29:52.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a533203248a.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a533203248a.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 63,
+    "name": "PNY",
+    "image": "2025-08-20-68a5339d3bb17.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "PNY",
+    "status": 1,
+    "created_at": "2025-08-20T02:31:57.000000Z",
+    "updated_at": "2025-08-20T02:31:57.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a5339d3bb17.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a5339d3bb17.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 64,
+    "name": "Arktek",
+    "image": "2025-08-20-68a533dc00fa5.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Arktek",
+    "status": 1,
+    "created_at": "2025-08-20T02:33:00.000000Z",
+    "updated_at": "2025-08-20T02:33:00.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a533dc00fa5.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a533dc00fa5.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 65,
+    "name": "Axle",
+    "image": "2025-08-20-68a5345d7861b.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Axle",
+    "status": 1,
+    "created_at": "2025-08-20T02:35:09.000000Z",
+    "updated_at": "2025-08-20T02:35:09.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a5345d7861b.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a5345d7861b.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 66,
+    "name": "Ezviz",
+    "image": "2025-08-20-68a605e1e4f55.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Ezviz",
+    "status": 1,
+    "created_at": "2025-08-20T17:29:05.000000Z",
+    "updated_at": "2025-08-20T17:29:05.000000Z",
+    "image_full_url": {
+      "key": "2025-08-20-68a605e1e4f55.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-20-68a605e1e4f55.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 67,
+    "name": "LG",
+    "image": "2025-08-28-68b0552d4ac6e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "LG",
+    "status": 1,
+    "created_at": "2025-08-28T13:10:05.000000Z",
+    "updated_at": "2025-08-28T13:10:05.000000Z",
+    "image_full_url": {
+      "key": "2025-08-28-68b0552d4ac6e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-08-28-68b0552d4ac6e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 68,
+    "name": "SONY",
+    "image": "2025-09-25-68d4ea8bd08b2.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Sony",
+    "status": 1,
+    "created_at": "2025-08-28T13:52:23.000000Z",
+    "updated_at": "2025-09-25T07:08:59.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea8bd08b2.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea8bd08b2.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 69,
+    "name": "Engenius",
+    "image": "2025-09-05-68bab093a5864.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Engenius",
+    "status": 1,
+    "created_at": "2025-09-05T09:42:43.000000Z",
+    "updated_at": "2025-09-05T09:42:43.000000Z",
+    "image_full_url": {
+      "key": "2025-09-05-68bab093a5864.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-05-68bab093a5864.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 70,
+    "name": "Aruba",
+    "image": "2025-09-05-68bab10489757.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Aruba",
+    "status": 1,
+    "created_at": "2025-09-05T09:44:36.000000Z",
+    "updated_at": "2025-09-05T09:44:36.000000Z",
+    "image_full_url": {
+      "key": "2025-09-05-68bab10489757.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-05-68bab10489757.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 71,
+    "name": "TECNO",
+    "image": "2025-09-25-68d4eac4e60fa.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "TECNO",
+    "status": 1,
+    "created_at": "2025-09-05T11:00:48.000000Z",
+    "updated_at": "2025-09-25T07:09:56.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eac4e60fa.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eac4e60fa.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 72,
+    "name": "Eset",
+    "image": "2025-09-08-68be864e9f87c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Eset",
+    "status": 1,
+    "created_at": "2025-09-08T06:56:56.000000Z",
+    "updated_at": "2025-09-08T07:31:26.000000Z",
+    "image_full_url": {
+      "key": "2025-09-08-68be864e9f87c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-08-68be864e9f87c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 73,
+    "name": "AGL",
+    "image": "2025-09-08-68be9be8e6192.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "AGL",
+    "status": 1,
+    "created_at": "2025-09-08T08:49:38.000000Z",
+    "updated_at": "2025-09-08T09:03:36.000000Z",
+    "image_full_url": {
+      "key": "2025-09-08-68be9be8e6192.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-08-68be9be8e6192.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 74,
+    "name": "Synology",
+    "image": "2025-09-25-68d4eaf5043b3.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Synology",
+    "status": 1,
+    "created_at": "2025-09-08T09:04:41.000000Z",
+    "updated_at": "2025-09-25T07:10:45.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eaf5043b3.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eaf5043b3.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 75,
+    "name": "Avonik",
+    "image": "2025-09-08-68bea4ec4d024.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Avonik",
+    "status": 1,
+    "created_at": "2025-09-08T09:42:04.000000Z",
+    "updated_at": "2025-09-08T09:42:04.000000Z",
+    "image_full_url": {
+      "key": "2025-09-08-68bea4ec4d024.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-08-68bea4ec4d024.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 76,
+    "name": "Logitech",
+    "image": "2025-09-08-68bea5a424a73.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Logitech",
+    "status": 1,
+    "created_at": "2025-09-08T09:45:08.000000Z",
+    "updated_at": "2025-09-08T09:45:08.000000Z",
+    "image_full_url": {
+      "key": "2025-09-08-68bea5a424a73.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-08-68bea5a424a73.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 77,
+    "name": "BenQ",
+    "image": "2025-09-09-68bff81c176cd.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "BenQ",
+    "status": 1,
+    "created_at": "2025-09-09T09:49:16.000000Z",
+    "updated_at": "2025-09-09T09:49:16.000000Z",
+    "image_full_url": {
+      "key": "2025-09-09-68bff81c176cd.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-09-68bff81c176cd.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 78,
+    "name": "Optoma",
+    "image": "2025-09-09-68bff8af9fad7.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Optoma",
+    "status": 1,
+    "created_at": "2025-09-09T09:51:43.000000Z",
+    "updated_at": "2025-09-09T09:51:43.000000Z",
+    "image_full_url": {
+      "key": "2025-09-09-68bff8af9fad7.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-09-68bff8af9fad7.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 79,
+    "name": "Xiomi",
+    "image": "2025-09-25-68d4ea0cc350c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Xiomi",
+    "status": 1,
+    "created_at": "2025-09-09T09:57:35.000000Z",
+    "updated_at": "2025-09-25T07:06:52.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea0cc350c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea0cc350c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 80,
+    "name": "Atria",
+    "image": "2025-09-10-68c12e4d55c45.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Atria",
+    "status": 1,
+    "created_at": "2025-09-10T07:52:45.000000Z",
+    "updated_at": "2025-09-10T07:52:45.000000Z",
+    "image_full_url": {
+      "key": "2025-09-10-68c12e4d55c45.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-10-68c12e4d55c45.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 81,
+    "name": "CZUR",
+    "image": "2025-09-10-68c137b0c7291.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "CZUR",
+    "status": 1,
+    "created_at": "2025-09-10T08:32:48.000000Z",
+    "updated_at": "2025-09-10T08:32:48.000000Z",
+    "image_full_url": {
+      "key": "2025-09-10-68c137b0c7291.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-10-68c137b0c7291.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 82,
+    "name": "Panasonic",
+    "image": "2025-09-10-68c13cb66f284.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Panasonic",
+    "status": 1,
+    "created_at": "2025-09-10T08:54:14.000000Z",
+    "updated_at": "2025-09-10T08:54:14.000000Z",
+    "image_full_url": {
+      "key": "2025-09-10-68c13cb66f284.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-10-68c13cb66f284.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 83,
+    "name": "POWER TOUCH",
+    "image": "2025-09-12-68c3dfdb65653.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "POWER TOUCH",
+    "status": 1,
+    "created_at": "2025-09-10T10:29:19.000000Z",
+    "updated_at": "2025-09-12T08:54:51.000000Z",
+    "image_full_url": {
+      "key": "2025-09-12-68c3dfdb65653.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-12-68c3dfdb65653.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 84,
+    "name": "ViewBoard",
+    "image": "2025-09-25-68d4eb3ddd6c7.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "ViewBoard",
+    "status": 1,
+    "created_at": "2025-09-10T10:44:38.000000Z",
+    "updated_at": "2025-09-25T07:11:57.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eb3ddd6c7.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eb3ddd6c7.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 85,
+    "name": "E-Board",
+    "image": "2025-09-10-68c158a2c12a8.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "E-Board",
+    "status": 1,
+    "created_at": "2025-09-10T10:53:22.000000Z",
+    "updated_at": "2025-09-10T10:53:22.000000Z",
+    "image_full_url": {
+      "key": "2025-09-10-68c158a2c12a8.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-10-68c158a2c12a8.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 86,
+    "name": "HONOR",
+    "image": "2025-09-15-68c7b79de92fa.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "HONOR",
+    "status": 1,
+    "created_at": "2025-09-11T13:09:45.000000Z",
+    "updated_at": "2025-09-15T06:52:13.000000Z",
+    "image_full_url": {
+      "key": "2025-09-15-68c7b79de92fa.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-15-68c7b79de92fa.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 87,
+    "name": "Vivo",
+    "image": "2025-09-25-68d4ebb659c2d.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Vivo",
+    "status": 1,
+    "created_at": "2025-09-11T16:10:11.000000Z",
+    "updated_at": "2025-09-25T07:13:58.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ebb659c2d.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ebb659c2d.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 88,
+    "name": "Tab",
+    "image": "2025-09-25-68d4eb057813e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Tab",
+    "status": 1,
+    "created_at": "2025-09-11T16:28:49.000000Z",
+    "updated_at": "2025-09-25T07:11:01.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4eb057813e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4eb057813e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 89,
+    "name": "POCO",
+    "image": "2025-09-12-68c40bb7a780b.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "POCO",
+    "status": 1,
+    "created_at": "2025-09-12T12:01:59.000000Z",
+    "updated_at": "2025-09-12T12:01:59.000000Z",
+    "image_full_url": {
+      "key": "2025-09-12-68c40bb7a780b.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-12-68c40bb7a780b.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 90,
+    "name": "ZTE BLADE",
+    "image": "2025-09-25-68d4ea3bac5bb.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "ZTE BLADE",
+    "status": 1,
+    "created_at": "2025-09-12T12:20:21.000000Z",
+    "updated_at": "2025-09-25T07:07:39.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea3bac5bb.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea3bac5bb.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 91,
+    "name": "OPPO",
+    "image": "2025-09-15-68c7b744620e7.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "OPPO",
+    "status": 1,
+    "created_at": "2025-09-12T12:23:00.000000Z",
+    "updated_at": "2025-09-15T06:50:44.000000Z",
+    "image_full_url": {
+      "key": "2025-09-15-68c7b744620e7.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-15-68c7b744620e7.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 92,
+    "name": "Tiandy",
+    "image": "2025-09-25-68d4ea9fa0684.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Tiandy",
+    "status": 1,
+    "created_at": "2025-09-24T05:36:22.000000Z",
+    "updated_at": "2025-09-25T07:09:19.000000Z",
+    "image_full_url": {
+      "key": "2025-09-25-68d4ea9fa0684.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-25-68d4ea9fa0684.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 93,
+    "name": "VGR",
+    "image": "2025-09-26-68d66e550000f.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "VGR",
+    "status": 1,
+    "created_at": "2025-09-26T10:43:33.000000Z",
+    "updated_at": "2025-09-26T10:43:33.000000Z",
+    "image_full_url": {
+      "key": "2025-09-26-68d66e550000f.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-26-68d66e550000f.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 94,
+    "name": "Hikvision",
+    "image": "2025-09-27-68d77e452c61f.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Hikvision",
+    "status": 1,
+    "created_at": "2025-09-27T06:03:49.000000Z",
+    "updated_at": "2025-09-27T06:03:49.000000Z",
+    "image_full_url": {
+      "key": "2025-09-27-68d77e452c61f.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-27-68d77e452c61f.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 95,
+    "name": "dahua",
+    "image": "2025-09-27-68d77ef0b303a.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "dahua",
+    "status": 1,
+    "created_at": "2025-09-27T06:06:40.000000Z",
+    "updated_at": "2025-09-27T06:06:40.000000Z",
+    "image_full_url": {
+      "key": "2025-09-27-68d77ef0b303a.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-09-27-68d77ef0b303a.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 96,
+    "name": "LB-LINK",
+    "image": "2025-10-03-68df390e3b4b5.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "LB-LINK",
+    "status": 1,
+    "created_at": "2025-10-03T02:46:38.000000Z",
+    "updated_at": "2025-10-03T02:46:38.000000Z",
+    "image_full_url": {
+      "key": "2025-10-03-68df390e3b4b5.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-03-68df390e3b4b5.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 97,
+    "name": "RTX",
+    "image": "2025-10-03-68df3a22f1dc1.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "RTX",
+    "status": 1,
+    "created_at": "2025-10-03T02:51:14.000000Z",
+    "updated_at": "2025-10-03T02:51:14.000000Z",
+    "image_full_url": {
+      "key": "2025-10-03-68df3a22f1dc1.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-03-68df3a22f1dc1.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 98,
+    "name": "ProLAN",
+    "image": "2025-10-03-68df6e4f94c5e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "ProLAN",
+    "status": 1,
+    "created_at": "2025-10-03T06:33:51.000000Z",
+    "updated_at": "2025-10-03T06:33:51.000000Z",
+    "image_full_url": {
+      "key": "2025-10-03-68df6e4f94c5e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-03-68df6e4f94c5e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 99,
+    "name": "Ubiquiti",
+    "image": "2025-10-03-68df84f0cd5d4.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Ubiquiti",
+    "status": 1,
+    "created_at": "2025-10-03T08:10:24.000000Z",
+    "updated_at": "2025-10-03T08:10:24.000000Z",
+    "image_full_url": {
+      "key": "2025-10-03-68df84f0cd5d4.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-03-68df84f0cd5d4.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 100,
+    "name": "Reyee",
+    "image": "2025-10-03-68df8a8b808a1.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Reyee",
+    "status": 1,
+    "created_at": "2025-10-03T08:34:19.000000Z",
+    "updated_at": "2025-10-03T08:34:19.000000Z",
+    "image_full_url": {
+      "key": "2025-10-03-68df8a8b808a1.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-03-68df8a8b808a1.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 101,
+    "name": "MYPRO",
+    "image": "2025-10-09-68e74bf8af172.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "MYPRO",
+    "status": 1,
+    "created_at": "2025-10-09T05:45:28.000000Z",
+    "updated_at": "2025-10-09T05:45:28.000000Z",
+    "image_full_url": {
+      "key": "2025-10-09-68e74bf8af172.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-09-68e74bf8af172.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 102,
+    "name": "PROGAMING",
+    "image": "2025-10-09-68e7559806e70.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "PROGAMING",
+    "status": 1,
+    "created_at": "2025-10-09T06:26:32.000000Z",
+    "updated_at": "2025-10-09T06:26:32.000000Z",
+    "image_full_url": {
+      "key": "2025-10-09-68e7559806e70.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-09-68e7559806e70.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 103,
+    "name": "Plantronics",
+    "image": "2025-10-10-68e8ebb503ac2.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Plantronics",
+    "status": 1,
+    "created_at": "2025-10-10T11:19:17.000000Z",
+    "updated_at": "2025-10-10T11:19:17.000000Z",
+    "image_full_url": {
+      "key": "2025-10-10-68e8ebb503ac2.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-10-68e8ebb503ac2.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 104,
+    "name": "Jabra",
+    "image": "2025-10-10-68e8ef5e489a0.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Jabra",
+    "status": 1,
+    "created_at": "2025-10-10T11:34:54.000000Z",
+    "updated_at": "2025-10-10T11:34:54.000000Z",
+    "image_full_url": {
+      "key": "2025-10-10-68e8ef5e489a0.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-10-68e8ef5e489a0.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 105,
+    "name": "3KOM",
+    "image": "2025-10-20-68f6032229d22.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "3KOM",
+    "status": 1,
+    "created_at": "2025-10-20T09:38:42.000000Z",
+    "updated_at": "2025-10-20T09:38:42.000000Z",
+    "image_full_url": {
+      "key": "2025-10-20-68f6032229d22.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-20-68f6032229d22.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 106,
+    "name": "Fujitsu",
+    "image": "2025-10-20-68f613a885b68.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Fujitsu",
+    "status": 1,
+    "created_at": "2025-10-20T10:49:12.000000Z",
+    "updated_at": "2025-10-20T10:49:12.000000Z",
+    "image_full_url": {
+      "key": "2025-10-20-68f613a885b68.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-20-68f613a885b68.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 107,
+    "name": "UPS",
+    "image": "2025-10-20-68f624586b35e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "UPS",
+    "status": 1,
+    "created_at": "2025-10-20T12:00:24.000000Z",
+    "updated_at": "2025-10-20T12:00:24.000000Z",
+    "image_full_url": {
+      "key": "2025-10-20-68f624586b35e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-20-68f624586b35e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 108,
+    "name": "COFEM",
+    "image": "2025-10-21-68f71e1d70cb9.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "COFEM",
+    "status": 1,
+    "created_at": "2025-10-21T05:46:05.000000Z",
+    "updated_at": "2025-10-21T05:46:05.000000Z",
+    "image_full_url": {
+      "key": "2025-10-21-68f71e1d70cb9.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-21-68f71e1d70cb9.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 109,
+    "name": "KEMEI",
+    "image": "2025-10-23-68f9c3285d204.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "KEMEI",
+    "status": 1,
+    "created_at": "2025-10-23T05:54:48.000000Z",
+    "updated_at": "2025-10-23T05:54:48.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68f9c3285d204.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68f9c3285d204.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 110,
+    "name": "Demix",
+    "image": "2025-10-23-68f9cf5b76777.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Demix",
+    "status": 1,
+    "created_at": "2025-10-23T06:46:51.000000Z",
+    "updated_at": "2025-10-23T06:46:51.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68f9cf5b76777.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68f9cf5b76777.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 111,
+    "name": "AOC",
+    "image": "2025-10-23-68fa01dd85402.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "AOC",
+    "status": 1,
+    "created_at": "2025-10-23T10:22:21.000000Z",
+    "updated_at": "2025-10-23T10:22:21.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68fa01dd85402.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68fa01dd85402.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 112,
+    "name": "AVTECH",
+    "image": "2025-10-23-68fa02a3b3e9f.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "AVTECH",
+    "status": 1,
+    "created_at": "2025-10-23T10:25:39.000000Z",
+    "updated_at": "2025-10-23T10:25:39.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68fa02a3b3e9f.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68fa02a3b3e9f.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 113,
+    "name": "Viewsonic",
+    "image": "2025-10-23-68fa04419b402.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Viewsonic",
+    "status": 1,
+    "created_at": "2025-10-23T10:32:33.000000Z",
+    "updated_at": "2025-10-23T10:32:33.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68fa04419b402.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68fa04419b402.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 114,
+    "name": "Philips",
+    "image": "2025-10-23-68fa04a763cdc.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Philips",
+    "status": 1,
+    "created_at": "2025-10-23T10:34:15.000000Z",
+    "updated_at": "2025-10-23T10:34:15.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68fa04a763cdc.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68fa04a763cdc.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 115,
+    "name": "Vesta",
+    "image": "2025-10-23-68fa05be1f0e8.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "vesta",
+    "status": 1,
+    "created_at": "2025-10-23T10:38:54.000000Z",
+    "updated_at": "2025-10-23T10:38:54.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68fa05be1f0e8.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68fa05be1f0e8.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 116,
+    "name": "Immer",
+    "image": "2025-10-23-68fa0645c852d.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Immer",
+    "status": 1,
+    "created_at": "2025-10-23T10:41:09.000000Z",
+    "updated_at": "2025-10-23T10:41:09.000000Z",
+    "image_full_url": {
+      "key": "2025-10-23-68fa0645c852d.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-23-68fa0645c852d.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 117,
+    "name": "AMD",
+    "image": "2025-10-26-68fd863fb0518.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "AMD",
+    "status": 1,
+    "created_at": "2025-10-26T02:23:59.000000Z",
+    "updated_at": "2025-10-26T02:23:59.000000Z",
+    "image_full_url": {
+      "key": "2025-10-26-68fd863fb0518.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-26-68fd863fb0518.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 118,
+    "name": "HPE",
+    "image": "2025-10-26-68fd86c4439b5.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "HPE",
+    "status": 1,
+    "created_at": "2025-10-26T02:26:12.000000Z",
+    "updated_at": "2025-10-26T02:26:12.000000Z",
+    "image_full_url": {
+      "key": "2025-10-26-68fd86c4439b5.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-26-68fd86c4439b5.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 119,
+    "name": "Micron",
+    "image": "2025-10-26-68fd879169dcf.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Micron",
+    "status": 1,
+    "created_at": "2025-10-26T02:29:37.000000Z",
+    "updated_at": "2025-10-26T02:29:37.000000Z",
+    "image_full_url": {
+      "key": "2025-10-26-68fd879169dcf.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-26-68fd879169dcf.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 120,
+    "name": "QNAP",
+    "image": "2025-10-27-68fece1858743.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "QNAP",
+    "status": 1,
+    "created_at": "2025-10-27T01:42:48.000000Z",
+    "updated_at": "2025-10-27T01:42:48.000000Z",
+    "image_full_url": {
+      "key": "2025-10-27-68fece1858743.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-27-68fece1858743.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 121,
+    "name": "Apacer",
+    "image": "2025-10-27-68fece5722d84.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Apacer",
+    "status": 1,
+    "created_at": "2025-10-27T01:43:51.000000Z",
+    "updated_at": "2025-10-27T01:43:51.000000Z",
+    "image_full_url": {
+      "key": "2025-10-27-68fece5722d84.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-27-68fece5722d84.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 122,
+    "name": "Ballistix",
+    "image": "2025-10-27-68fecf5a02c35.gif",
+    "image_storage_type": "public",
+    "image_alt_text": "Ballistix",
+    "status": 1,
+    "created_at": "2025-10-27T01:48:10.000000Z",
+    "updated_at": "2025-10-27T01:48:10.000000Z",
+    "image_full_url": {
+      "key": "2025-10-27-68fecf5a02c35.gif",
+      "path": "https://api.venu.uz/storage/brand/2025-10-27-68fecf5a02c35.gif",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 123,
+    "name": "HyperX",
+    "image": "2025-10-27-68fed04ec0afb.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "HyperX",
+    "status": 1,
+    "created_at": "2025-10-27T01:52:14.000000Z",
+    "updated_at": "2025-10-27T01:52:14.000000Z",
+    "image_full_url": {
+      "key": "2025-10-27-68fed04ec0afb.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-27-68fed04ec0afb.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 124,
+    "name": "CORSAIR",
+    "image": "2025-10-27-68fed0e388cfe.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "CORSAIR",
+    "status": 1,
+    "created_at": "2025-10-27T01:54:43.000000Z",
+    "updated_at": "2025-10-27T01:54:43.000000Z",
+    "image_full_url": {
+      "key": "2025-10-27-68fed0e388cfe.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-27-68fed0e388cfe.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 125,
+    "name": "Palit",
+    "image": "2025-10-28-6900734b4bb2c.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Palit",
+    "status": 1,
+    "created_at": "2025-10-28T07:39:55.000000Z",
+    "updated_at": "2025-10-28T07:39:55.000000Z",
+    "image_full_url": {
+      "key": "2025-10-28-6900734b4bb2c.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-28-6900734b4bb2c.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 126,
+    "name": "COUGAR",
+    "image": "2025-10-28-690099ef94ad7.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "COUGAR",
+    "status": 1,
+    "created_at": "2025-10-28T10:24:47.000000Z",
+    "updated_at": "2025-10-28T10:24:47.000000Z",
+    "image_full_url": {
+      "key": "2025-10-28-690099ef94ad7.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-28-690099ef94ad7.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 127,
+    "name": "HuntKey",
+    "image": "2025-10-28-69009a3488fd0.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "HuntKey",
+    "status": 1,
+    "created_at": "2025-10-28T10:25:56.000000Z",
+    "updated_at": "2025-10-28T10:25:56.000000Z",
+    "image_full_url": {
+      "key": "2025-10-28-69009a3488fd0.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-28-69009a3488fd0.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 128,
+    "name": "Aerocool",
+    "image": "2025-10-28-69009ad51cac6.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Aerocool",
+    "status": 1,
+    "created_at": "2025-10-28T10:28:37.000000Z",
+    "updated_at": "2025-10-28T10:28:37.000000Z",
+    "image_full_url": {
+      "key": "2025-10-28-69009ad51cac6.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-28-69009ad51cac6.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 129,
+    "name": "Gamemax",
+    "image": "2025-10-28-69009c041a252.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Gamemax",
+    "status": 1,
+    "created_at": "2025-10-28T10:33:40.000000Z",
+    "updated_at": "2025-10-28T10:33:40.000000Z",
+    "image_full_url": {
+      "key": "2025-10-28-69009c041a252.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-28-69009c041a252.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 130,
+    "name": "Zalman",
+    "image": "2025-10-28-69009c7462010.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Zalman",
+    "status": 1,
+    "created_at": "2025-10-28T10:35:32.000000Z",
+    "updated_at": "2025-10-28T10:35:32.000000Z",
+    "image_full_url": {
+      "key": "2025-10-28-69009c7462010.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-10-28-69009c7462010.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 131,
+    "name": "AORUS",
+    "image": "2025-11-06-690c34bfb3354.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "AORUS",
+    "status": 1,
+    "created_at": "2025-11-06T05:40:15.000000Z",
+    "updated_at": "2025-11-06T05:40:15.000000Z",
+    "image_full_url": {
+      "key": "2025-11-06-690c34bfb3354.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-11-06-690c34bfb3354.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 132,
+    "name": "PREMIER",
+    "image": "2025-11-07-690d9dfea6388.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "PREMIER",
+    "status": 1,
+    "created_at": "2025-11-07T07:21:34.000000Z",
+    "updated_at": "2025-11-07T07:21:34.000000Z",
+    "image_full_url": {
+      "key": "2025-11-07-690d9dfea6388.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-11-07-690d9dfea6388.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 133,
+    "name": "CHAIRMAN",
+    "image": "2025-11-11-6912cdff463ca.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "CHAIRMAN",
+    "status": 1,
+    "created_at": "2025-11-11T05:47:43.000000Z",
+    "updated_at": "2025-11-11T05:47:43.000000Z",
+    "image_full_url": {
+      "key": "2025-11-11-6912cdff463ca.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-11-11-6912cdff463ca.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 134,
+    "name": "TP-LINK",
+    "image": "2025-11-12-69141c297cc75.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "TP-LINK",
+    "status": 1,
+    "created_at": "2025-11-12T05:33:29.000000Z",
+    "updated_at": "2025-11-12T05:33:29.000000Z",
+    "image_full_url": {
+      "key": "2025-11-12-69141c297cc75.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-11-12-69141c297cc75.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 135,
+    "name": "RXGAMER",
+    "image": "2025-11-13-691586bae2981.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "RXGAMER",
+    "status": 1,
+    "created_at": "2025-11-13T07:20:26.000000Z",
+    "updated_at": "2025-11-13T07:20:26.000000Z",
+    "image_full_url": {
+      "key": "2025-11-13-691586bae2981.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-11-13-691586bae2981.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 136,
+    "name": "Zebra",
+    "image": "2025-12-03-692ff251313fc.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Zebra",
+    "status": 1,
+    "created_at": "2025-12-03T08:18:25.000000Z",
+    "updated_at": "2025-12-03T08:18:25.000000Z",
+    "image_full_url": {
+      "key": "2025-12-03-692ff251313fc.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-03-692ff251313fc.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 137,
+    "name": "CADDY",
+    "image": "2025-12-03-69301131a0f3e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "CADDY",
+    "status": 1,
+    "created_at": "2025-12-03T10:30:09.000000Z",
+    "updated_at": "2025-12-03T10:30:09.000000Z",
+    "image_full_url": {
+      "key": "2025-12-03-69301131a0f3e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-03-69301131a0f3e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 138,
+    "name": "mytech",
+    "image": "2025-12-05-69327262d4048.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "mytech",
+    "status": 1,
+    "created_at": "2025-12-05T05:49:22.000000Z",
+    "updated_at": "2025-12-05T05:49:22.000000Z",
+    "image_full_url": {
+      "key": "2025-12-05-69327262d4048.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-05-69327262d4048.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 139,
+    "name": "Fanvil",
+    "image": "2025-12-11-693a6a2eaab21.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Fanvil",
+    "status": 1,
+    "created_at": "2025-12-11T06:52:30.000000Z",
+    "updated_at": "2025-12-11T06:52:30.000000Z",
+    "image_full_url": {
+      "key": "2025-12-11-693a6a2eaab21.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-11-693a6a2eaab21.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 140,
+    "name": "MikroTik",
+    "image": "2025-12-11-693aa5fc690bd.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "MikroTik",
+    "status": 1,
+    "created_at": "2025-12-11T11:07:40.000000Z",
+    "updated_at": "2025-12-11T11:07:40.000000Z",
+    "image_full_url": {
+      "key": "2025-12-11-693aa5fc690bd.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-11-693aa5fc690bd.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 141,
+    "name": "Mercusys",
+    "image": "2025-12-18-6943bb7c947d0.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Mercusys",
+    "status": 1,
+    "created_at": "2025-12-18T08:29:48.000000Z",
+    "updated_at": "2025-12-18T08:29:48.000000Z",
+    "image_full_url": {
+      "key": "2025-12-18-6943bb7c947d0.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-18-6943bb7c947d0.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 142,
+    "name": "Belkin",
+    "image": "2025-12-18-6943c37b2e269.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Belkin",
+    "status": 1,
+    "created_at": "2025-12-18T09:03:55.000000Z",
+    "updated_at": "2025-12-18T09:03:55.000000Z",
+    "image_full_url": {
+      "key": "2025-12-18-6943c37b2e269.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-18-6943c37b2e269.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 143,
+    "name": "Tenda",
+    "image": "2025-12-18-6943c4f07860e.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Tenda",
+    "status": 1,
+    "created_at": "2025-12-18T09:10:08.000000Z",
+    "updated_at": "2025-12-18T09:10:08.000000Z",
+    "image_full_url": {
+      "key": "2025-12-18-6943c4f07860e.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-18-6943c4f07860e.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 144,
+    "name": "Zyxel",
+    "image": "2025-12-18-6943c627c6cec.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Zyxel",
+    "status": 1,
+    "created_at": "2025-12-18T09:15:19.000000Z",
+    "updated_at": "2025-12-18T09:15:19.000000Z",
+    "image_full_url": {
+      "key": "2025-12-18-6943c627c6cec.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-18-6943c627c6cec.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 145,
+    "name": "SNR",
+    "image": "2025-12-18-6943dfa01b900.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "SNR",
+    "status": 1,
+    "created_at": "2025-12-18T11:04:00.000000Z",
+    "updated_at": "2025-12-18T11:04:00.000000Z",
+    "image_full_url": {
+      "key": "2025-12-18-6943dfa01b900.webp",
+      "path": null,
+      "status": 404
+    },
+    "translations": []
+  },
+  {
+    "id": 146,
+    "name": "Max Power",
+    "image": "2025-12-19-6944fb2ac0245.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Max Power",
+    "status": 1,
+    "created_at": "2025-12-19T07:13:46.000000Z",
+    "updated_at": "2025-12-19T07:13:46.000000Z",
+    "image_full_url": {
+      "key": "2025-12-19-6944fb2ac0245.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-19-6944fb2ac0245.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 147,
+    "name": "FP Mark",
+    "image": "2025-12-19-69453456de3de.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "FP Mark",
+    "status": 1,
+    "created_at": "2025-12-19T11:17:42.000000Z",
+    "updated_at": "2025-12-19T11:17:42.000000Z",
+    "image_full_url": {
+      "key": "2025-12-19-69453456de3de.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-19-69453456de3de.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 148,
+    "name": "Eurolan",
+    "image": "2025-12-22-6948da7b96a48.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "Eurolan",
+    "status": 1,
+    "created_at": "2025-12-22T05:43:23.000000Z",
+    "updated_at": "2025-12-22T05:43:23.000000Z",
+    "image_full_url": {
+      "key": "2025-12-22-6948da7b96a48.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-22-6948da7b96a48.webp",
+      "status": 200
+    },
+    "translations": []
+  },
+  {
+    "id": 149,
+    "name": "SONOFF",
+    "image": "2025-12-22-6948efec78220.webp",
+    "image_storage_type": "public",
+    "image_alt_text": "SONOFF",
+    "status": 1,
+    "created_at": "2025-12-22T07:14:52.000000Z",
+    "updated_at": "2025-12-22T07:14:52.000000Z",
+    "image_full_url": {
+      "key": "2025-12-22-6948efec78220.webp",
+      "path": "https://api.venu.uz/storage/brand/2025-12-22-6948efec78220.webp",
+      "status": 200
+    },
+    "translations": []
+  }
+]
+
+
+============ Tayyor ma'lumotlarni bazaga yuborish =====================
+1. Rasimlarni yuklash
+Method: POST
+URL
+https://api.venu.uz/api/v3/seller/products/upload-images
+Headers
+accept-encoding:
+gzip
+authorization:
+Bearer mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa
+content-length:
+4341
+content-type:
+multipart/form-data; boundary=dart-http-boundary-dwbGPJCk059.JTr-col-DnArMTLzo9Ds2CwlJ7FcPKLcVYZ0H.i
+host:
+api.venu.uz
+user-agent:
+Dart/3.10 (dart:io)
+
+Request Body
+--dart-http-boundary-dwbGPJCk059.JTr-col-DnArMTLzo9Ds2CwlJ7FcPKLcVYZ0H.icontent-disposition: form-data;name="type"thumbnail--dart-http-boundary-dwbGPJCk059.JTr-col-DnArMTLzo9Ds2CwlJ7FcPKLcVYZ0H.icontent-disposition: form-data;name="color"content-type: text/plain;charset=utf-8content-transfer-encoding: binary--dart-http-boundary-dwbGPJCk059.JTr-col-DnArMTLzo9Ds2CwlJ7FcPKLcVYZ0H.icontent-disposition: form-data;name="colors_active"
+false--dart-http-boundary-dwbGPJCk059.JTr-col-DnArMTLzo9Ds2CwlJ7FcPKLcVYZ0H.icontent-type: application/octet-streamcontent-disposition: form-data;name="image";filename="yn.png"�PNG
+
+1. product joylash
+Method: POST
+URL
+https://api.venu.uz/api/v3/seller/products/add
+Headers
+accept-encoding:
+gzip
+authorization:
+Bearer mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa
+content-length:
+1116
+content-type:
+application/json; charset=UTF-8
+host:
+api.venu.uz
+user-agent:
+Dart/3.10 (dart:io)
+
+Request Body:
+{
+  "name": "[\"testttt\"]",
+  "description": "[\"test\"]",
+  "unit_price": 0.007874015748031496,
+  "discount": 12.0,
+  "discount_type": "percent",
+  "tax_ids": "[]",
+  "tax_model": "exclude",
+  "category_id": "424",
+  "unit": "pc",
+  "brand_id": 7,
+  "meta_title": "testttt",
+  "meta_description": "",
+  "lang": "[\"ru\"]",
+  "colors": "[]",
+  "images": "[{\"image_name\":\"2026-01-12-6964bf91929c1.webp\",\"storage\":\"public\"}]",
+  "thumbnail": "2026-01-12-6964bf90339e6.webp",
+  "colors_active": false,
+  "video_url": "",
+  "meta_image": "2026-01-12-6964bf90d58e9.webp",
+  "current_stock": 10,
+  "shipping_cost": 0.0,
+  "multiply_qty": 0,
+  "code": "TYDKVR",
+  "minimum_order_qty": 1,
+  "product_type": "physical",
+  "digital_product_type": "ready_after_sell",
+  "digital_file_ready": "",
+  "tags": "[\"tag\",\"name\"]",
+  "publishing_house": "[]",
+  "authors": "[]",
+  "color_image": "[]",
+  "meta_index": "1",
+  "meta_no_follow": "",
+  "meta_no_image_index": "0",
+  "meta_no_archive": "0",
+  "meta_no_snippet": "0",
+  "meta_max_snippet": "0",
+  "meta_max_snippet_value": null,
+  "meta_max_video_preview": "0",
+  "meta_max_video_preview_value": null,
+  "meta_max_image_preview": "0",
+  "meta_max_image_preview_value": "large",
+  "sub_category_id": "600",
+  "sub_sub_category_id": "601",
+  "tax": "0"
+}
+Response Success:
+{"message":"Successfully product added!","request":{"name":"[\"test p\"]","description":"[\"description\"]","unit_price":0.007874015748031496,"discount":12,"discount_type":"percent","tax_ids":"[]","tax_model":"exclude","category_id":"592","unit":"pc","brand_id":6,"meta_title":"test p","meta_description":"cdcsd","lang":"[\"ru\"]","colors":"[]","images":"[{\"image_name\":\"2026-01-12-69649cbb37b30.webp\",\"storage\":\"public\"}]","thumbnail":"2026-01-12-69649cb95e0f0.webp","colors_active":false,"video_url":null,"meta_image":"2026-01-12-69649cba41cc5.webp","current_stock":1,"shipping_cost":0,"multiply_qty":0,"code":"0PI8KA","minimum_order_qty":1,"product_type":"physical","digital_product_type":"ready_after_sell","digital_file_ready":null,"tags":"[\"tag\",\"name\"]","publishing_house":"[]","authors":"[]","color_image":"[]","meta_index":"1","meta_no_follow":null,"meta_no_image_index":"0","meta_no_archive":"0","meta_no_snippet":"0","meta_max_snippet":"0","tax":"0","meta_max_snippet_value":null,"meta_max_video_preview":"0","meta_max_video_preview_value":null,"meta_max_image_preview":"0","meta_max_image_preview_value":"large","sub_category_id":"593","sub_sub_category_id":"594","seller":{"id":35,"f_name":"dewqrghfwjs","l_name":"e3rgtewr","phone":"+998930836787","image":"2026-01-11-6963a50c299f5.webp","email":"themodestn@venu.uz","password":"$2y$10$iDMPPG4hVt\/7QSwb8srxCeXZbfepiEgWJLfIwNVQj7ssOhNx3W1Yy","status":"approved","remember_token":null,"created_at":"2026-01-11T13:26:36.000000Z","updated_at":"2026-01-12T09:27:08.000000Z","bank_name":null,"branch":null,"account_no":null,"holder_name":null,"auth_token":"mk8l2eh6GM5yICFv1mCrheNfbC1H8QqOJAIt8IsKN8deGUilsa","sales_commission_percentage":null,"gst":null,"cm_firebase_token":"eZoQaGlYRsSs1Lhwpo-W5v:APA91bHksCWO0GrglijcbRWRLEFheZ0qD6wM8Riy-d3bltqOAdcZTT_a-tvpAYG4h5Zio85yVW7POQzVLdCTtC51fVfBzbBsvGnQSrCy0H2whLVcftTxaro","pos_status":0,"minimum_order_amount":0,"free_delivery_status":0,"free_delivery_over_amount":0,"app_language":"en","vat_percent":12,"inn":0,"image_full_url":{"key":"2026-01-11-6963a50c299f5.webp","path":"https:\/\/api.venu.uz\/storage\/seller\/2026-01-11-6963a50c299f5.webp","status":200},"storage":[{"id":7613,"data_type":"App\\Models\\Seller","data_id":"35","key":"image","value":"public","created_at":"2026-01-11T13:26:36.000000Z","updated_at":"2026-01-11T13:26:36.000000Z"}]}}}
+
+Response error:{
+  "errors": [
+    {
+      "code": "tax",
+      "message": "The tax field is required."
+    }
+  ]
+}

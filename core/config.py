@@ -1,0 +1,74 @@
+"""Application configuration management."""
+
+from typing import List, Optional
+
+from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+load_dotenv()
+
+
+class Settings(BaseSettings):
+    """Application settings loaded from environment variables."""
+
+    # OpenAI Configuration
+    openai_api_key: str
+
+    # API Configuration
+    api_title: str = "AI Product Generator"
+    api_version: str = "1.0.0"
+
+    # OpenAI Model Configuration
+    openai_model: str = "gpt-4o-mini"
+    openai_temperature: float = 0.3
+    openai_max_retries: int = 2
+
+    # Venu API Configuration
+    venu_base_url: str = "https://api.venu.uz"
+    venu_temp_token: Optional[str] = None
+    venu_email: Optional[str] = None
+    venu_password: Optional[str] = None
+
+    # Marketplace URLs for image search
+    # Can be set via MARKETPLACE_URLS environment variable (comma-separated)
+    # Example: MARKETPLACE_URLS=https://venu.uz,https://uzum.uz,https://www.amazon.com
+    # Note: Pydantic will automatically parse comma-separated strings into lists
+    marketplace_urls: Optional[str] = None
+
+    model_config = SettingsConfigDict(
+        env_file=".env", case_sensitive=False, extra="ignore"
+    )
+
+    @property
+    def get_marketplace_urls(self) -> List[str]:
+        """
+        Get marketplace URLs as a list.
+
+        Returns:
+            List of marketplace URLs
+        """
+        if self.marketplace_urls:
+            # Parse comma-separated string
+            if isinstance(self.marketplace_urls, str):
+                return [
+                    url.strip()
+                    for url in self.marketplace_urls.split(",")
+                    if url.strip()
+                ]
+            elif isinstance(self.marketplace_urls, list):
+                return self.marketplace_urls
+
+        # Default marketplaces
+        return [
+            "https://venu.uz",
+            "https://uzum.uz",
+            "https://www.amazon.com",
+        ]
+
+
+# Global settings instance
+settings = Settings()
+
+# Validate required settings
+if not settings.openai_api_key:
+    raise RuntimeError("OPENAI_API_KEY not found. Please add it to .env file.")
