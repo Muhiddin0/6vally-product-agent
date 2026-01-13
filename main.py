@@ -84,12 +84,18 @@ async def generate_product(request: ProductGenerateRequest) -> ProductGenerateRe
 
         # Get default product images
         from services.product_service import get_default_image_path
+        from yandex import get_product_images_from_yandex
 
-        additional_images_paths = product_service.get_product_images(
-            product_name=request.name,
-            brand=request.brand,
-            max_images=5,
+        # Get additional images from Yandex
+        additional_images_paths = get_product_images_from_yandex(
+            product_name=request.name, brand=request.brand, max_images=5
         )
+
+        # If no images found, use default
+        if not additional_images_paths:
+            logger.warning(f"Yandex'da rasm topilmadi, default rasm ishlatilmoqda")
+            additional_images_paths = [get_default_image_path()]
+
         main_image_path = get_default_image_path()
 
         # Select category and brand
