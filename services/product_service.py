@@ -125,6 +125,7 @@ class ProductService:
         category_selection: CategoryBrandSelectionSchema,
         main_image_path: str,
         additional_images_paths: List[str],
+        api_client: Optional[VenuSellerAPI] = None,
     ) -> Tuple[bool, dict]:
         """
         Save product to shop via Venu API.
@@ -134,14 +135,17 @@ class ProductService:
             category_selection: CategoryBrandSelectionSchema instance
             main_image_path: Path to main image
             additional_images_paths: List of additional image paths
+            api_client: Optional VenuSellerAPI client (overrides default)
 
         Returns:
             Tuple[bool, dict]: (success, response) - success status and API response
         """
         try:
-            venu_api = self._get_venu_api()
+            venu_api = api_client if api_client else self._get_venu_api()
 
             logger.info("Do'konga mahsulotni saqlash boshlandi...")
+
+            
 
             # Add product to shop
             result = venu_api.add_product(
@@ -151,7 +155,7 @@ class ProductService:
                 meta_title=product.meta_title,
                 meta_description=product.meta_description,
                 tags=product.tags,
-                price=float(product.price),
+                price=12000,
                 category_id=category_selection.category_id,
                 brand_id=category_selection.brand_id,
                 main_image_path=main_image_path,
@@ -177,7 +181,7 @@ class ProductService:
             return False, {"error": str(e)}
 
     def select_category_and_brand(
-        self, product_name: str, brand_name: str
+        self, product_name: str, brand_name: str, api_client: Optional[VenuSellerAPI] = None
     ) -> Tuple[bool, Optional[dict], Optional[CategoryBrandSelectionSchema]]:
         """
         Select category and brand using AI.
@@ -185,12 +189,13 @@ class ProductService:
         Args:
             product_name: Product name
             brand_name: Brand name
+            api_client: Optional VenuSellerAPI client (overrides default)
 
         Returns:
             Tuple[bool, Optional[dict], Optional]: (success, error_dict, category_selection)
         """
         try:
-            venu_api = self._get_venu_api()
+            venu_api = api_client if api_client else self._get_venu_api()
 
             # Get categories and brands
             logger.info("Kategoriya va brendlarni yuklayapman...")
