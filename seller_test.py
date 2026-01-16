@@ -128,40 +128,6 @@ class VenuSellerAPI:
             if img_name:
                 gallery_images.append({"image_name": img_name, "storage": "public"})
 
-        # C. Mahsulot ma'lumotlarini yig'ish (JSON string formatida bo'lishi shart!)
-        # payload = {
-        #     "name": json.dumps([name]),
-        #     "description": json.dumps([description]),
-        #     "unit_price": price,
-        #     "discount": 0,
-        #     "discount_type": "flat",
-        #     "tax_ids": "[]",
-        #     "tax": "0", # Majburiy maydon
-        #     "tax_model": "exclude",
-        #     "category_id": category_id,
-        #     "sub_category_id": "600", # Kerak bo'lsa to'ldiriladi
-        #     "sub_sub_category_id": "601",
-        #     "unit": "pc",
-        #     "brand_id": brand_id,
-        #     "current_stock": stock,
-        #     "minimum_order_qty": 1,
-        #     "code": os.urandom(3).hex().upper(), # Avtomatik random kod
-        #     "product_type": "physical",
-        #     "thumbnail": thumb_name, # Serverdan qaytgan nom
-        #     "images": json.dumps(gallery_images), # Yuklangan rasmlar massivi
-        #     "meta_image": meta_image,
-        #     "meta_title": meta_title,
-        #     "meta_description": meta_description,
-        #     "lang": json.dumps(["ru"]), # Til
-        #     "colors_active": False,
-        #     "shipping_cost": 0,
-        #     "multiply_qty": 0,
-        #     "tags": json.dumps(tags),
-        #     "meta_max_image_preview_value": "large"
-        # }
-
-        print(json.dumps([name]))
-
         payload = {
             "name": json.dumps([name]),
             "description": json.dumps([description]),
@@ -208,6 +174,16 @@ class VenuSellerAPI:
             "sub_category_id": "600",
             "sub_sub_category_id": "601",
             "tax": "0",
+            # For test
+            "weight": 1,
+            "height": "1",
+            "width": "1",
+            "length": "1",
+            "mxik": "121212",
+            "package_code": "12121",
+            "is_install": False,
+            "is_seasonal": False,
+            "is_discount": False,
         }
 
         url = f"{self.BASE_URL}/api/v3/seller/products/add"

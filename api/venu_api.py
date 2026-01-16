@@ -252,6 +252,10 @@ class VenuSellerAPI:
         unit: str = DEFAULT_UNIT,
         discount: float = DEFAULT_DISCOUNT,
         discount_type: str = DEFAULT_DISCOUNT_TYPE,
+        weight: float = 1,
+        height: float = 1,
+        width: float = 1,
+        length: float = 1,
     ) -> Dict[str, Any]:
         """
         Add product with uploaded images.
@@ -274,6 +278,10 @@ class VenuSellerAPI:
             unit: Product unit (default: from constants)
             discount: Discount amount (default: from constants)
             discount_type: Discount type (default: from constants)
+            weight: Product weight in grams (default: 1)
+            height: Product height in mm (default: 1)
+            width: Product width in mm (default: 1)
+            length: Product length in mm (default: 1)
 
         Returns:
             Dict: API response
@@ -346,6 +354,16 @@ class VenuSellerAPI:
             "sub_category_id": sub_category_id or DEFAULT_SUB_CATEGORY_ID,
             "sub_sub_category_id": sub_sub_category_id or DEFAULT_SUB_SUB_CATEGORY_ID,
             "tax": "0",
+            # Physical product dimensions from AI
+            "weight": weight,
+            "height": height,
+            "width": width,
+            "length": length,
+            "mxik": "12",
+            "package_code": "12",
+            "is_install": False,
+            "is_seasonal": False,
+            "is_discount": False,
         }
 
         url = f"{self.BASE_URL}/api/v3/seller/products/add"

@@ -126,6 +126,9 @@ class ProductService:
         main_image_path: str,
         additional_images_paths: List[str],
         api_client: Optional[VenuSellerAPI] = None,
+        product_params: Optional[dict] = None,
+        price: int = 0,
+        stock: int = 5,
     ) -> Tuple[bool, dict]:
         """
         Save product to shop via Venu API.
@@ -136,6 +139,7 @@ class ProductService:
             main_image_path: Path to main image
             additional_images_paths: List of additional image paths
             api_client: Optional VenuSellerAPI client (overrides default)
+            product_params: Optional dict with weight, height, width, length
 
         Returns:
             Tuple[bool, dict]: (success, response) - success status and API response
@@ -145,7 +149,16 @@ class ProductService:
 
             logger.info("Do'konga mahsulotni saqlash boshlandi...")
 
-            
+            # Extract product dimensions from product_params if available
+            weight = 1
+            height = 1
+            width = 1
+            length = 1
+            if product_params:
+                weight = product_params.get("weight", 1)
+                height = product_params.get("height", 1)
+                width = product_params.get("width", 1)
+                length = product_params.get("length", 1)
 
             # Add product to shop
             result = venu_api.add_product(
@@ -155,14 +168,18 @@ class ProductService:
                 meta_title=product.meta_title,
                 meta_description=product.meta_description,
                 tags=product.tags,
-                price=12000,
+                price=price,
                 category_id=category_selection.category_id,
                 brand_id=category_selection.brand_id,
                 main_image_path=main_image_path,
                 additional_images_paths=additional_images_paths,
-                stock=product.stock,
+                stock=stock,
                 sub_category_id=category_selection.sub_category_id,
                 sub_sub_category_id=category_selection.sub_sub_category_id,
+                weight=weight,
+                height=height,
+                width=width,
+                length=length,
             )
 
             # Check result
@@ -181,7 +198,10 @@ class ProductService:
             return False, {"error": str(e)}
 
     def select_category_and_brand(
-        self, product_name: str, brand_name: str, api_client: Optional[VenuSellerAPI] = None
+        self,
+        product_name: str,
+        brand_name: str,
+        api_client: Optional[VenuSellerAPI] = None,
     ) -> Tuple[bool, Optional[dict], Optional[CategoryBrandSelectionSchema]]:
         """
         Select category and brand using AI.

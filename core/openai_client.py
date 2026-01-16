@@ -1,4 +1,5 @@
 """OpenAI client singleton."""
+
 from typing import Optional
 
 from openai import OpenAI
@@ -14,4 +15,3 @@ def get_openai_client() -> OpenAI:
     if _client is None:
         _client = OpenAI(api_key=settings.openai_api_key)
     return _client
-

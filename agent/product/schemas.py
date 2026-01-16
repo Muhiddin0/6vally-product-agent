@@ -25,5 +25,4 @@ class ProductGenSchema(BaseModel):
         default_factory=list, description="5-10 lowercase tags, no duplicates"
     )
 
-    price: conint(ge=0) = Field(..., description="Price in smallest currency unit")
     stock: conint(ge=0) = Field(default=5, description="Available stock quantity")

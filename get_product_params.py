@@ -38,7 +38,16 @@ def get_image_mime_type(image_path: str) -> str:
 
 
 def get_product_params(product_input: ProductInput) -> Dict[str, Any]:
+    """
+    Get product physical parameters (width, height, length, weight) using AI.
 
+    Args:
+        product_input: ProductInput with product name, category info, brand, and images
+
+    Returns:
+        Dict with keys: weight (g), height (mm), width (mm), length (mm),
+                       confidence (float), method (str), notes (str)
+    """
     system = (
         "Sen product data extractor agentisan. Vazifa: Width/Height/Length (mm) va Weight (g) qaytar.\n"
         "Qoidalar:\n"
@@ -47,7 +56,18 @@ def get_product_params(product_input: ProductInput) -> Dict[str, Any]:
         "3) Hech qachon 0 yoki manfiy qiymat qaytarmagin.\n"
         "4) confidence: aniq bo'lsa 0.8-1.0, taxmin bo'lsa 0.2-0.7 oralig'ida.\n"
         "5) method: exact_from_source | estimated_from_visual | estimated_from_category.\n"
-        "6) notes juda qisqa bo'lsin (1-2 gap)."
+        "6) notes juda qisqa bo'lsin (1-2 gap).\n\n"
+        "Return ONLY valid JSON. No markdown. No extra text.\n"
+        "The JSON must match this structure exactly:\n"
+        "{\n"
+        '  "width": integer (mm),\n'
+        '  "height": integer (mm),\n'
+        '  "length": integer (mm),\n'
+        '  "weight": integer (g),\n'
+        '  "confidence": float (0.0-1.0),\n'
+        '  "method": "string",\n'
+        '  "notes": "string"\n'
+        "}"
     )
 
     user_text = (
@@ -66,15 +86,16 @@ def get_product_params(product_input: ProductInput) -> Dict[str, Any]:
     # Add images if provided
     if product_input.image_paths:
         for image_path in product_input.image_paths:
-            # Convert local image to base64
-            base64_image = encode_image_to_base64(image_path)
-            mime_type = get_image_mime_type(image_path)
-            content.append(
-                {
-                    "type": "image_url",
-                    "image_url": {"url": f"data:{mime_type};base64,{base64_image}"},
-                }
-            )
+            if os.path.exists(image_path):
+                # Convert local image to base64
+                base64_image = encode_image_to_base64(image_path)
+                mime_type = get_image_mime_type(image_path)
+                content.append(
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": f"data:{mime_type};base64,{base64_image}"},
+                    }
+                )
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -87,20 +108,32 @@ def get_product_params(product_input: ProductInput) -> Dict[str, Any]:
         ],
     )
 
-    result = response.choices[0].message.content
+    result_text = response.choices[0].message.content or ""
 
-    print(result)
+    # Parse JSON response
+    import json
 
-    return result
-
-
-get_product_params(
-    product_input=ProductInput(
-        name="Iphone 17 Pro Max черный - мощный и стильный",
-        category="Telefonlar va Gadjetlar",
-        sub_category="Mobil telefonlar",
-        sub_sub_category="Smartfonlar",
-        brand="Apple",
-        image_paths=["iphone-1.png", "iphone-2.png"],
-    )
-)
+    try:
+        result = json.loads(result_text.strip())
+        return {
+            "width": int(result.get("width", 1)),
+            "height": int(result.get("height", 1)),
+            "length": int(result.get("length", 1)),
+            "weight": int(result.get("weight", 1)),
+            "confidence": result.get("confidence", 0.5),
+            "method": result.get("method", "estimated_from_category"),
+            "notes": result.get("notes", ""),
+        }
+    except (json.JSONDecodeError, ValueError, TypeError) as e:
+        # Return default values if parsing fails
+        print(f"Warning: Failed to parse product params: {e}")
+        print(f"Response was: {result_text}")
+        return {
+            "width": 1,
+            "height": 1,
+            "length": 1,
+            "weight": 1,
+            "confidence": 0.0,
+            "method": "default_fallback",
+            "notes": "Failed to parse AI response",
+        }
