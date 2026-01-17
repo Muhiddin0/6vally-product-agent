@@ -69,86 +69,16 @@ class BulkUploadService:
                     # We will try to map loosely
                     row_data = row.to_dict()
 
-                    # Normalize keys to lower case for matching, ensuring keys are strings
-                    row_data_lower = {str(k).lower(): v for k, v in row_data.items()}
-
-                    # Try to find columns by name
-                    name_key = next(
-                        (
-                            k
-                            for k in row_data_lower
-                            if "name" in k
-                            or "nom" in k
-                            or "mahsulot" in k
-                            or "model" in k
-                        ),
-                        None,
-                    )
-                    price_key = next(
-                        (
-                            k
-                            for k in row_data_lower
-                            if "price" in k or "narx" in k or "sum" in k
-                        ),
-                        None,
-                    )
-                    brand_key = next(
-                        (k for k in row_data_lower if "brand" in k or "brend" in k),
-                        None,
-                    )
-                    stock_key = next(
-                        (
-                            k
-                            for k in row_data_lower
-                            if "stock" in k or "son" in k or "qoldiq" in k
-                        ),
-                        None,
-                    )
-
                     # Fallback to index based if keys not found (assuming Name (0), Brand (1), Price (2))
                     # Convert row to list to access by index
                     row_values = list(row_data.values())
 
-                    if name_key:
-                        product_name = str(row_data_lower[name_key])
-                    elif len(row_values) > 0:
-                        # Assume first column is name
-                        product_name = str(row_values[0])
-                    else:
-                        product_name = f"Product {index+1}"
+                    print(row_values)
 
-                    if price_key:
-                        try:
-                            price = float(row_data_lower[price_key])
-                        except:
-                            price = 0
-                    elif (
-                        len(row_values) > 2
-                    ):  # Assume 3rd column is price (index 2) looking at user image (col D might be 3rd if B is 1st?)
-                        # User image: Col B=Name, Col C=Brand, Col D=Price.
-                        # Pandas typically reads visible area. If B is first read column -> index 0.
-                        # C -> index 1, D -> index 2.
-                        try:
-                            price = float(row_values[2])
-                        except:
-                            price = 0
-                    else:
-                        price = 0
-
-                    if brand_key:
-                        brand_name = str(row_data_lower[brand_key])
-                    elif len(row_values) > 1:  # Assume 2nd column is brand
-                        brand_name = str(row_values[1])
-                    else:
-                        brand_name = "Generic"
-
-                    if stock_key:
-                        try:
-                            stock = int(row_data_lower[stock_key])
-                        except:
-                            stock = 100
-                    else:
-                        stock = 100
+                    product_name = row_values[0]
+                    brand_name = row_values[1]
+                    price = row_values[2]
+                    stock = 100
 
                     await self._log(f"--- {index+1}/{total_rows}: {product_name} ---")
                     await self._log(f"🤖 AI kontent yaratmoqda...")
@@ -159,6 +89,7 @@ class BulkUploadService:
                     )
 
                     await self._log("📸 Rasmlar qidirilmoqda...")
+
                     # Images
                     additional_images = get_product_images_from_yandex(
                         product_name, brand_name, max_images=3
@@ -185,12 +116,13 @@ class BulkUploadService:
                     # Poster generation
                     product_params_str = f"{product.name}\n{product.description}"
 
-                    # main_image = generate_poster(
-                    #     template_image_path=template_image_path,
-                    #     product_image_path=additional_images[0],
-                    #     product_params=product_params_str,
-                    # )
-                    main_image = additional_images[0]
+                    main_image = generate_poster(
+                        template_image_path=template_image_path,
+                        product_image_path=additional_images[0],
+                        product_params=product_params_str,
+                    )
+
+                    # main_image = additional_images[0]
 
                     # Category Selection
                     await self._log("📂 Kategoriya tanlanmoqda...")

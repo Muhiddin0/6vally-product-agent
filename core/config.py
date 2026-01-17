@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     openai_temperature: float = 0.3
     openai_max_retries: int = 2
 
+    # Models
+    gpt3_5_turbo: str = "gpt-3.5-turbo"
+    gpt4: str = "gpt-4"
+    gpt4o_mini: str = "gpt-4o-mini"
+
     # Venu API Configuration
     venu_base_url: str = "https://api.venu.uz"
     venu_temp_token: Optional[str] = None

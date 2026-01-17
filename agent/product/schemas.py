@@ -25,4 +25,5 @@ class ProductGenSchema(BaseModel):
         default_factory=list, description="5-10 lowercase tags, no duplicates"
     )
 
+    price: float = Field(..., description="Product price")
     stock: conint(ge=0) = Field(default=5, description="Available stock quantity")

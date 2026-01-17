@@ -1,0 +1,6 @@
+AI agent ishlatilingan joylari!
+
+Maxsulotni matinlarini generate qilishda
+Maxsulot uchun category & brand tanlashda
+Maxsulotni rasmlarini generate qilishda
+Maxsulot o'lchamlarini aniqlashda

@@ -84,18 +84,19 @@ def get_product_params(product_input: ProductInput) -> Dict[str, Any]:
     content = [{"type": "text", "text": user_text}]
 
     # Add images if provided
-    if product_input.image_paths:
-        for image_path in product_input.image_paths:
-            if os.path.exists(image_path):
-                # Convert local image to base64
-                base64_image = encode_image_to_base64(image_path)
-                mime_type = get_image_mime_type(image_path)
-                content.append(
-                    {
-                        "type": "image_url",
-                        "image_url": {"url": f"data:{mime_type};base64,{base64_image}"},
-                    }
-                )
+    # Qachonki venudagilar aniqroq ishlasin desa commentdan olinadi
+    # if product_input.image_paths:
+    #     for image_path in product_input.image_paths:
+    #         if os.path.exists(image_path):
+    #             # Convert local image to base64
+    #             base64_image = encode_image_to_base64(image_path)
+    #             mime_type = get_image_mime_type(image_path)
+    #             content.append(
+    #                 {
+    #                     "type": "image_url",
+    #                     "image_url": {"url": f"data:{mime_type};base64,{base64_image}"},
+    #                 }
+    #             )
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
