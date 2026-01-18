@@ -10,12 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadBtn = document.getElementById('upload-btn');
     const dropArea = document.getElementById('drop-area');
 
+    // State
+    let isProcessing = false;
+
     // WebSocket
     let ws;
     connectWebSocket();
 
-    // Event Listeners - Chat
-
+    // Prevent Accidental Exit
+    window.addEventListener('beforeunload', (e) => {
+        if (isProcessing) {
+            e.preventDefault();
+            e.returnValue = ''; // Required for some browsers
+            return '';
+        }
+    });
 
     // Event Listeners - Upload
     if (uploadForm) {
@@ -60,9 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ws.onmessage = (event) => {
             const message = event.data;
+            
+            // Update loading status if processing
+            if (isProcessing) {
+                updateLoadingStatus(message);
+            }
+
             // Treat as AI log
             addMessage('ai', `<em>[LOG]</em> ${message}`);
             scrollToBottom();
+
+            // Detect completion or failure
+            if (message.includes('🏁') || message.includes('❌') || message.includes('⚠️')) {
+                // If it's a critical error before even starting one item, or final finish
+                if (message.includes('🏁') || (message.includes('❌') && !message.includes('Qatorni ishlashda'))) {
+                    setProcessingState(false);
+                }
+            }
         };
 
         ws.onclose = () => {
@@ -89,8 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('password', password);
         formData.append('file', file);
 
-        uploadBtn.disabled = true;
-        uploadBtn.textContent = 'Yuklanmoqda...';
+        setProcessingState(true, 'Fayl yuklanmoqda...');
 
         addMessage('user', `📂 Excel yuklash boshlandi: ${file.name}`);
 
@@ -106,58 +128,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 addMessage('ai', `✅ Fayl qabul qilindi. Jarayonni kuzatib boring...`);
             } else {
                 addMessage('ai', `⚠️ Xatolik: ${data.detail || 'Noma\'lum xatolik'}`);
+                setProcessingState(false);
             }
 
         } catch (error) {
             addMessage('ai', `⚠️ Tarmoq xatoligi: ${error.message}`);
-        } finally {
-            uploadBtn.disabled = false;
-            uploadBtn.textContent = 'Boshlash';
+            setProcessingState(false);
         }
     }
 
-
-
-    function displayResult(data) {
-        let contentHtml = `
-            <div class="space-y-4">
-                <p class="font-semibold text-emerald-400 flex items-center gap-2">
-                    <span class="text-lg">✅</span> Muvaffaqiyatli yaratildi!
-                </p>
-                <div class="space-y-1">
-                    <p><span class="text-slate-400">Nom (UZ):</span> ${data.name_uz}</p>
-                    <p><span class="text-slate-400">Nom (RU):</span> ${data.name_ru}</p>
-                </div>
-                <div class="p-3 bg-black/20 rounded-lg border border-white/5 text-sm">
-                    <span class="text-slate-400">Tavsif (UZ):</span><br>
-                    <p class="mt-1">${data.description_uz.substring(0, 150)}...</p>
-                </div>
-                <div>
-                    <span class="text-slate-400 text-sm">Meta Teglar:</span>
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        ${data.meta_tags.map(tag => `<span class="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded-md text-xs text-primary-400">${tag}</span>`).join('')}
-                    </div>
-                </div>
-            </div>
-        `;
-
-        if (data.shop_response) {
-            contentHtml += `<div class="mt-4 pt-4 border-t border-white/5 text-xs italic text-slate-500 text-right">Do'kon holati: ${data.shop_response}</div>`;
+    function setProcessingState(processing, status = 'Ishlanmoqda...') {
+        isProcessing = processing;
+        const overlay = document.getElementById('loading-overlay');
+        const statusEl = document.getElementById('loading-status');
+        
+        if (processing) {
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = 'Jarayon...';
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            statusEl.textContent = status;
+        } else {
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Boshlash';
+            overlay.classList.add('opacity-0', 'pointer-events-none');
         }
+    }
 
-        if (data.product_images && data.product_images.length > 0) {
-            contentHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">`;
-            data.product_images.forEach(imgUrl => {
-                contentHtml += `
-                    <div class="aspect-square overflow-hidden rounded-lg border border-white/10 group cursor-pointer hover:border-primary transition-all">
-                        <img src="${imgUrl}" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition-transform" onclick="window.open('${imgUrl}', '_blank')">
-                    </div>
-                `;
-            });
-            contentHtml += `</div>`;
+    function updateLoadingStatus(message) {
+        const statusEl = document.getElementById('loading-status');
+        if (statusEl) {
+            // Clean emojis for status display or keep them for "flavor"
+            statusEl.textContent = message.length > 50 ? message.substring(0, 47) + '...' : message;
         }
-
-        addMessage('ai', contentHtml);
     }
 
     function addMessage(sender, htmlContent) {
@@ -183,41 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         outputArea.appendChild(msgDiv);
         scrollToBottom();
         return msgDiv.id = 'msg-' + Date.now();
-    }
-
-    function addLoadingIndicator() {
-        const id = 'loading-' + Date.now();
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `flex gap-4 max-w-[90%] animate-in fade-in slide-in-from-bottom-4 duration-300`;
-        msgDiv.id = id;
-
-        const avatar = document.createElement('div');
-        avatar.className = 'w-10 h-10 rounded-full bg-accent flex items-center justify-center text-xl flex-shrink-0 shadow-lg shadow-accent/20';
-        avatar.textContent = '🤖';
-
-        const content = document.createElement('div');
-        content.className = 'bg-white/5 border border-white/10 rounded-2xl rounded-tl-none p-4 flex gap-1';
-        content.innerHTML = `
-            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span>
-        `;
-
-        msgDiv.appendChild(avatar);
-        msgDiv.appendChild(content);
-
-        outputArea.appendChild(msgDiv);
-        scrollToBottom();
-        return id;
-    }
-
-    function removeMessage(id) {
-        const el = document.getElementById(id);
-        if (el) el.remove();
-    }
-
-    function setLoading(isLoading) {
-        // Kept for compatibility if used by other parts of the app
     }
 
     function scrollToBottom() {

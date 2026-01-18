@@ -66,10 +66,24 @@
           @apply w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-black/40 transition-all;
         }
       }
+      @layer utilities {
+        .loading-overlay {
+          @apply fixed inset-0 bg-slate-900/80 backdrop-blur-md flex flex-col items-center justify-center z-50 transition-all duration-500;
+        }
+        .spinner {
+          @apply w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4;
+        }
+      }
     </style>
   </head>
 
   <body class="flex items-center justify-center p-4 md:p-8">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay opacity-0 pointer-events-none">
+      <div class="spinner"></div>
+      <p id="loading-status" class="text-white font-medium animate-pulse">Tayyorlanmoqda...</p>
+    </div>
+
     <div
       class="glass-panel w-full max-w-6xl min-h-[85vh] flex flex-col overflow-hidden bg-slate-900/60"
     >
