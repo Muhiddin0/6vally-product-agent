@@ -256,6 +256,8 @@ class VenuSellerAPI:
         height: float = 1,
         width: float = 1,
         length: float = 1,
+        mxik: int = None,
+        package_code: int = None,
     ) -> Dict[str, Any]:
         """
         Add product with uploaded images.
@@ -359,8 +361,8 @@ class VenuSellerAPI:
             "height": height,
             "width": width,
             "length": length,
-            "mxik": "12",
-            "package_code": "12",
+            "mxik": mxik,
+            "package_code": package_code,
             "is_install": False,
             "is_seasonal": False,
             "is_discount": False,

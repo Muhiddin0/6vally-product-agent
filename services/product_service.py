@@ -3,7 +3,9 @@
 import logging
 import os
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Any, List, Optional, Tuple
+
+import pandas as pd
 
 from agent import generate_product_text, select_category_brand
 from agent.category_brand.schemas import CategoryBrandSelectionSchema
@@ -79,6 +81,71 @@ class ProductService:
                 raise ShopSaveError("Venu API ga login qilishda xatolik")
 
         return self._venu_api
+
+    def _get_mxik_codes(self, sub_category_id: Optional[int]) -> Tuple[Any, Any]:
+        print("Sub-category ID:", sub_category_id)
+        """
+        Get MXIK and package codes from Excel file.
+
+        Args:
+            sub_category_id: Sub-category ID to look up
+
+        Returns:
+            Tuple[any, any]: (mxik_code, package_code) - can be int or str
+        """
+        default_mxik = 0
+        default_package = 0
+
+        if sub_category_id is None:
+            return default_mxik, default_package
+
+        try:
+            excel_path = Path("api/mxik-codes.xlsx")
+            if not excel_path.exists():
+                logger.warning(f"Excel file not found: {excel_path}")
+                return default_mxik, default_package
+
+            # Read Excel without header
+            df = pd.read_excel(excel_path, header=None)
+
+            # Find row where first column matches sub_category_id
+            # Column 0: ID, Column 3: MXIK, Column 4: Package Code
+            match = df[df[0] == sub_category_id]
+
+            if not match.empty:
+                mxik_raw = match.iloc[0, 3]
+                package_raw = match.iloc[0, 4]
+
+                mxik = default_mxik
+                package_code = default_package
+
+                # Try to convert to int if possible
+                try:
+                    if pd.notna(mxik_raw):
+                        mxik = int(mxik_raw)
+                except (ValueError, TypeError):
+                    logger.warning(
+                        f"ID {sub_category_id} uchun MXIK kodi son emas: {mxik_raw}. "
+                        "Sarlavha bo'lishi mumkin. 0 ishlatiladi."
+                    )
+
+                try:
+                    if pd.notna(package_raw):
+                        package_code = int(package_raw)
+                except (ValueError, TypeError):
+                    logger.warning(
+                        f"ID {sub_category_id} uchun qadoqlash kodi son emas: {package_raw}. "
+                        "Sarlavha bo'lishi mumkin. 0 ishlatiladi."
+                    )
+
+                return mxik, package_code
+
+            logger.info(f"MXIK codes not found for sub_category_id: {sub_category_id}")
+            return default_mxik, default_package
+
+        except Exception as e:
+            logger.error(f"Error reading MXIK codes from Excel: {e}")
+            return default_mxik, default_package
 
     def generate_product_content(
         self, name: str, brand: str, price: int, stock: int
@@ -160,6 +227,11 @@ class ProductService:
                 width = product_params.get("width", 1)
                 length = product_params.get("length", 1)
 
+            # Get MXIK and package codes from Excel
+            mxik, package_code = self._get_mxik_codes(
+                category_selection.sub_category_id
+            )
+
             # Add product to shop
             result = venu_api.add_product(
                 name=product.name,
@@ -180,6 +252,8 @@ class ProductService:
                 height=height,
                 width=width,
                 length=length,
+                mxik=mxik,
+                package_code=package_code,
             )
 
             # Check result

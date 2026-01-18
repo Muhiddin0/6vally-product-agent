@@ -34,6 +34,9 @@ from fastapi import (
     Form,
     BackgroundTasks,
 )
+from fastapi.responses import FileResponse
+import pandas as pd
+import json
 
 manager = ConnectionManager()
 bulk_service = BulkUploadService(manager)
@@ -115,6 +118,79 @@ async def upload_excel(
         "message": "Fayl qabul qilindi. Jarayon boshlandi.",
         "filename": file.filename,
     }
+
+
+# MXIK Codes CRUD Endpoints
+EXCEL_FILE_PATH = "api/mxik-codes.xlsx"
+
+
+@app.get("/mxik-codes-page", tags=["MXIK Management"])
+async def mxik_codes_page(request: Request):
+    """Render the MXIK management page."""
+    return templates.TemplateResponse("mxik.html", {"request": request})
+
+
+@app.get("/api/mxik-data", tags=["MXIK Management"])
+async def get_mxik_data():
+    """Fetch MXIK data from Excel file as JSON."""
+    try:
+        if not os.path.exists(EXCEL_FILE_PATH):
+            raise HTTPException(status_code=404, detail="Excel file not found")
+
+        df = pd.read_excel(EXCEL_FILE_PATH, dtype=str)
+        # Ensure 'mxik code' and 'package code' columns exist
+        if "mxik code" not in df.columns:
+            df["mxik code"] = ""
+        if "package code" not in df.columns:
+            df["package code"] = ""
+
+        # Use index as a unique ID for easier row identification
+        df["row_id"] = df.index
+        data = df.to_dict(orient="records")
+        return data
+    except Exception as e:
+        logger.error(f"Error reading Excel: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/mxik-update", tags=["MXIK Management"])
+async def update_mxik_data(request: Request):
+    """Update rows in the MXIK Excel file."""
+    try:
+        body = await request.json()
+        updates = body.get("updates", [])
+
+        if not os.path.exists(EXCEL_FILE_PATH):
+            raise HTTPException(status_code=404, detail="Excel file not found")
+
+        df = pd.read_excel(EXCEL_FILE_PATH, dtype=str)
+
+        for update in updates:
+            row_id = int(update.get("row_id"))
+            if 0 <= row_id < len(df):
+                if "mxik_code" in update:
+                    df.at[row_id, "mxik code"] = update["mxik_code"]
+                if "package_code" in update:
+                    df.at[row_id, "package code"] = update["package_code"]
+
+        df.to_excel(EXCEL_FILE_PATH, index=False)
+        return {"message": "Dinamik ravishda saqlandi"}
+    except Exception as e:
+        logger.error(f"Error updating Excel: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/mxik-download", tags=["MXIK Management"])
+async def download_mxik_excel():
+    """Download the modified MXIK Excel file."""
+    if not os.path.exists(EXCEL_FILE_PATH):
+        raise HTTPException(status_code=404, detail="Excel file not found")
+
+    return FileResponse(
+        path=EXCEL_FILE_PATH,
+        filename="mxik-codes-updated.xlsx",
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
 
 
 if __name__ == "__main__":

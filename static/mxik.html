@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="uz" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MXIK Codes Management</title>
+    <link
+      rel="icon"
+      href="https://venu.uz/favicon.ico?favicon.0e950d5c.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: "#0f172a",
+                panel: "rgba(30, 41, 59, 0.7)",
+                border: "rgba(148, 163, 184, 0.1)",
+              },
+              primary: "#3b82f6",
+              accent: "#8b5cf6",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-[#0f172a] text-slate-200 min-h-screen font-sans antialiased;
+          background-image:
+            radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+            radial-gradient(
+              at 50% 0%,
+              hsla(225, 39%, 30%, 1) 0,
+              transparent 50%
+            ),
+            radial-gradient(
+              at 100% 0%,
+              hsla(339, 49%, 30%, 1) 0,
+              transparent 50%
+            );
+        }
+      }
+      @layer components {
+        .glass-panel {
+          @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+        }
+        .btn-primary {
+          @apply px-6 py-2 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-xl hover:opacity-90 transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+        }
+        .btn-secondary {
+          @apply px-6 py-2 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all active:scale-[0.98];
+        }
+        .input-table {
+          @apply bg-black/20 border border-white/10 rounded-lg px-2 py-1 text-white focus:outline-none focus:border-primary focus:bg-black/40 transition-all w-full text-sm;
+        }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        @apply bg-white/10 rounded-full;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        @apply bg-white/20;
+      }
+    </style>
+  </head>
+  <body class="p-4 md:p-8">
+    <div
+      class="glass-panel w-full max-w-7xl mx-auto min-h-[90vh] flex flex-col overflow-hidden bg-slate-900/60"
+    >
+      <!-- Header -->
+      <header
+        class="p-6 border-b border-white/10 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-4">
+          <a
+            href="/"
+            class="text-3xl bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent transform hover:scale-110 transition-transform"
+          >
+            ✨
+          </a>
+          <h1 class="text-xl font-bold tracking-tight text-white">
+            MXIK Kodlarini Boshqarish
+          </h1>
+        </div>
+        <div class="flex gap-4">
+          <button id="save-btn" class="btn-primary flex items-center gap-2">
+            <span id="save-icon">💾</span>
+            <span id="save-text">Saqlash</span>
+          </button>
+          <a
+            href="/api/mxik-download"
+            class="btn-secondary flex items-center gap-2"
+          >
+            <span>📥</span>
+            <span>Yuklab olish</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Search Bar -->
+      <div class="p-6 border-b border-white/5">
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+            >🔍</span
+          >
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Qidirish (Nomi, MXIK, Package...)"
+            class="w-full bg-black/20 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-primary transition-all"
+          />
+        </div>
+      </div>
+
+      <!-- Table Area -->
+      <div class="flex-1 overflow-auto p-6">
+        <table class="w-full text-left border-separate border-spacing-y-2">
+          <thead>
+            <tr class="text-slate-400 text-sm uppercase tracking-wider">
+              <th class="px-4 py-2 font-medium">ID</th>
+              <th class="px-4 py-2 font-medium">Nomi (RU)</th>
+              <th class="px-4 py-2 font-medium">Nomi (UZ)</th>
+              <th class="px-4 py-2 font-medium">MXIK Code</th>
+              <th class="px-4 py-2 font-medium">Package Code</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Data will be loaded here -->
+            <tr>
+              <td colspan="5" class="text-center py-20 text-slate-500">
+                <div
+                  class="animate-spin inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-4"
+                ></div>
+                <p>Ma'lumotlar yuklanmoqda...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      let mxikData = [];
+      let modifiedRows = new Set();
+
+      async function loadData() {
+        try {
+          const response = await fetch("/api/mxik-data");
+          mxikData = await response.json();
+          renderTable(mxikData);
+        } catch (error) {
+          console.error("Error loading data:", error);
+          document.getElementById("table-body").innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center py-20 text-red-400">
+                            Xatolik yuz berdi: Ma'lumotlarni yuklab bo'lmadi.
+                        </td>
+                    </tr>
+                `;
+        }
+      }
+
+      function renderTable(data) {
+        const tbody = document.getElementById("table-body");
+        tbody.innerHTML = "";
+
+        data.forEach((row) => {
+          const tr = document.createElement("tr");
+          tr.className =
+            "bg-white/5 group hover:bg-white/10 transition-colors rounded-lg overflow-hidden";
+
+          // columns: category_id, name, uz_name, mxik code, package code
+          // Note: The Excel columns might vary, we should check the actual keys
+          const colKeys = Object.keys(row).filter((k) => k !== "row_id");
+
+          tr.innerHTML = `
+                    <td class="px-4 py-3 text-slate-400 text-sm rounded-l-xl">${row[colKeys[0]] || ""}</td>
+                    <td class="px-4 py-3 font-medium text-slate-200">${row[colKeys[1]] || ""}</td>
+                    <td class="px-4 py-3 text-slate-300">${row[colKeys[2]] || ""}</td>
+                    <td class="px-4 py-3">
+                        <input type="text" value="${row["mxik code"] || ""}" 
+                            data-row-id="${row.row_id}" data-field="mxik_code"
+                            class="input-table mxik-input">
+                    </td>
+                    <td class="px-4 py-3 rounded-r-xl">
+                        <input type="text" value="${row["package code"] || ""}" 
+                            data-row-id="${row.row_id}" data-field="package_code"
+                            class="input-table package-input">
+                    </td>
+                `;
+          tbody.appendChild(tr);
+        });
+
+        // Add event listeners to inputs
+        document.querySelectorAll(".input-table").forEach((input) => {
+          input.addEventListener("change", (e) => {
+            modifiedRows.add(e.target.dataset.rowId);
+            e.target.classList.add("border-primary/50", "bg-primary/10");
+          });
+        });
+      }
+
+      // Search functionality
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredData = mxikData.filter((row) => {
+          return Object.values(row).some((val) =>
+            String(val).toLowerCase().includes(searchTerm),
+          );
+        });
+        renderTable(filteredData);
+      });
+
+      // Save functionality
+      document
+        .getElementById("save-btn")
+        .addEventListener("click", async () => {
+          if (modifiedRows.size === 0) {
+            alert("Hech narsa o'zgartirilmadi");
+            return;
+          }
+
+          const btn = document.getElementById("save-btn");
+          const text = document.getElementById("save-text");
+          const icon = document.getElementById("save-icon");
+
+          btn.disabled = true;
+          text.innerText = "Saqlanmoqda...";
+
+          const updates = Array.from(modifiedRows).map((rowId) => {
+            const row = { row_id: rowId };
+            const mxikInput = document.querySelector(
+              `.mxik-input[data-row-id="${rowId}"]`,
+            );
+            const pkgInput = document.querySelector(
+              `.package-input[data-row-id="${rowId}"]`,
+            );
+            if (mxikInput) row.mxik_code = mxikInput.value;
+            if (pkgInput) row.package_code = pkgInput.value;
+            return row;
+          });
+
+          try {
+            const response = await fetch("/api/mxik-update", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ updates }),
+            });
+
+            if (response.ok) {
+              alert("Saqlandi!");
+              modifiedRows.clear();
+              document.querySelectorAll(".input-table").forEach((input) => {
+                input.classList.remove("border-primary/50", "bg-primary/10");
+              });
+              loadData(); // Refresh data
+            } else {
+              const error = await response.json();
+              alert("Xatolik: " + (error.detail || "Noma'lum xatolik"));
+            }
+          } catch (error) {
+            console.error("Save error:", error);
+            alert("Serverga ulanishda xatolik");
+          } finally {
+            btn.disabled = false;
+            text.innerText = "Saqlash";
+          }
+        });
+
+      // Initial load
+      loadData();
+    </script>
+  </body>
+</html>

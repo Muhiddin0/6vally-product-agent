@@ -120,21 +120,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayResult(data) {
         let contentHtml = `
-            <strong>Muvaffaqiyatli yaratildi! ✅</strong><br><br>
-            <strong>Nom (UZ):</strong> ${data.name_uz}<br>
-            <strong>Nom (RU):</strong> ${data.name_ru}<br><br>
-            <strong>Tavsif (UZ):</strong><br>${data.description_uz.substring(0, 100)}...<br><br>
-            <strong>Meta Teglar:</strong> ${data.meta_tags.join(', ')}
+            <div class="space-y-4">
+                <p class="font-semibold text-emerald-400 flex items-center gap-2">
+                    <span class="text-lg">✅</span> Muvaffaqiyatli yaratildi!
+                </p>
+                <div class="space-y-1">
+                    <p><span class="text-slate-400">Nom (UZ):</span> ${data.name_uz}</p>
+                    <p><span class="text-slate-400">Nom (RU):</span> ${data.name_ru}</p>
+                </div>
+                <div class="p-3 bg-black/20 rounded-lg border border-white/5 text-sm">
+                    <span class="text-slate-400">Tavsif (UZ):</span><br>
+                    <p class="mt-1">${data.description_uz.substring(0, 150)}...</p>
+                </div>
+                <div>
+                    <span class="text-slate-400 text-sm">Meta Teglar:</span>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        ${data.meta_tags.map(tag => `<span class="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded-md text-xs text-primary-400">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
         `;
 
         if (data.shop_response) {
-            contentHtml += `<br><br><em>Do'kon holati: ${data.shop_response}</em>`;
+            contentHtml += `<div class="mt-4 pt-4 border-t border-white/5 text-xs italic text-slate-500 text-right">Do'kon holati: ${data.shop_response}</div>`;
         }
 
         if (data.product_images && data.product_images.length > 0) {
-            contentHtml += `<div class="product-images">`;
+            contentHtml += `<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">`;
             data.product_images.forEach(imgUrl => {
-                contentHtml += `<img src="${imgUrl}" alt="Product Image" onclick="window.open('${imgUrl}', '_blank')">`;
+                contentHtml += `
+                    <div class="aspect-square overflow-hidden rounded-lg border border-white/10 group cursor-pointer hover:border-primary transition-all">
+                        <img src="${imgUrl}" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition-transform" onclick="window.open('${imgUrl}', '_blank')">
+                    </div>
+                `;
             });
             contentHtml += `</div>`;
         }
@@ -143,15 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addMessage(sender, htmlContent) {
+        const isAi = sender === 'ai';
         const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}`;
+        msgDiv.className = `flex gap-4 max-w-[90%] animate-in fade-in slide-in-from-bottom-4 duration-300 ${!isAi ? 'flex-row-reverse ml-auto' : ''}`;
 
         const avatar = document.createElement('div');
-        avatar.className = 'avatar';
-        avatar.textContent = sender === 'ai' ? '🤖' : '👤';
+        avatar.className = `w-10 h-10 rounded-full flex items-center justify-center text-xl flex-shrink-0 shadow-lg ${isAi ? 'bg-accent shadow-accent/20' : 'bg-primary shadow-primary/20'}`;
+        avatar.textContent = isAi ? '🤖' : '👤';
 
         const content = document.createElement('div');
-        content.className = 'content';
+        content.className = `border rounded-2xl p-4 leading-relaxed text-[0.95rem] ${
+            isAi 
+            ? 'bg-white/5 border-white/10 rounded-tl-none' 
+            : 'bg-primary/20 border-primary/30 rounded-tr-none text-white'
+        }`;
         content.innerHTML = htmlContent;
 
         msgDiv.appendChild(avatar);
@@ -165,21 +188,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function addLoadingIndicator() {
         const id = 'loading-' + Date.now();
         const msgDiv = document.createElement('div');
-        msgDiv.className = `message ai`;
+        msgDiv.className = `flex gap-4 max-w-[90%] animate-in fade-in slide-in-from-bottom-4 duration-300`;
         msgDiv.id = id;
 
         const avatar = document.createElement('div');
-        avatar.className = 'avatar';
+        avatar.className = 'w-10 h-10 rounded-full bg-accent flex items-center justify-center text-xl flex-shrink-0 shadow-lg shadow-accent/20';
         avatar.textContent = '🤖';
 
         const content = document.createElement('div');
-        content.className = 'content typing-indicator';
-        content.innerHTML = '<span></span><span></span><span></span>';
+        content.className = 'bg-white/5 border border-white/10 rounded-2xl rounded-tl-none p-4 flex gap-1';
+        content.innerHTML = `
+            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span>
+        `;
 
         msgDiv.appendChild(avatar);
         msgDiv.appendChild(content);
 
         outputArea.appendChild(msgDiv);
+        scrollToBottom();
         return id;
     }
 
@@ -189,23 +217,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setLoading(isLoading) {
-        // No-op or remove if unused elsewhere, but kept for compatibility just in case
-        /*
-        sendBtn.disabled = isLoading;
-        if (productNameInput) productNameInput.disabled = isLoading;
-        if (productBrandInput) productBrandInput.disabled = isLoading;
-
-        if (isLoading) {
-            sendBtn.innerHTML = '<span>Jarayonda...</span>';
-        } else {
-            sendBtn.innerHTML = '<span>Yaratish</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
-        }
-        */
+        // Kept for compatibility if used by other parts of the app
     }
 
     function scrollToBottom() {
         if (outputArea) {
-            outputArea.scrollTop = outputArea.scrollHeight;
+            outputArea.scrollTo({
+                top: outputArea.scrollHeight,
+                behavior: 'smooth'
+            });
         }
     }
 });

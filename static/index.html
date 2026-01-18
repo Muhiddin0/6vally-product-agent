@@ -1,69 +1,191 @@
-<!DOCTYPE html>
-<html lang="uz">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="uz" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6Valley AI Product Agent</title>
-    <link rel="icon" href="https://venu.uz/favicon.ico?favicon.0e950d5c.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
-</head>
+    <link
+      rel="icon"
+      href="https://venu.uz/favicon.ico?favicon.0e950d5c.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: "#0f172a",
+                panel: "rgba(30, 41, 59, 0.7)",
+                border: "rgba(148, 163, 184, 0.1)",
+              },
+              primary: "#3b82f6",
+              accent: "#8b5cf6",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-[#0f172a] text-slate-200 min-h-screen font-sans antialiased;
+          background-image:
+            radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+            radial-gradient(
+              at 50% 0%,
+              hsla(225, 39%, 30%, 1) 0,
+              transparent 50%
+            ),
+            radial-gradient(
+              at 100% 0%,
+              hsla(339, 49%, 30%, 1) 0,
+              transparent 50%
+            );
+        }
+      }
+      @layer components {
+        .glass-panel {
+          @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+        }
+        .btn-primary {
+          @apply w-full py-3 px-6 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-xl hover:opacity-90 transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+        }
+        .input-field {
+          @apply w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-black/40 transition-all;
+        }
+      }
+    </style>
+  </head>
 
-<body>
-    <div class="container">
-        <header>
-            <div class="logo-icon">✨</div>
-            <h1>6Valley Product AI Agent</h1>
-        </header>
-
-        <div class="main-layout">
-            <aside class="sidebar">
-                <div class="glass-panel">
-                    <h3>Ommaviy Yuklash</h3>
-                    <form id="upload-form">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" id="venu-email" value="themodestn@venu.uz" placeholder="example@venu.uz"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label>Parol</label>
-                            <input type="password" id="venu-password" value="Themodestn@venu3001.uz"
-                                placeholder="********" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Excel Fayl</label>
-                            <div class="file-drop-area" id="drop-area">
-                                <span class="file-msg">Faylni tanlang yoki shu yerga tashlang</span>
-                                <input class="file-input" type="file" id="excel-file" accept=".xlsx, .xls">
-                            </div>
-                        </div>
-                        <button type="submit" id="upload-btn">Boshlash</button>
-                    </form>
-                </div>
-            </aside>
-
-            <main>
-                <div id="output-area">
-                    <!-- Initial Welcome Message -->
-                    <div class="message ai">
-                        <div class="avatar">🤖</div>
-                        <div class="content">
-                            Salom! Men sizning sun’iy intellekt yordamchingizman.
-                            <br>
-                            - Chap tomondagi menyu orqali Excel fayl yuklang.
-                        </div>
-                    </div>
-                </div>
-            </main>
+  <body class="flex items-center justify-center p-4 md:p-8">
+    <div
+      class="glass-panel w-full max-w-6xl min-h-[85vh] flex flex-col overflow-hidden bg-slate-900/60"
+    >
+      <!-- Header -->
+      <header class="p-6 border-b border-white/10 flex items-center gap-4">
+        <div
+          class="text-3xl bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent transform hover:scale-110 transition-transform cursor-default"
+        >
+          ✨
         </div>
-    </div>
+        <h1 class="text-xl font-bold tracking-tight text-white">
+          6Valley Product AI Agent
+        </h1>
+      </header>
+
+      <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside
+          class="w-full md:w-80 bg-black/20 border-r border-white/10 p-6 flex flex-col gap-6 overflow-y-auto"
+        >
+          <div class="space-y-6">
+            <div>
+              <h3
+                class="text-sm font-semibold text-white/90 mb-4 flex items-center gap-2"
+              >
+                <span class="p-1 bg-primary/20 rounded text-primary">📦</span>
+                Ommaviy Yuklash
+              </h3>
+              <form id="upload-form" class="space-y-4">
+                <div class="space-y-2">
+                  <label
+                    class="text-xs font-medium text-slate-400 uppercase tracking-wider"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="venu-email"
+                    value="themodestn@venu.uz"
+                    placeholder="example@venu.uz"
+                    class="input-field"
+                    required
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="text-xs font-medium text-slate-400 uppercase tracking-wider"
+                    >Parol</label
+                  >
+                  <input
+                    type="password"
+                    id="venu-password"
+                    value="Themodestn@venu3001.uz"
+                    placeholder="********"
+                    class="input-field"
+                    required
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="text-xs font-medium text-slate-400 uppercase tracking-wider"
+                    >Excel Fayl</label
+                  >
+                  <div id="drop-area" class="relative group cursor-pointer">
+                    <div
+                      class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center transition-all group-hover:border-primary group-hover:bg-primary/5"
+                    >
+                      <p
+                        class="file-msg text-sm text-slate-400 pointer-events-none"
+                      >
+                        Faylni tanlang yoki shu yerga tashlang
+                      </p>
+                    </div>
+                    <input
+                      type="file"
+                      id="excel-file"
+                      accept=".xlsx, .xls"
+                      class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    />
+                  </div>
+                </div>
+                <button type="submit" id="upload-btn" class="btn-primary">
+                  Boshlash
+                </button>
+              </form>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col p-6 overflow-hidden">
+          <div
+            id="output-area"
+            class="flex-1 overflow-y-auto space-y-6 pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+          >
+            <!-- Initial Welcome Message -->
+            <div
+              class="flex gap-4 max-w-[90%] animate-in fade-in slide-in-from-bottom-4 duration-300"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-xl flex-shrink-0 shadow-lg shadow-accent/20"
+              >
+                🤖
+              </div>
+              <div
+                class="bg-white/5 border border-white/10 rounded-2xl p-4 leading-relaxed text-[0.95rem]"
+              >
+                Salom! Men sizning sun’iy intellekt yordamchingizman.
+                <br />
+                - Chap tomondagi menyu orqali Excel fayl yuklang.
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
 
     <script src="/static/app.js"></script>
-</body>
-
+  </body>
 </html>
