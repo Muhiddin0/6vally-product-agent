@@ -106,6 +106,10 @@
           </h1>
         </div>
         <div class="flex gap-4">
+          <button id="add-btn" class="btn-secondary flex items-center gap-2">
+            <span>➕</span>
+            <span>Yangi qo'shish</span>
+          </button>
           <button id="save-btn" class="btn-primary flex items-center gap-2">
             <span id="save-icon">💾</span>
             <span id="save-text">Saqlash</span>
@@ -145,6 +149,7 @@
               <th class="px-4 py-2 font-medium">Nomi (UZ)</th>
               <th class="px-4 py-2 font-medium">MXIK Code</th>
               <th class="px-4 py-2 font-medium">Package Code</th>
+              <th class="px-4 py-2 font-medium w-20">Amallar</th>
             </tr>
           </thead>
           <tbody id="table-body">
@@ -159,6 +164,75 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div
+      id="add-modal"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4"
+    >
+      <div class="glass-panel w-full max-w-md bg-slate-900 border-white/20 p-8">
+        <h2 class="text-xl font-bold mb-6 text-white text-center">
+          Yangi MXIK qo'shish
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm text-slate-400 mb-1"
+              >ID (Category ID)</label
+            >
+            <input
+              type="text"
+              id="new-id"
+              class="input-table py-2 px-3"
+              placeholder="Masalan: 123"
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-1">Nomi (RU)</label>
+            <input
+              type="text"
+              id="new-name"
+              class="input-table py-2 px-3"
+              placeholder="Nomi RU"
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-1">Nomi (UZ)</label>
+            <input
+              type="text"
+              id="new-uz-name"
+              class="input-table py-2 px-3"
+              placeholder="Nomi UZ"
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-1">MXIK Code</label>
+            <input
+              type="text"
+              id="new-mxik"
+              class="input-table py-2 px-3"
+              placeholder="MXIK Code"
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-1"
+              >Package Code</label
+            >
+            <input
+              type="text"
+              id="new-package"
+              class="input-table py-2 px-3"
+              placeholder="Package Code"
+            />
+          </div>
+        </div>
+        <div class="flex gap-4 mt-8">
+          <button id="cancel-add" class="btn-secondary flex-1">
+            Bekor qilish
+          </button>
+          <button id="confirm-add" class="btn-primary flex-1">Qo'shish</button>
+        </div>
       </div>
     </div>
 
@@ -192,23 +266,36 @@
           tr.className =
             "bg-white/5 group hover:bg-white/10 transition-colors rounded-lg overflow-hidden";
 
-          // columns: category_id, name, uz_name, mxik code, package code
-          // Note: The Excel columns might vary, we should check the actual keys
-          const colKeys = Object.keys(row).filter((k) => k !== "row_id");
-
           tr.innerHTML = `
-                    <td class="px-4 py-3 text-slate-400 text-sm rounded-l-xl">${row[colKeys[0]] || ""}</td>
-                    <td class="px-4 py-3 font-medium text-slate-200">${row[colKeys[1]] || ""}</td>
-                    <td class="px-4 py-3 text-slate-300">${row[colKeys[2]] || ""}</td>
                     <td class="px-4 py-3">
-                        <input type="text" value="${row["mxik code"] || ""}" 
+                        <input type="text" value="${row["category_id"] || ""}" 
+                            data-row-id="${row.row_id}" data-field="category_id"
+                            class="input-table category-input">
+                    </td>
+                    <td class="px-4 py-3">
+                        <input type="text" value="${row["name"] || ""}" 
+                            data-row-id="${row.row_id}" data-field="name"
+                            class="input-table name-input">
+                    </td>
+                    <td class="px-4 py-3">
+                        <input type="text" value="${row["uz_name"] || ""}" 
+                            data-row-id="${row.row_id}" data-field="uz_name"
+                            class="input-table uz-name-input">
+                    </td>
+                    <td class="px-4 py-3">
+                        <input type="text" value="${row["mxik_code"] || ""}" 
                             data-row-id="${row.row_id}" data-field="mxik_code"
                             class="input-table mxik-input">
                     </td>
-                    <td class="px-4 py-3 rounded-r-xl">
-                        <input type="text" value="${row["package code"] || ""}" 
+                    <td class="px-4 py-3">
+                        <input type="text" value="${row["package_code"] || ""}" 
                             data-row-id="${row.row_id}" data-field="package_code"
                             class="input-table package-input">
+                    </td>
+                    <td class="px-4 py-3 rounded-r-xl">
+                        <button class="delete-btn text-slate-500 hover:text-red-400 p-2 transition-colors" data-row-id="${row.row_id}">
+                            🗑️
+                        </button>
                     </td>
                 `;
           tbody.appendChild(tr);
@@ -221,7 +308,75 @@
             e.target.classList.add("border-primary/50", "bg-primary/10");
           });
         });
+
+        // Add event listeners to delete buttons
+        document.querySelectorAll(".delete-btn").forEach((btn) => {
+          btn.addEventListener("click", async (e) => {
+            const rowId = e.currentTarget.dataset.rowId;
+            if (confirm("Ushbu itemni o'chirishga aminmisiz?")) {
+              try {
+                const response = await fetch(`/api/mxik-delete/${rowId}`, {
+                  method: "DELETE",
+                });
+                if (response.ok) {
+                  loadData(); // Refresh table
+                } else {
+                  alert("O'chirishda xatolik yuz berdi");
+                }
+              } catch (error) {
+                console.error("Delete error:", error);
+                alert("Serverga ulanishda xatolik");
+              }
+            }
+          });
+        });
       }
+
+      // Add Modal functionality
+      const addModal = document.getElementById("add-modal");
+      document.getElementById("add-btn").addEventListener("click", () => {
+        addModal.classList.remove("hidden");
+      });
+
+      document.getElementById("cancel-add").addEventListener("click", () => {
+        addModal.classList.add("hidden");
+      });
+
+      document.getElementById("confirm-add").addEventListener("click", async () => {
+        const item = {
+          category_id: document.getElementById("new-id").value,
+          name: document.getElementById("new-name").value,
+          uz_name: document.getElementById("new-uz-name").value,
+          mxik_code: document.getElementById("new-mxik").value,
+          package_code: document.getElementById("new-package").value,
+        };
+
+        if (!item.category_id || !item.name) {
+          alert("Iltimos, ID va Nomni kiriting");
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/mxik-add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ item }),
+          });
+
+          if (response.ok) {
+            addModal.classList.add("hidden");
+            // Clear inputs
+            document.querySelectorAll("#add-modal input").forEach(i => i.value = "");
+            loadData(); // Refresh table
+          } else {
+            const error = await response.json();
+            alert("Xatolik: " + (error.detail || "Noma'lum xatolik"));
+          }
+        } catch (error) {
+          console.error("Add error:", error);
+          alert("Serverga ulanishda xatolik");
+        }
+      });
 
       // Search functionality
       document.getElementById("search-input").addEventListener("input", (e) => {
@@ -252,14 +407,18 @@
 
           const updates = Array.from(modifiedRows).map((rowId) => {
             const row = { row_id: rowId };
-            const mxikInput = document.querySelector(
-              `.mxik-input[data-row-id="${rowId}"]`,
-            );
-            const pkgInput = document.querySelector(
-              `.package-input[data-row-id="${rowId}"]`,
-            );
+            const catInput = document.querySelector(`.category-input[data-row-id="${rowId}"]`);
+            const nameInput = document.querySelector(`.name-input[data-row-id="${rowId}"]`);
+            const uzNameInput = document.querySelector(`.uz-name-input[data-row-id="${rowId}"]`);
+            const mxikInput = document.querySelector(`.mxik-input[data-row-id="${rowId}"]`);
+            const pkgInput = document.querySelector(`.package-input[data-row-id="${rowId}"]`);
+            
+            if (catInput) row.category_id = catInput.value;
+            if (nameInput) row.name = nameInput.value;
+            if (uzNameInput) row.uz_name = uzNameInput.value;
             if (mxikInput) row.mxik_code = mxikInput.value;
             if (pkgInput) row.package_code = pkgInput.value;
+            
             return row;
           });
 
@@ -279,6 +438,7 @@
               loadData(); // Refresh data
             } else {
               const error = await response.json();
+              console.log("🚀 ~ .addEventListener ~ error:", error)
               alert("Xatolik: " + (error.detail || "Noma'lum xatolik"));
             }
           } catch (error) {

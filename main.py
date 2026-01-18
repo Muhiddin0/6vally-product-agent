@@ -132,21 +132,31 @@ async def mxik_codes_page(request: Request):
 
 @app.get("/api/mxik-data", tags=["MXIK Management"])
 async def get_mxik_data():
-    """Fetch MXIK data from Excel file as JSON."""
+    """Fetch MXIK data from Excel file as JSON without headers."""
     try:
         if not os.path.exists(EXCEL_FILE_PATH):
             raise HTTPException(status_code=404, detail="Excel file not found")
 
-        df = pd.read_excel(EXCEL_FILE_PATH, dtype=str)
-        # Ensure 'mxik code' and 'package code' columns exist
-        if "mxik code" not in df.columns:
-            df["mxik code"] = ""
-        if "package code" not in df.columns:
-            df["package code"] = ""
+        # Read without header
+        df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
 
-        # Use index as a unique ID for easier row identification
-        df["row_id"] = df.index
-        data = df.to_dict(orient="records")
+        # Ensure we have at least 5 columns
+        while len(df.columns) < 5:
+            df[len(df.columns)] = ""
+
+        # Map indices to names for the UI
+        data = []
+        for idx, row in df.iterrows():
+            data.append(
+                {
+                    "row_id": idx,
+                    "category_id": row[0] if 0 in row else "",
+                    "name": row[1] if 1 in row else "",
+                    "uz_name": row[2] if 2 in row else "",
+                    "mxik_code": row[3] if 3 in row else "",
+                    "package_code": row[4] if 4 in row else "",
+                }
+            )
         return data
     except Exception as e:
         logger.error(f"Error reading Excel: {e}")
@@ -155,7 +165,7 @@ async def get_mxik_data():
 
 @app.post("/api/mxik-update", tags=["MXIK Management"])
 async def update_mxik_data(request: Request):
-    """Update rows in the MXIK Excel file."""
+    """Update rows in the MXIK Excel file without headers."""
     try:
         body = await request.json()
         updates = body.get("updates", [])
@@ -163,20 +173,78 @@ async def update_mxik_data(request: Request):
         if not os.path.exists(EXCEL_FILE_PATH):
             raise HTTPException(status_code=404, detail="Excel file not found")
 
-        df = pd.read_excel(EXCEL_FILE_PATH, dtype=str)
+        df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
 
         for update in updates:
             row_id = int(update.get("row_id"))
             if 0 <= row_id < len(df):
+                if "category_id" in update:
+                    df.iloc[row_id, 0] = str(update["category_id"])
+                if "name" in update:
+                    df.iloc[row_id, 1] = str(update["name"])
+                if "uz_name" in update:
+                    df.iloc[row_id, 2] = str(update["uz_name"])
                 if "mxik_code" in update:
-                    df.at[row_id, "mxik code"] = update["mxik_code"]
+                    df.iloc[row_id, 3] = str(update["mxik_code"])
                 if "package_code" in update:
-                    df.at[row_id, "package code"] = update["package_code"]
+                    df.iloc[row_id, 4] = str(update["package_code"])
 
-        df.to_excel(EXCEL_FILE_PATH, index=False)
+        df.to_excel(EXCEL_FILE_PATH, index=False, header=False)
         return {"message": "Dinamik ravishda saqlandi"}
     except Exception as e:
         logger.error(f"Error updating Excel: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/mxik-add", tags=["MXIK Management"])
+async def add_mxik_item(request: Request):
+    """Add a new row to the MXIK Excel file without headers."""
+    try:
+        body = await request.json()
+        item = body.get("item", {})
+
+        if not os.path.exists(EXCEL_FILE_PATH):
+            raise HTTPException(status_code=404, detail="Excel file not found")
+
+        df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
+
+        # Construct new row list
+        new_row = [
+            str(item.get("category_id", "")),
+            str(item.get("name", "")),
+            str(item.get("uz_name", "")),
+            str(item.get("mxik_code", "")),
+            str(item.get("package_code", "")),
+        ]
+
+        df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+        df.to_excel(EXCEL_FILE_PATH, index=False, header=False)
+        return {"message": "Yangi item muvaffaqiyatli qo'shildi"}
+    except Exception as e:
+        import traceback
+
+        traceback.print_exc()
+        logger.error(f"Error adding to Excel: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.delete("/api/mxik-delete/{row_id}", tags=["MXIK Management"])
+async def delete_mxik_item(row_id: int):
+    """Delete a row from the MXIK Excel file without headers."""
+    try:
+        if not os.path.exists(EXCEL_FILE_PATH):
+            raise HTTPException(status_code=404, detail="Excel file not found")
+
+        df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
+
+        if 0 <= row_id < len(df):
+            df = df.drop(df.index[row_id])
+            df.to_excel(EXCEL_FILE_PATH, index=False, header=False)
+            return {"message": "Item muvaffaqiyatli o'chirildi"}
+        else:
+            raise HTTPException(status_code=404, detail="Row not found")
+    except Exception as e:
+        logger.error(f"Error deleting from Excel: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
