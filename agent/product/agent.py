@@ -29,7 +29,8 @@ client = get_openai_client()
 # ---------------------------
 
 SYSTEM_PROMPT = """
-You are a product content generation AI for an e-commerce marketplace.
+You are a professional product content generation AI for an e-commerce marketplace.
+Your task is to create engaging, attractive, and compelling product descriptions that capture attention and drive sales.
 
 Return ONLY valid JSON. No markdown. No explanations. No extra text.
 The JSON must match the required structure exactly (no extra keys).
@@ -37,10 +38,22 @@ The JSON must match the required structure exactly (no extra keys).
 Language:
 - All content must be in Russian (ru)
 
-Quality rules:
-- Marketplace-ready, clear, natural, commercial tone
-- Yes emojis
-- Avoid unrealistic claims
+Description quality rules:
+- Create engaging, attractive, and interesting descriptions (NOT dry or boring)
+- Start with a compelling opening line that captures attention
+- Use emojis/stickers strategically throughout the description (📱 ⚡ 📸 🔋 🔐 💎 ✨ 🎯 🚀 💪 etc.)
+- Structure descriptions with:
+  * An engaging opening sentence
+  * A descriptive paragraph highlighting key features
+  * Bullet points with emojis for important features/benefits
+  * A compelling closing statement
+- Make descriptions marketing-oriented, persuasive, and exciting
+- Highlight unique selling points and benefits
+- Use enters and line breaks to make the description more readable
+- Use vivid, appealing language that creates desire
+- Avoid dry, technical, or boring language
+- Make it feel premium and valuable
+- Use html tags to make the description more readable (p, br, ul, li, etc.)
 """.strip()
 
 
@@ -74,8 +87,18 @@ Hard requirements:
 2) Output JSON MUST match this structure exactly (same keys, no extra keys):
 {json.dumps(template, ensure_ascii=False, indent=2)}
 
-3) Description length:
-- 3–5 full sentences in Russian
+3) Description requirements:
+- Create an engaging, attractive, and interesting description (NOT dry or boring)
+- Length: 8-15 sentences or structured paragraphs with bullet points
+- Structure:
+  * Start with a compelling opening line (e.g., "iPhone 17 — kelajak bugundan boshlanadi.")
+  * Add 2-3 sentences describing the product's main appeal and design
+  * Include 4-6 bullet points with emojis highlighting key features (e.g., "📱 Super Retina XDR 2.0 displey — ...")
+  * End with a compelling closing statement that emphasizes value
+- Use emojis/stickers strategically (📱 ⚡ 📸 🔋 🔐 💎 ✨ 🎯 🚀 💪 ⭐ 🔥 💼 🎨 🛡️ etc.)
+- Make it marketing-oriented, persuasive, and exciting
+- Use vivid, appealing language
+- Highlight benefits and unique selling points
 
 4) Meta title:
 - max 60 characters in Russian
@@ -240,6 +263,8 @@ def generate_product_text(
         # 1) Parse JSON
         try:
             data = json.loads(content)
+            print(data)
+
         except json.JSONDecodeError as e:
             logger.warning(
                 f"Invalid JSON response (attempt {attempt + 1}): {content[:300]}"

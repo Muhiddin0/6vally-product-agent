@@ -116,13 +116,13 @@ class BulkUploadService:
                     # Poster generation
                     product_params_str = f"{product.name}\n{product.description}"
 
-                    main_image = generate_poster(
-                        template_image_path=template_image_path,
-                        product_image_path=additional_images[0],
-                        product_params=product_params_str,
-                    )
-
-                    # main_image = additional_images[0]
+                    # main_image = generate_poster(
+                    #     template_image_path=template_image_path,
+                    #     product_image_path=additional_images[0],
+                    #     product_params=product_params_str,
+                    # )
+                    
+                    main_image = additional_images[0]
 
                     # Category Selection
                     await self._log("📂 Kategoriya tanlanmoqda...")
