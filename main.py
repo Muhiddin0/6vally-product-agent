@@ -140,11 +140,12 @@ async def get_mxik_data():
         # Read without header
         df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
 
-        # Ensure we have at least 5 columns
-        while len(df.columns) < 5:
+        # Ensure we have at least 4 columns
+        while len(df.columns) < 4:
             df[len(df.columns)] = ""
 
         # Map indices to names for the UI
+        # Excel structure: Column 0 = ID, Column 1 = Name, Column 2 = mixk, Column 3 = package
         data = []
         for idx, row in df.iterrows():
             data.append(
@@ -152,9 +153,8 @@ async def get_mxik_data():
                     "row_id": idx,
                     "category_id": row[0] if 0 in row else "",
                     "name": row[1] if 1 in row else "",
-                    "uz_name": row[2] if 2 in row else "",
-                    "mxik_code": row[3] if 3 in row else "",
-                    "package_code": row[4] if 4 in row else "",
+                    "mxik_code": row[2] if 2 in row else "",
+                    "package_code": row[3] if 3 in row else "",
                 }
             )
         return data
@@ -176,18 +176,22 @@ async def update_mxik_data(request: Request):
         df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
 
         for update in updates:
-            row_id = int(update.get("row_id"))
+            row_id_value = update.get("row_id")
+            if row_id_value is None:
+                continue
+            try:
+                row_id = int(row_id_value)
+            except (ValueError, TypeError):
+                continue
             if 0 <= row_id < len(df):
                 if "category_id" in update:
                     df.iloc[row_id, 0] = str(update["category_id"])
                 if "name" in update:
                     df.iloc[row_id, 1] = str(update["name"])
-                if "uz_name" in update:
-                    df.iloc[row_id, 2] = str(update["uz_name"])
                 if "mxik_code" in update:
-                    df.iloc[row_id, 3] = str(update["mxik_code"])
+                    df.iloc[row_id, 2] = str(update["mxik_code"])
                 if "package_code" in update:
-                    df.iloc[row_id, 4] = str(update["package_code"])
+                    df.iloc[row_id, 3] = str(update["package_code"])
 
         df.to_excel(EXCEL_FILE_PATH, index=False, header=False)
         return {"message": "Dinamik ravishda saqlandi"}
@@ -208,13 +212,16 @@ async def add_mxik_item(request: Request):
 
         df = pd.read_excel(EXCEL_FILE_PATH, header=None, dtype=str)
 
-        # Construct new row list
+        # Construct new row list, handling None values properly
+        def safe_str(value):
+            """Convert value to string, handling None values."""
+            return str(value) if value is not None else ""
+        
         new_row = [
-            str(item.get("category_id", "")),
-            str(item.get("name", "")),
-            str(item.get("uz_name", "")),
-            str(item.get("mxik_code", "")),
-            str(item.get("package_code", "")),
+            safe_str(item.get("category_id")),
+            safe_str(item.get("name")),
+            safe_str(item.get("mxik_code")),
+            safe_str(item.get("package_code")),
         ]
 
         df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)

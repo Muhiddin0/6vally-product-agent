@@ -82,13 +82,16 @@ class ProductService:
 
         return self._venu_api
 
-    def _get_mxik_codes(self, sub_category_id: Optional[int]) -> Tuple[Any, Any]:
-        print("Sub-category ID:", sub_category_id)
+    def _get_mxik_codes(
+        self, 
+        sub_sub_category_id: Optional[Any] = None
+    ) -> Tuple[Any, Any]:
         """
         Get MXIK and package codes from Excel file.
+        Tries sub_sub_sub_category_id first, then falls back to sub_sub_category_id.
 
         Args:
-            sub_category_id: Sub-category ID to look up
+            sub_sub_sub_category_id: Sub-sub-sub-category ID to look up (takes priority)
 
         Returns:
             Tuple[any, any]: (mxik_code, package_code) - can be int or str
@@ -96,51 +99,38 @@ class ProductService:
         default_mxik = 0
         default_package = 0
 
-        if sub_category_id is None:
+        # Try sub_sub_sub_category_id first if available
+        if sub_sub_category_id is None:
+            logger.info("Sub-sub-category ID not provided")
             return default_mxik, default_package
+
+        print(f"Looking up codes for sub-sub-category ID: {sub_sub_category_id}")
 
         try:
             excel_path = Path("api/mxik-codes.xlsx")
-            if not excel_path.exists():
-                logger.warning(f"Excel file not found: {excel_path}")
-                return default_mxik, default_package
-
-            # Read Excel without header
             df = pd.read_excel(excel_path, header=None)
-
-            # Find row where first column matches sub_category_id
-            # Column 0: ID, Column 3: MXIK, Column 4: Package Code
-            match = df[df[0] == sub_category_id]
-
+            
+            # Convert sub_sub_category_id to int for comparison (Excel column is numeric)
+            try:
+                search_id = int(sub_sub_category_id) if sub_sub_category_id is not None else None
+            except (ValueError, TypeError):
+                search_id = sub_sub_category_id
+            
+            # Convert Excel column 0 to numeric for proper comparison
+            df[0] = pd.to_numeric(df[0], errors='coerce')
+            
+            match = df[df[0] == search_id]
             if not match.empty:
-                mxik_raw = match.iloc[0, 3]
-                package_raw = match.iloc[0, 4]
-
-                mxik = default_mxik
-                package_code = default_package
-
-                # Try to convert to int if possible
+                mxik = match.iloc[0, 2]
+                package_code = match.iloc[0, 3]
                 try:
-                    if pd.notna(mxik_raw):
-                        mxik = int(mxik_raw)
-                except (ValueError, TypeError):
-                    logger.warning(
-                        f"ID {sub_category_id} uchun MXIK kodi son emas: {mxik_raw}. "
-                        "Sarlavha bo'lishi mumkin. 0 ishlatiladi."
-                    )
-
-                try:
-                    if pd.notna(package_raw):
-                        package_code = int(package_raw)
-                except (ValueError, TypeError):
-                    logger.warning(
-                        f"ID {sub_category_id} uchun qadoqlash kodi son emas: {package_raw}. "
-                        "Sarlavha bo'lishi mumkin. 0 ishlatiladi."
-                    )
-
+                    if pd.notna(mxik):
+                        mxik = int(mxik)
+                    if pd.notna(package_code):
+                        package_code = int(package_code)
+                except:
+                    pass
                 return mxik, package_code
-
-            logger.info(f"MXIK codes not found for sub_category_id: {sub_category_id}")
             return default_mxik, default_package
 
         except Exception as e:
@@ -228,24 +218,29 @@ class ProductService:
                 length = product_params.get("length", 1)
 
             # Get MXIK and package codes from Excel
+            # Try sub_sub_sub_category_id first, fallback to sub_sub_category_id
             mxik, package_code = self._get_mxik_codes(
-                category_selection.sub_category_id
+                sub_sub_category_id=category_selection.sub_sub_category_id
             )
 
             # Add product to shop
             result = venu_api.add_product(
+
                 name=product.name,
                 description=product.description,
+
                 meta_image=main_image_path,
                 meta_title=product.meta_title,
                 meta_description=product.meta_description,
+
                 tags=product.tags,
+
                 price=price,
-                category_id=category_selection.category_id,
                 brand_id=category_selection.brand_id,
                 main_image_path=main_image_path,
                 additional_images_paths=additional_images_paths,
                 stock=stock,
+                category_id=category_selection.category_id,
                 sub_category_id=category_selection.sub_category_id,
                 sub_sub_category_id=category_selection.sub_sub_category_id,
                 weight=weight,

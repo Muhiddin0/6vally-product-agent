@@ -166,7 +166,7 @@ class BulkUploadService:
 
                     if shop_saved:
                         await self._log(
-                            f"✅ Yuklandi! ID: {shop_response.get('id', 'Unknown')}"
+                            f"✅ Yuklandi! ID:"
                         )
                     else:
                         await self._log(f"❌ Yuklashda xatolik: {shop_response}")

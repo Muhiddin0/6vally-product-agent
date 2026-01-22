@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (dropArea) {
-        dropArea.addEventListener('click', () => excelFileInput.click());
+        // Enable pointer events on drop-area for drag and drop
         dropArea.addEventListener('dragover', (e) => {
             e.preventDefault();
             dropArea.classList.add('drag-over');
@@ -69,11 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ws.onmessage = (event) => {
             const message = event.data;
-            
-            // Update loading status if processing
-            if (isProcessing) {
-                updateLoadingStatus(message);
-            }
 
             // Treat as AI log
             addMessage('ai', `<em>[LOG]</em> ${message}`);
@@ -112,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('password', password);
         formData.append('file', file);
 
-        setProcessingState(true, 'Fayl yuklanmoqda...');
+        setProcessingState(true);
 
         addMessage('user', `📂 Excel yuklash boshlandi: ${file.name}`);
 
@@ -139,26 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setProcessingState(processing, status = 'Ishlanmoqda...') {
         isProcessing = processing;
-        const overlay = document.getElementById('loading-overlay');
-        const statusEl = document.getElementById('loading-status');
         
         if (processing) {
             uploadBtn.disabled = true;
             uploadBtn.textContent = 'Jarayon...';
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
-            statusEl.textContent = status;
         } else {
             uploadBtn.disabled = false;
             uploadBtn.textContent = 'Boshlash';
-            overlay.classList.add('opacity-0', 'pointer-events-none');
-        }
-    }
-
-    function updateLoadingStatus(message) {
-        const statusEl = document.getElementById('loading-status');
-        if (statusEl) {
-            // Clean emojis for status display or keep them for "flavor"
-            statusEl.textContent = message.length > 50 ? message.substring(0, 47) + '...' : message;
         }
     }
 

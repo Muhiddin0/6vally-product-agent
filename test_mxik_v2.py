@@ -20,8 +20,9 @@ def test():
     print("Testing _get_mxik_codes implementation:")
     print("-" * 40)
     for tid in test_ids:
-        mxik, package = service._get_mxik_codes(tid)
-        print(f"Sub-category ID: {tid}")
+        # Test with sub_sub_category_id
+        mxik, package = service._get_mxik_codes(sub_sub_category_id=tid)
+        print(f"Sub-sub-category ID: {tid}")
         print(f"  MXIK:    {mxik} (type: {type(mxik).__name__})")
         print(f"  Package: {package} (type: {type(package).__name__})")
         print("-" * 40)

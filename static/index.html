@@ -66,37 +66,32 @@
           @apply w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-black/40 transition-all;
         }
       }
-      @layer utilities {
-        .loading-overlay {
-          @apply fixed inset-0 bg-slate-900/80 backdrop-blur-md flex flex-col items-center justify-center z-50 transition-all duration-500;
-        }
-        .spinner {
-          @apply w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4;
-        }
-      }
     </style>
   </head>
 
   <body class="flex items-center justify-center p-4 md:p-8">
-    <!-- Loading Overlay -->
-    <div id="loading-overlay" class="loading-overlay opacity-0 pointer-events-none">
-      <div class="spinner"></div>
-      <p id="loading-status" class="text-white font-medium animate-pulse">Tayyorlanmoqda...</p>
-    </div>
-
     <div
       class="glass-panel w-full max-w-6xl min-h-[85vh] flex flex-col overflow-hidden bg-slate-900/60"
     >
       <!-- Header -->
-      <header class="p-6 border-b border-white/10 flex items-center gap-4">
-        <div
-          class="text-3xl bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent transform hover:scale-110 transition-transform cursor-default"
-        >
-          ✨
+      <header class="p-6 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div
+            class="text-3xl bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent transform hover:scale-110 transition-transform cursor-default"
+          >
+            ✨
+          </div>
+          <h1 class="text-xl font-bold tracking-tight text-white">
+            6Valley Product AI Agent
+          </h1>
         </div>
-        <h1 class="text-xl font-bold tracking-tight text-white">
-          6Valley Product AI Agent
-        </h1>
+        <a
+          href="/static/mxik.html"
+          class="px-4 py-2 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all active:scale-[0.98] flex items-center gap-2"
+        >
+          <span>📋</span>
+          <span>MXIK Kodlar</span>
+        </a>
       </header>
 
       <div class="flex flex-1 overflow-hidden">
@@ -121,7 +116,6 @@
                   <input
                     type="email"
                     id="venu-email"
-                    value="themodestn@venu.uz"
                     placeholder="example@venu.uz"
                     class="input-field"
                     required
@@ -135,7 +129,6 @@
                   <input
                     type="password"
                     id="venu-password"
-                    value="Themodestn@venu3001.uz"
                     placeholder="********"
                     class="input-field"
                     required
@@ -148,7 +141,7 @@
                   >
                   <div id="drop-area" class="relative group cursor-pointer">
                     <div
-                      class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center transition-all group-hover:border-primary group-hover:bg-primary/5"
+                      class="border-2 border-dashed border-white/10 rounded-xl p-8 text-center transition-all group-hover:border-primary group-hover:bg-primary/5 pointer-events-none"
                     >
                       <p
                         class="file-msg text-sm text-slate-400 pointer-events-none"
