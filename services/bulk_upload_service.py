@@ -78,7 +78,7 @@ class BulkUploadService:
                     product_name = row_values[0]
                     brand_name = row_values[1]
                     price = row_values[2]
-                    stock = 100
+                    stock = 15
 
                     await self._log(f"--- {index+1}/{total_rows}: {product_name} ---")
                     await self._log(f"🤖 AI kontent yaratmoqda...")
