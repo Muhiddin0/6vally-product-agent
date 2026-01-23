@@ -22,7 +22,13 @@ class BulkUploadService:
         self.product_service = ProductService()
 
     async def process_excel(
-        self, file: UploadFile, email: str, password: str, client_id: str = None
+        self,
+        file: UploadFile,
+        email: str,
+        password: str,
+        client_id: str = None,
+        image_search_site: Optional[str] = None,
+        additional_search: bool = False,
     ):
         """
         Process uploaded Excel file and upload products to Venu.
@@ -92,7 +98,11 @@ class BulkUploadService:
 
                     # Images
                     additional_images = get_product_images_from_yandex(
-                        product_name, brand_name, max_images=3
+                        product_name,
+                        brand_name,
+                        max_images=2,
+                        site=image_search_site,
+                        additional_search=additional_search,
                     )
                     if not additional_images:
                         additional_images = [get_default_image_path()]

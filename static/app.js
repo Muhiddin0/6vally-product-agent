@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const venuEmailInput = document.getElementById('venu-email');
     const venuPasswordInput = document.getElementById('venu-password');
     const excelFileInput = document.getElementById('excel-file');
+    const imageSearchSiteInput = document.getElementById('image-search-site');
+    const additionalSearchCheckbox = document.getElementById('additional-search');
     const uploadBtn = document.getElementById('upload-btn');
     const dropArea = document.getElementById('drop-area');
 
@@ -106,6 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('email', email);
         formData.append('password', password);
         formData.append('file', file);
+        formData.append('image_search_site', imageSearchSiteInput.value || '');
+        formData.append('additional_search', additionalSearchCheckbox.checked ? 'true' : 'false');
 
         setProcessingState(true);
 

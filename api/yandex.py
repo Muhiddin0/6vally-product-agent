@@ -11,7 +11,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 
-def search_yandex_images(search_text: str, max_images: int = 5) -> List[str]:
+def search_yandex_images(search_text: str, max_images: int = 5, site: str = None) -> List[str]:
     """
     Search for images on Yandex and return image URLs.
 
@@ -28,11 +28,13 @@ def search_yandex_images(search_text: str, max_images: int = 5) -> List[str]:
         "format": "json",
         "request": '{"blocks":[{"block":"extra-content","params":{},"version":2},{"block":{"block":"i-react-ajax-adapter:ajax"},"params":{"type":"ImagesApp","ajaxKey":"serpList/fetchByFilters"},"version":2}]}',
         "yu": "5167021401766310918",
-        "iorient": "vertical",
         "source-serpid": "diSP3SNxpgMR8mPtYuUB6g",
         "text": search_text,
-        "uinfo": "sw-1536-sh-864-ww-892-wh-719-pd-1.25-wp-16x9_1920x1080",
+        # "uinfo": "sw-1536-sh-864-ww-892-wh-719-pd-1.25-wp-16x9_1920x1080",
     }
+
+    if site:
+        params["site"] = site
 
     headers = {
         "accept": "application/json, text/javascript, */*; q=0.01",
@@ -161,7 +163,11 @@ def download_image(image_url: str, save_path: str) -> bool:
 
 
 def get_product_images_from_yandex(
-    product_name: str, brand: str, max_images: int = 5
+    product_name: str,
+    brand: str,
+    max_images: int = 5,
+    site: Optional[str] = None,
+    additional_search: bool = False,
 ) -> List[str]:
     """
     Search and download product images from Yandex.
@@ -170,16 +176,24 @@ def get_product_images_from_yandex(
         product_name: Name of the product
         brand: Brand of the product
         max_images: Maximum number of images to download
+        site: Optional website domain to search within (e.g., "wildberries.ru")
+        additional_search: If True, perform additional search without site filter if first search fails
 
     Returns:
         List[str]: List of local file paths to downloaded images
     """
     # Create search query
     search_text = f"{product_name} {brand}"
-    logger.info(f"Yandex'da rasm qidiryapman: {search_text}")
+    site_info = f" ({site})" if site else ""
+    logger.info(f"Yandex'da rasm qidiryapman{site_info}: {search_text}")
 
-    # Search for images
-    image_urls = search_yandex_images(search_text, max_images=max_images)
+    # Search for images with site filter if provided
+    image_urls = search_yandex_images(search_text, max_images=max_images, site=site)
+
+    # If no images found and additional_search is enabled, try without site filter
+    if not image_urls and additional_search and site:
+        logger.info(f"Rasm topilmadi. Qo'shimcha qidiruv boshlandi (barcha saytlar)...")
+        image_urls = search_yandex_images(search_text, max_images=max_images, site=None)
 
     if not image_urls:
         logger.warning(f"Yandex'da rasm topilmadi: {search_text}")
