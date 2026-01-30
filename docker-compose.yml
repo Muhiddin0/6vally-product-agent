@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 6vally-product-agent
+    ports:
+      - "56234:56234"
+    env_file:
+      - .env
+    volumes:
+      # Mount media directories to persist data
+      - ./media:/app/media
+      - ./seo-images:/app/seo-images
+      - ./api/mxik-codes.xlsx:/app/api/mxik-codes.xlsx
+      - ./temps:/app/temps
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:56234/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
