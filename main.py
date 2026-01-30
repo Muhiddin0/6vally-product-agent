@@ -100,6 +100,8 @@ async def upload_excel(
     file: UploadFile = File(...),
     email: str = Form(...),
     password: str = Form(...),
+    image_search_site: str = Form(""),
+    additional_search: str = Form("false"),
 ):
     """
     Upload Excel file for bulk product generation.
@@ -109,9 +111,17 @@ async def upload_excel(
             status_code=400, detail="Faqat Excel fayllar qabul qilinadi (.xlsx, .xls)"
         )
 
+    # Convert additional_search string to boolean
+    additional_search_bool = additional_search.lower() == "true"
+
     # Start processing in background
     background_tasks.add_task(
-        bulk_service.process_excel, file=file, email=email, password=password
+        bulk_service.process_excel,
+        file=file,
+        email=email,
+        password=password,
+        image_search_site=image_search_site if image_search_site else None,
+        additional_search=additional_search_bool,
     )
 
     return {

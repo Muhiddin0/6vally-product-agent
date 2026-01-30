@@ -22,7 +22,13 @@ class BulkUploadService:
         self.product_service = ProductService()
 
     async def process_excel(
-        self, file: UploadFile, email: str, password: str, client_id: str = None
+        self,
+        file: UploadFile,
+        email: str,
+        password: str,
+        client_id: str = None,
+        image_search_site: Optional[str] = None,
+        additional_search: bool = False,
     ):
         """
         Process uploaded Excel file and upload products to Venu.
@@ -78,7 +84,7 @@ class BulkUploadService:
                     product_name = row_values[0]
                     brand_name = row_values[1]
                     price = row_values[2]
-                    stock = 100
+                    stock = 15
 
                     await self._log(f"--- {index+1}/{total_rows}: {product_name} ---")
                     await self._log(f"🤖 AI kontent yaratmoqda...")
@@ -92,7 +98,11 @@ class BulkUploadService:
 
                     # Images
                     additional_images = get_product_images_from_yandex(
-                        product_name, brand_name, max_images=3
+                        product_name,
+                        brand_name,
+                        max_images=5,
+                        site=image_search_site,
+                        additional_search=additional_search,
                     )
                     if not additional_images:
                         additional_images = [get_default_image_path()]
@@ -113,14 +123,6 @@ class BulkUploadService:
                         else:
                             await self._log("⚠️ Templates papkasida rasm topilmadi")
 
-                    # Poster generation
-                    product_params_str = f"{product.name}\n{product.description}"
-
-                    # main_image = generate_poster(
-                    #     template_image_path=template_image_path,
-                    #     product_image_path=additional_images[0],
-                    #     product_params=product_params_str,
-                    # )
                     
                     main_image = additional_images[0]
 
