@@ -393,3 +393,154 @@ class VenuSellerAPI:
             error_msg = f"Unexpected product add error: {e}"
             logger.error(error_msg, exc_info=True)
             return {"status": "error", "message": error_msg}
+
+    def get_product_images(self, product_id: int) -> Optional[Dict[str, Any]]:
+        """
+        Get product images list.
+
+        Args:
+            product_id: Product ID
+
+        Returns:
+            Optional[Dict]: Response containing images and images_full_url, or None if failed
+        """
+        if not self.token:
+            logger.error("Not authenticated. Please login first.")
+            return None
+
+        url = f"{self.BASE_URL}/api/v3/seller/products/get-product-images/{product_id}"
+        try:
+            response = self.session.get(url)
+            response.raise_for_status()
+            result = response.json()
+            logger.info(f"Successfully fetched images for product {product_id}")
+            return result
+        except requests.exceptions.HTTPError as e:
+            logger.error(
+                f"Error fetching product images (status {e.response.status_code}): {e}"
+            )
+            return None
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching product images: {e}")
+            return None
+        except Exception as e:
+            logger.error(
+                f"Unexpected error fetching product images: {e}", exc_info=True
+            )
+            return None
+
+    def delete_image(
+        self, product_id: int, image_name: str, color: Optional[str] = None
+    ) -> bool:
+        """
+        Delete product image.
+
+        Args:
+            product_id: Product ID
+            image_name: Image name to delete
+            color: Color parameter (default: None, will be sent as "null")
+
+        Returns:
+            bool: True if deletion successful, False otherwise
+        """
+        if not self.token:
+            logger.error("Not authenticated. Please login first.")
+            return False
+
+        url = f"{self.BASE_URL}/api/v3/seller/products/delete-image"
+        params = {
+            "id": product_id,
+            "name": image_name,
+            "color": color if color is not None else "null",
+        }
+        try:
+            response = self.session.get(url, params=params)
+            response.raise_for_status()
+            result = response.json()
+            if response.status_code == 200:
+                logger.info(f"Image deleted successfully: {image_name} from product {product_id}")
+                return True
+            else:
+                logger.warning(f"Image deletion returned status {response.status_code}: {result}")
+                return False
+        except requests.exceptions.HTTPError as e:
+            logger.error(
+                f"Error deleting image (status {e.response.status_code}): {e}"
+            )
+            return False
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error deleting image: {e}")
+            return False
+        except Exception as e:
+            logger.error(f"Unexpected error deleting image: {e}", exc_info=True)
+            return False
+
+    def cleanup_broken_images(self, product_id: int) -> int:
+        """
+        Clean up broken images (path is null and status is 404) for a product.
+
+        Args:
+            product_id: Product ID
+
+        Returns:
+            int: Number of images removed
+        """
+        if not self.token:
+            logger.error("Not authenticated. Please login first.")
+            return 0
+
+        try:
+            # Get product images
+            images_data = self.get_product_images(product_id)
+            if not images_data:
+                logger.warning(f"Could not fetch images for product {product_id}")
+                return 0
+
+            # Extract images_full_url array
+            images_full_url = images_data.get("images_full_url", [])
+            if not images_full_url:
+                logger.info(f"No images found for product {product_id}")
+                return 0
+
+            # Filter broken images (path is null and status is 404)
+            broken_images = [
+                img
+                for img in images_full_url
+                if img.get("path") is None and img.get("status") == 404
+            ]
+
+            if not broken_images:
+                logger.info(f"No broken images found for product {product_id}")
+                return 0
+
+            logger.info(
+                f"Found {len(broken_images)} broken image(s) for product {product_id}"
+            )
+
+            # Delete each broken image
+            removed_count = 0
+            for img in broken_images:
+                image_name = img.get("key")
+                if image_name:
+                    if self.delete_image(product_id, image_name):
+                        removed_count += 1
+                    else:
+                        logger.warning(
+                            f"Failed to delete broken image {image_name} from product {product_id}"
+                        )
+                else:
+                    logger.warning(
+                        f"Broken image entry missing 'key' field: {img}"
+                    )
+
+            logger.info(
+                f"Cleaned up {removed_count} broken image(s) for product {product_id}"
+            )
+            return removed_count
+
+        except Exception as e:
+            logger.error(
+                f"Unexpected error during image cleanup for product {product_id}: {e}",
+                exc_info=True,
+            )
+            return 0

@@ -257,6 +257,23 @@ class ProductService:
                 return False, result
 
             logger.info(f"Mahsulot muvaffaqiyatli do'konga saqlandi: {product.name}")
+            
+            # Clean up broken images (path is null and status is 404)
+            try:
+                product_id = result.get("request", {}).get("id")
+                if product_id:
+                    logger.info(f"Rasmlarni tekshiryapman va buzilgan rasmlarni olib tashlayapman (product_id: {product_id})...")
+                    removed_count = venu_api.cleanup_broken_images(product_id)
+                    if removed_count > 0:
+                        logger.info(f"{removed_count} ta buzilgan rasm olib tashlandi (product_id: {product_id})")
+                    else:
+                        logger.info(f"Buzilgan rasm topilmadi (product_id: {product_id})")
+                else:
+                    logger.warning(f"Product ID topilmadi, rasmlarni tozalash o'tkazib yuborildi. Response: {result}")
+            except Exception as e:
+                # Cleanup failures should not affect product creation success
+                logger.warning(f"Rasmlarni tozalashda xatolik (product yaratilgan): {e}")
+            
             return True, result
 
         except ShopSaveError as e:
