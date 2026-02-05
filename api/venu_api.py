@@ -544,3 +544,46 @@ class VenuSellerAPI:
                 exc_info=True,
             )
             return 0
+
+    def update_product_status(self, product_id: int, status: int = 1) -> bool:
+        """
+        Update product status.
+
+        Args:
+            product_id: Product ID
+            status: Status value (default: 1)
+
+        Returns:
+            bool: True if update successful, False otherwise
+        """
+        if not self.token:
+            logger.error("Not authenticated. Please login first.")
+            return False
+
+        url = f"{self.BASE_URL}/api/v3/seller/products/status-update"
+        payload = {
+            "id": product_id,
+            "status": status,
+            "_method": "put",
+        }
+        try:
+            response = self.session.post(url, json=payload)
+            response.raise_for_status()
+            result = response.json()
+            if response.status_code == 200:
+                logger.info(f"Product status updated successfully: product_id={product_id}, status={status}")
+                return True
+            else:
+                logger.warning(f"Status update returned status {response.status_code}: {result}")
+                return False
+        except requests.exceptions.HTTPError as e:
+            logger.error(
+                f"Error updating product status (status {e.response.status_code}): {e}"
+            )
+            return False
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error updating product status: {e}")
+            return False
+        except Exception as e:
+            logger.error(f"Unexpected error updating product status: {e}", exc_info=True)
+            return False
