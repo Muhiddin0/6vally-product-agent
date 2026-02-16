@@ -2,9 +2,14 @@ import json
 import os
 import requests
 import logging
-from typing import Optional
+from PIL import Image
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from api.venu_api import VenuSellerAPI
 from urllib.parse import urlparse
 import hashlib
+
 
 from core.config import settings
 from core.openai_client import get_openai_client
@@ -208,7 +213,9 @@ class ProductImage:
         return image_urls
 
 
-def download_image_from_url(image_url: str, save_dir: str = "media/products") -> Optional[str]:
+def download_image_from_url(
+    image_url: str, save_dir: str = "media/products"
+) -> Optional[str]:
     """
     Download an image from URL and save it to local directory.
 
@@ -227,7 +234,7 @@ def download_image_from_url(image_url: str, save_dir: str = "media/products") ->
         parsed_url = urlparse(image_url)
         path = parsed_url.path
         ext = os.path.splitext(path)[1] or ".jpg"
-        
+
         # Generate unique filename using URL hash
         url_hash = hashlib.md5(image_url.encode()).hexdigest()[:8]
         filename = f"yandex_{url_hash}{ext}"
@@ -250,6 +257,54 @@ def download_image_from_url(image_url: str, save_dir: str = "media/products") ->
         return None
 
 
+
+def format_image(image_path: str, output_quality: int = 100):
+    """
+    Berilgan rasmni 853x1280 o'lchamli oq ramkaga soladi,
+    ikki chekkadan 7px padding qoldiradi va .webp formatida saqlaydi.
+    """
+    # 1. Oq fondagi ramka yaratish (853x1280)
+    canvas_width = 853
+    canvas_height = 1280
+    new_img = Image.new("RGB", (canvas_width, canvas_height), (255, 255, 255))
+
+    # 2. Asl rasmni ochish
+    img = Image.open(image_path).convert("RGB")
+
+    # 3. O'lchamlarni hisoblash
+    # Ikki chekkadan 7px padding qolsa: 853 - (7 * 2) = 839px
+    max_allowed_width = canvas_width - 14
+
+    # Rasmni proporsiyasini saqlab, ruxsat etilgan kenglikka moslash
+    w_percent = max_allowed_width / float(img.size[0])
+    h_size = int((float(img.size[1]) * float(w_percent)))
+
+    # Agar rasm juda uzun bo'lib ketsa, bo'yi bo'yicha ham tekshiramiz
+    if h_size > canvas_height:
+        h_size = canvas_height
+        w_percent = h_size / float(img.size[1])
+        max_allowed_width = int((float(img.size[0]) * float(w_percent)))
+
+    img = img.resize((max_allowed_width, h_size), Image.Resampling.LANCZOS)
+
+    # 4. Markazga joylashtirish koordinatalarini topish
+    offset_x = (canvas_width - img.size[0]) // 2
+    offset_y = (canvas_height - img.size[1]) // 2
+
+    # 5. Rasmni oq fonga qo'yish
+    new_img.paste(img, (offset_x, offset_y))
+
+    # 6. .webp formatida saqlash
+    # Fayl nomini o'zgartirish (masalan: rasm.jpg -> rasm_formatted.webp)
+    base_name = os.path.splitext(image_path)[0]
+    output_path = f"{base_name}_formatted.webp"
+
+    new_img.save(output_path, "WEBP", quality=output_quality)
+
+    print(f"Rasm tayyor: {output_path}")
+    return output_path
+
+
 def get_product_images_from_yandex(
     product_name: str,
     brand_name: Optional[str] = None,
@@ -258,6 +313,8 @@ def get_product_images_from_yandex(
     additional_search: bool = False,
     download_images: bool = True,
     save_dir: str = "media/products",
+    format_images: bool = False,
+    output_quality: int = 100,
 ) -> list[str]:
     """
     Get product images from Yandex using AI filtering.
@@ -270,6 +327,8 @@ def get_product_images_from_yandex(
         additional_search: Optional flag for additional search (not used in current implementation)
         download_images: If True, download images to local files. If False, return URLs
         save_dir: Directory to save downloaded images (default: media/products)
+        format_images: If True, format images to 853x1280 with white background (default: False)
+        output_quality: Quality for formatted images (default: 100)
 
     Returns:
         List of image URLs (if download_images=False) or local file paths (if download_images=True)
@@ -294,8 +353,96 @@ def get_product_images_from_yandex(
         for url in image_urls:
             local_path = download_image_from_url(url, save_dir)
             if local_path:
-                downloaded_paths.append(local_path)
+                # Format image if requested
+                if format_images:
+                    try:
+                        formatted_path = format_image(local_path, output_quality)
+                        downloaded_paths.append(formatted_path)
+                        # Optionally remove original image after formatting
+                        # os.remove(local_path)
+                    except Exception as e:
+                        logger.error(f"Error formatting image {local_path}: {e}", exc_info=True)
+                        # If formatting fails, use original image
+                        downloaded_paths.append(local_path)
+                else:
+                    downloaded_paths.append(local_path)
         return downloaded_paths
 
     # Otherwise, return URLs
     return image_urls
+
+
+def upload_formatted_images_to_backend(
+    product_name: str,
+    brand_name: Optional[str] = None,
+    max_images: int = 2,
+    venu_api_client: Optional["VenuSellerAPI"] = None,
+    save_dir: str = "media/products",
+    output_quality: int = 100,
+) -> list[str]:
+    """
+    Maxuslot uchun rasmlarni formatlab backendga yuborish.
+    
+    Bu funksiya:
+    1. Yandex'dan rasmlarni qidiradi va yuklab oladi
+    2. Har bir rasmini format_image funksiyasi bilan formatlaydi (853x1280, oq fon)
+    3. Formatlangan rasmlarni backendga yuklaydi
+    
+    Args:
+        product_name: Mahsulot nomi
+        brand_name: Brend nomi (ixtiyoriy)
+        max_images: Maksimal rasm soni
+        venu_api_client: VenuSellerAPI client instance (login qilingan bo'lishi kerak)
+        save_dir: Rasmlarni saqlash papkasi
+        output_quality: Formatlangan rasmlar uchun sifat (default: 100)
+    
+    Returns:
+        List[str]: Backenddan qaytgan rasm nomlari ro'yxati
+    """
+    if not venu_api_client:
+        logger.error("VenuSellerAPI client berilmagan!")
+        return []
+    
+    if not venu_api_client.token:
+        logger.error("VenuSellerAPI client login qilinmagan!")
+        return []
+    
+    # Rasmlarni yuklab olish va formatlash
+    formatted_image_paths = get_product_images_from_yandex(
+        product_name=product_name,
+        brand_name=brand_name,
+        max_images=max_images,
+        download_images=True,
+        save_dir=save_dir,
+        format_images=True,
+        output_quality=output_quality,
+    )
+    
+    if not formatted_image_paths:
+        logger.warning(f"'{product_name}' uchun rasmlar topilmadi")
+        return []
+    
+    # Formatlangan rasmlarni backendga yuklash
+    uploaded_image_names = []
+    
+    for index, image_path in enumerate(formatted_image_paths):
+        try:
+            # Birinchi rasm thumbnail, qolganlari product
+            image_type = "thumbnail" if index == 0 else "product"
+            
+            image_name = venu_api_client.upload_image(image_path, image_type)
+            
+            if image_name:
+                uploaded_image_names.append(image_name)
+                logger.info(f"Rasm muvaffaqiyatli yuklandi: {image_name} ({image_type})")
+            else:
+                logger.warning(f"Rasm yuklashda xatolik: {image_path}")
+                
+        except Exception as e:
+            logger.error(f"Rasm yuklashda xatolik ({image_path}): {e}", exc_info=True)
+    
+    logger.info(
+        f"'{product_name}' uchun {len(uploaded_image_names)}/{len(formatted_image_paths)} ta rasm yuklandi"
+    )
+    
+    return uploaded_image_names

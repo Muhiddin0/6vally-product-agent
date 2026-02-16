@@ -103,11 +103,12 @@ class BulkUploadService:
                         max_images=5,
                         site=image_search_site,
                         additional_search=additional_search,
+                        format_images=True,
+                        output_quality=100,
                     )
                     if not additional_images:
                         additional_images = [get_default_image_path()]
 
-                    template_image_path = None
                     templates_dir = "seo-images"
                     if os.path.exists(templates_dir):
                         template_files = [
