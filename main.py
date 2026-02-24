@@ -37,6 +37,7 @@ from fastapi import (
 from fastapi.responses import FileResponse
 import pandas as pd
 import json
+from io import BytesIO
 
 manager = ConnectionManager()
 bulk_service = BulkUploadService(manager)
@@ -276,6 +277,73 @@ async def download_mxik_excel():
         filename="mxik-codes-updated.xlsx",
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     )
+
+
+@app.post("/api/mxik-upload", tags=["MXIK Management"])
+async def upload_mxik_excel(file: UploadFile = File(...)):
+    """Upload and replace the MXIK Excel file with validation."""
+    try:
+        # Validate file extension
+        if not file.filename.endswith((".xlsx", ".xls")):
+            raise HTTPException(
+                status_code=400,
+                detail="Faqat Excel fayllar qabul qilinadi (.xlsx, .xls)"
+            )
+
+        # Read uploaded file
+        contents = await file.read()
+        
+        try:
+            df = pd.read_excel(BytesIO(contents), header=None, dtype=str)
+        except Exception as e:
+            logger.error(f"Error reading Excel file: {e}")
+            raise HTTPException(
+                status_code=400,
+                detail="Excel faylni o'qib bo'lmadi"
+            )
+
+        # Validate column count - must have exactly 4 columns
+        if len(df.columns) != 4:
+            raise HTTPException(
+                status_code=400,
+                detail="Excel fayl aynan 4 ta ustunga ega bo'lishi kerak"
+            )
+
+        # Validate file is not empty
+        if len(df) == 0:
+            raise HTTPException(
+                status_code=400,
+                detail="Excel fayl bo'sh bo'lishi mumkin emas"
+            )
+
+        # Ensure directory exists
+        directory = os.path.dirname(EXCEL_FILE_PATH)
+        if directory:
+            os.makedirs(directory, exist_ok=True)
+
+        # Save to file
+        try:
+            df.to_excel(EXCEL_FILE_PATH, index=False, header=False)
+        except Exception as e:
+            logger.error(f"Error saving Excel file: {e}")
+            raise HTTPException(
+                status_code=500,
+                detail="Faylni saqlashda xatolik yuz berdi"
+            )
+
+        return {
+            "message": "Excel fayl muvaffaqiyatli yuklandi va almashtirildi",
+            "filename": file.filename,
+            "rows": len(df)
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Unexpected error uploading MXIK Excel: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Xatolik yuz berdi: {str(e)}"
+        )
 
 
 if __name__ == "__main__":

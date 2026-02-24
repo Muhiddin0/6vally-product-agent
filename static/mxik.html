@@ -121,6 +121,10 @@
             <span id="save-icon">💾</span>
             <span id="save-text">Saqlash</span>
           </button>
+          <button id="upload-btn" class="btn-secondary flex items-center gap-2">
+            <span>📤</span>
+            <span>Yuklash</span>
+          </button>
           <a
             href="/api/mxik-download"
             class="btn-secondary flex items-center gap-2"
@@ -229,6 +233,44 @@
             Bekor qilish
           </button>
           <button id="confirm-add" class="btn-primary flex-1">Qo'shish</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Excel Modal -->
+    <div
+      id="upload-modal"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4"
+    >
+      <div class="glass-panel w-full max-w-md bg-slate-900 border-white/20 p-8">
+        <h2 class="text-xl font-bold mb-6 text-white text-center">
+          Excel Fayl Yuklash
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm text-slate-400 mb-2">
+              Excel fayl tanlang (.xlsx, .xls)
+            </label>
+            <input
+              type="file"
+              id="excel-file-input"
+              accept=".xlsx,.xls"
+              class="w-full text-sm text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:opacity-90 file:cursor-pointer cursor-pointer"
+            />
+            <p class="text-xs text-slate-500 mt-2">
+              Fayl aynan 4 ta ustunga ega bo'lishi kerak: ID, Name, MXIK Code, Package Code
+            </p>
+          </div>
+          <div id="upload-error" class="hidden bg-red-500/20 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm"></div>
+          <div id="upload-success" class="hidden bg-green-500/20 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm"></div>
+        </div>
+        <div class="flex gap-4 mt-8">
+          <button id="cancel-upload" class="btn-secondary flex-1">
+            Bekor qilish
+          </button>
+          <button id="confirm-upload" class="btn-primary flex-1" disabled>
+            <span id="upload-text">Yuklab yuborish</span>
+          </button>
         </div>
       </div>
     </div>
@@ -438,6 +480,114 @@
             text.innerText = "Saqlash";
           }
         });
+
+      // Upload Modal functionality
+      const uploadModal = document.getElementById("upload-modal");
+      const excelFileInput = document.getElementById("excel-file-input");
+      const confirmUploadBtn = document.getElementById("confirm-upload");
+      const cancelUploadBtn = document.getElementById("cancel-upload");
+      const uploadErrorDiv = document.getElementById("upload-error");
+      const uploadSuccessDiv = document.getElementById("upload-success");
+      const uploadText = document.getElementById("upload-text");
+
+      // Open upload modal
+      document.getElementById("upload-btn").addEventListener("click", () => {
+        uploadModal.classList.remove("hidden");
+        excelFileInput.value = "";
+        uploadErrorDiv.classList.add("hidden");
+        uploadSuccessDiv.classList.add("hidden");
+        confirmUploadBtn.disabled = true;
+      });
+
+      // Close upload modal
+      cancelUploadBtn.addEventListener("click", () => {
+        uploadModal.classList.add("hidden");
+        excelFileInput.value = "";
+        uploadErrorDiv.classList.add("hidden");
+        uploadSuccessDiv.classList.add("hidden");
+        confirmUploadBtn.disabled = true;
+      });
+
+      // Enable/disable upload button based on file selection
+      excelFileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          // Basic client-side validation
+          const validExtensions = [".xlsx", ".xls"];
+          const fileName = file.name.toLowerCase();
+          const isValidExtension = validExtensions.some(ext => fileName.endsWith(ext));
+          
+          if (!isValidExtension) {
+            uploadErrorDiv.textContent = "Faqat Excel fayllar qabul qilinadi (.xlsx, .xls)";
+            uploadErrorDiv.classList.remove("hidden");
+            uploadSuccessDiv.classList.add("hidden");
+            confirmUploadBtn.disabled = true;
+          } else {
+            uploadErrorDiv.classList.add("hidden");
+            uploadSuccessDiv.classList.add("hidden");
+            confirmUploadBtn.disabled = false;
+          }
+        } else {
+          confirmUploadBtn.disabled = true;
+        }
+      });
+
+      // Handle file upload
+      confirmUploadBtn.addEventListener("click", async () => {
+        const file = excelFileInput.files[0];
+        if (!file) {
+          uploadErrorDiv.textContent = "Iltimos, fayl tanlang";
+          uploadErrorDiv.classList.remove("hidden");
+          return;
+        }
+
+        // Disable button and show loading state
+        confirmUploadBtn.disabled = true;
+        uploadText.textContent = "Yuklanmoqda...";
+        uploadErrorDiv.classList.add("hidden");
+        uploadSuccessDiv.classList.add("hidden");
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+          const response = await fetch("/api/mxik-upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            uploadSuccessDiv.textContent = data.message || "Excel fayl muvaffaqiyatli yuklandi!";
+            uploadSuccessDiv.classList.remove("hidden");
+            
+            // Reload table data after successful upload
+            setTimeout(() => {
+              loadData();
+              setTimeout(() => {
+                uploadModal.classList.add("hidden");
+                excelFileInput.value = "";
+                uploadErrorDiv.classList.add("hidden");
+                uploadSuccessDiv.classList.add("hidden");
+                confirmUploadBtn.disabled = true;
+                uploadText.textContent = "Yuklab yuborish";
+              }, 1500);
+            }, 500);
+          } else {
+            uploadErrorDiv.textContent = data.detail || "Xatolik yuz berdi";
+            uploadErrorDiv.classList.remove("hidden");
+            confirmUploadBtn.disabled = false;
+            uploadText.textContent = "Yuklab yuborish";
+          }
+        } catch (error) {
+          console.error("Upload error:", error);
+          uploadErrorDiv.textContent = "Serverga ulanishda xatolik yuz berdi";
+          uploadErrorDiv.classList.remove("hidden");
+          confirmUploadBtn.disabled = false;
+          uploadText.textContent = "Yuklab yuborish";
+        }
+      });
 
       // Initial load
       loadData();

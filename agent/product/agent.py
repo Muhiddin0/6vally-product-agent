@@ -36,7 +36,8 @@ Return ONLY valid JSON. No markdown. No explanations. No extra text.
 The JSON must match the required structure exactly (no extra keys).
 
 Language:
-- All content must be in Russian (ru)
+- Generate content in BOTH Russian (ru) and Uzbek (uz) languages
+- All fields must be provided in both languages: name_ru, name_uz, description_ru, description_uz
 
 Description quality rules:
 - Create engaging, attractive, and interesting descriptions (NOT dry or boring)
@@ -54,14 +55,17 @@ Description quality rules:
 - Avoid dry, technical, or boring language
 - Make it feel premium and valuable
 - Use html tags to make the description more readable (p, br, ul, li, etc.)
+- Ensure Russian text uses Cyrillic script and Uzbek text uses Latin script
 """.strip()
 
 
 def _required_output_template() -> Dict[str, Any]:
     # This is NOT a JSON Schema spec; it's a strict example structure the model must match.
     return {
-        "name": "string",
-        "description": "string",
+        "name_ru": "string",
+        "name_uz": "string",
+        "description_ru": "string",
+        "description_uz": "string",
         "meta_title": "string",
         "meta_description": "string",
         "tags": ["string"],
@@ -87,18 +91,23 @@ Hard requirements:
 2) Output JSON MUST match this structure exactly (same keys, no extra keys):
 {json.dumps(template, ensure_ascii=False, indent=2)}
 
-3) Description requirements:
-- Create an engaging, attractive, and interesting description (NOT dry or boring)
+3) Name and Description requirements (BOTH languages required):
+- Generate name_ru (Russian) and name_uz (Uzbek) - product names in both languages
+- Generate description_ru (Russian) and description_uz (Uzbek) - descriptions in both languages
+- Russian text must use Cyrillic script
+- Uzbek text must use Latin script
+- Create engaging, attractive, and interesting descriptions (NOT dry or boring)
 - Length: 8-15 sentences or structured paragraphs with bullet points
 - Structure:
-  * Start with a compelling opening line (e.g., "iPhone 17 — kelajak bugundan boshlanadi.")
+  * Start with a compelling opening line
   * Add 2-3 sentences describing the product's main appeal and design
-  * Include 4-6 bullet points with emojis highlighting key features (e.g., "📱 Super Retina XDR 2.0 displey — ...")
+  * Include 4-6 bullet points with emojis highlighting key features
   * End with a compelling closing statement that emphasizes value
 - Use emojis/stickers strategically (📱 ⚡ 📸 🔋 🔐 💎 ✨ 🎯 🚀 💪 ⭐ 🔥 💼 🎨 🛡️ etc.)
 - Make it marketing-oriented, persuasive, and exciting
 - Use vivid, appealing language
 - Highlight benefits and unique selling points
+- Ensure both Russian and Uzbek descriptions have similar structure and content quality
 
 4) Meta title:
 - max 60 characters in Russian
@@ -163,18 +172,19 @@ def _normalize_product_dict(data: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _assert_russian_only(product: ProductGenSchema) -> None:
-    # Soft guardrail: All text should be in Russian (Cyrillic)
-    fields = [
-        product.name,
-        product.description,
+    # Soft guardrail: Russian text should use Cyrillic script
+    russian_fields = [
+        product.name_ru,
+        product.description_ru,
         product.meta_title,
         product.meta_description,
     ]
-    # Check that at least some Cyrillic characters are present
-    if not any(CYRILLIC_RE.search(t or "") for t in fields):
+    # Check that at least some Cyrillic characters are present in Russian fields
+    if not any(CYRILLIC_RE.search(t or "") for t in russian_fields):
         logger.warning(
-            "Warning: Generated text may not contain Russian (Cyrillic) characters"
+            "Warning: Generated Russian text may not contain Cyrillic characters"
         )
+    # Note: Uzbek text validation (Latin script) is not checked here
 
 
 def _cleanup_tags(tags: List[str], max_len: int = 10) -> List[str]:
@@ -208,10 +218,10 @@ def generate_product_text(
     max_retries: Optional[int] = None,
 ) -> ProductGenSchema:
     """
-    Generates Russian-only product JSON and validates it with Pydantic.
+    Generates bilingual (Russian and Uzbek) product JSON and validates it with Pydantic.
 
     Args:
-        name: Product name (in Russian)
+        name: Product name (input, can be in any language)
         brand: Product brand
         price: Product price
         stock: Product stock quantity (default: 5)
@@ -220,7 +230,7 @@ def generate_product_text(
         max_retries: Maximum retry attempts (default: from settings)
 
     Returns:
-        ProductGenSchema: Validated product schema
+        ProductGenSchema: Validated product schema with name_ru, name_uz, description_ru, description_uz
 
     Raises:
         ValueError: If generation fails after all retries
@@ -292,7 +302,7 @@ def generate_product_text(
             # Keep price/stock exact (hard rule)
             product.price = price
             product.stock = stock
-            logger.info(f"Successfully generated product text for: {name}")
+            logger.info(f"Successfully generated bilingual product text for: {name}")
             return product
         except (ValidationError, ValueError) as e:
             logger.warning(f"Validation error (attempt {attempt + 1}): {e}")

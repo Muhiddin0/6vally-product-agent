@@ -41,8 +41,8 @@ class ProductGenerateResponse(BaseModel):
     ) -> "ProductGenerateResponse":
         """Create response from ProductGenSchema."""
         return cls(
-            name=schema.name,
-            description=schema.description,
+            name=schema.name_ru,
+            description=schema.description_ru,
             meta_title=schema.meta_title,
             meta_description=schema.meta_description,
             tags=schema.tags,

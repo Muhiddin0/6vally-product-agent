@@ -7,13 +7,17 @@ from pydantic import BaseModel, Field, ConfigDict, conint, constr
 
 
 class ProductGenSchema(BaseModel):
-    """AI agent generated product JSON schema (Russian only)."""
+    """AI agent generated product JSON schema (bilingual: Russian and Uzbek)."""
 
     model_config = ConfigDict(extra="forbid")
 
-    name: constr(min_length=1) = Field(..., description="Product name in Russian")
-    description: constr(min_length=1) = Field(
+    name_ru: constr(min_length=1) = Field(..., description="Product name in Russian")
+    name_uz: constr(min_length=1) = Field(..., description="Product name in Uzbek")
+    description_ru: constr(min_length=1) = Field(
         ..., description="Product description in Russian"
+    )
+    description_uz: constr(min_length=1) = Field(
+        ..., description="Product description in Uzbek"
     )
     meta_title: constr(min_length=1) = Field(..., description="Meta title in Russian")
     meta_description: constr(min_length=1) = Field(

@@ -310,9 +310,11 @@ class VenuSellerAPI:
             if img_name:
                 gallery_images.append({"image_name": img_name, "storage": "public"})
 
+
+        
         payload = {
-            "name": json.dumps([name]),
-            "description": json.dumps([description]),
+            "name": json.dumps([name, name_uz]),
+            "description": json.dumps([description, description_uz]),
             "unit_price": price,
             "discount": 0,
             "discount_type": "flat",
@@ -323,7 +325,7 @@ class VenuSellerAPI:
             "brand_id": brand_id,
             "meta_title": meta_title,
             "meta_description": meta_description,
-            "lang": json.dumps(["ru"]),
+            "lang": json.dumps(["ru", "uz"]),
             "colors": "[]",
             "images": json.dumps(gallery_images),
             "thumbnail": thumb_name,

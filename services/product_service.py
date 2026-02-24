@@ -225,16 +225,14 @@ class ProductService:
 
             # Add product to shop
             result = venu_api.add_product(
-
-                name=product.name,
-                description=product.description,
-
+                name_ru=product.name_ru,
+                name_uz=product.name_uz,
+                description_ru=product.description_ru,
+                description_uz=product.description_uz,
                 meta_image=main_image_path,
                 meta_title=product.meta_title,
                 meta_description=product.meta_description,
-
                 tags=product.tags,
-
                 price=price,
                 brand_id=category_selection.brand_id,
                 main_image_path=main_image_path,
@@ -256,7 +254,7 @@ class ProductService:
                 logger.error(f"Do'konga saqlashda xatolik: {result}")
                 return False, result
 
-            logger.info(f"Mahsulot muvaffaqiyatli do'konga saqlandi: {product.name}")
+            logger.info(f"Mahsulot muvaffaqiyatli do'konga saqlandi: {product.name_ru}")
             
             # Clean up broken images and update status
             try:
