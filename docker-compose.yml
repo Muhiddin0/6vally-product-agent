@@ -13,7 +13,6 @@ services:
     volumes:
       # Mount media directories to persist data
       - ./media:/app/media
-      - ./seo-images:/app/seo-images
       - ./api/mxik-codes.xlsx:/app/api/mxik-codes.xlsx
       - ./temps:/app/temps
     restart: unless-stopped

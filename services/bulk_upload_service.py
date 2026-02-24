@@ -109,22 +109,6 @@ class BulkUploadService:
                     if not additional_images:
                         additional_images = [get_default_image_path()]
 
-                    templates_dir = "seo-images"
-                    if os.path.exists(templates_dir):
-                        template_files = [
-                            f
-                            for f in os.listdir(templates_dir)
-                            if f.lower().endswith((".png", ".jpg", ".jpeg", ".webp"))
-                        ]
-                        if template_files:
-                            selected_template = random.choice(template_files)
-                            template_image_path = os.path.join(
-                                templates_dir, selected_template
-                            )
-                        else:
-                            await self._log("⚠️ Templates papkasida rasm topilmadi")
-
-                    
                     main_image = additional_images[0]
 
                     # Category Selection

@@ -67,8 +67,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Mount media directories if they exist
 if os.path.exists("media"):
     app.mount("/media", StaticFiles(directory="media"), name="media")
-if os.path.exists("seo-images"):
-    app.mount("/seo-images", StaticFiles(directory="seo-images"), name="seo-images")
 
 # Templates
 templates = Jinja2Templates(directory="static")

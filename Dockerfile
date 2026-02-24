@@ -19,8 +19,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Create necessary directories
-RUN mkdir -p media/products seo-images temps
 
 # Expose port
 EXPOSE 56234

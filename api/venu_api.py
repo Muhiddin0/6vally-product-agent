@@ -235,8 +235,10 @@ class VenuSellerAPI:
 
     def add_product(
         self,
-        name: str,
-        description: str,
+        name_uz: str,
+        description_uz: str,
+        name_ru: str,
+        description_ru: str,
         meta_image: str,
         meta_title: str,
         meta_description: str,
@@ -313,8 +315,8 @@ class VenuSellerAPI:
 
         
         payload = {
-            "name": json.dumps([name, name_uz]),
-            "description": json.dumps([description, description_uz]),
+            "name": json.dumps([name_ru, name_uz]),
+            "description": json.dumps([description_ru, description_uz]),
             "unit_price": price,
             "discount": 0,
             "discount_type": "flat",
@@ -376,7 +378,7 @@ class VenuSellerAPI:
             result = response.json()
 
             if response.status_code == 200:
-                logger.info(f"Product added successfully: {name}")
+                logger.info(f"Product added successfully: {name_ru}")
             else:
                 logger.error(
                     f"Product add error (status {response.status_code}): {result}"
