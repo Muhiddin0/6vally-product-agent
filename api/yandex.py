@@ -359,7 +359,7 @@ def get_product_images_from_yandex(
                         formatted_path = format_image(local_path, output_quality)
                         downloaded_paths.append(formatted_path)
                         # Optionally remove original image after formatting
-                        # os.remove(local_path)
+                        os.remove(local_path)
                     except Exception as e:
                         logger.error(f"Error formatting image {local_path}: {e}", exc_info=True)
                         # If formatting fails, use original image

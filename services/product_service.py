@@ -256,6 +256,14 @@ class ProductService:
 
             logger.info(f"Mahsulot muvaffaqiyatli do'konga saqlandi: {product.name_ru}")
             
+            # Clean up downloaded images
+            for image_path in additional_images_paths:
+                if os.path.exists(image_path):
+                    os.remove(image_path)
+                    logger.info(f"Rasm o'chirildi: {image_path}")
+                else:
+                    logger.warning(f"Rasm topilmadi: {image_path}")
+
             # Clean up broken images and update status
             try:
                 product_id = result.get("request", {}).get("id")

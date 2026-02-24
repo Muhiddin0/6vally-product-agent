@@ -2,16 +2,13 @@ from get_product_params import get_product_params, ProductInput
 import pandas as pd
 import asyncio
 import logging
-from typing import List, Optional
+from typing import Optional
 from fastapi import UploadFile
 
 from api.venu_api import VenuSellerAPI
 from services.product_service import ProductService, get_default_image_path
 from core.manager import ConnectionManager
 from api.yandex import get_product_images_from_yandex
-from agent.image import generate_poster
-import os
-import random
 
 logger = logging.getLogger(__name__)
 
